@@ -1,0 +1,108 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2965,         99]
+NotebookOptionsPosition[      2526,         78]
+NotebookOutlinePosition[      2882,         94]
+CellTagsIndexPosition[      2839,         91]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Circular primes", "Title"],
+ "\n",
+ StyleBox["Problem 35", "Subtitle"],
+ "\nThe number, 197, is called a circular prime because all rotations of the \
+digits : 197, 971, and 719, are themselves prime.There are thirteen such \
+primes below 100 : 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.\n\nHow \
+many circular primes are there below one million?"
+}], "Text",
+ CellChangeTimes->{{3.604233857765665*^9, 3.604233863152973*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6042338803159547`*^9, 3.6042339007661247`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Prime", "[", "i", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"PrimePi", "[", "1000000", "]"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Mean", "[", 
+        RowBox[{"Boole", "[", 
+         RowBox[{"PrimeQ", "[", 
+          RowBox[{"FromDigits", "/@", 
+           RowBox[{"MapIndexed", "[", 
+            RowBox[{"RotateLeft", ",", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"IntegerDigits", "[", "#", "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"Length", "[", 
+                 RowBox[{"IntegerDigits", "[", "#", "]"}], "]"}], "}"}]}], 
+              "]"}]}], "]"}]}], "]"}], "]"}], "]"}], "\[Equal]", "1"}], 
+      "&"}]}], "]"}], "//", "Length"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.658725013288456*^9, 3.658725015008539*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.3608838847777174`", ",", "55"}], "}"}]], "Output",
+ CellChangeTimes->{3.60423391712506*^9, 3.658725023679127*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 461, 9, 207, "Text"],
+Cell[CellGroupData[{
+Cell[1043, 33, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1172, 38, 1168, 31, 314, "Input"],
+Cell[2343, 71, 155, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

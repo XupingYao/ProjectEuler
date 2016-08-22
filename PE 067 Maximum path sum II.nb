@@ -1,0 +1,168 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5122,        159]
+NotebookOptionsPosition[      4496,        131]
+NotebookOutlinePosition[      4850,        147]
+CellTagsIndexPosition[      4807,        144]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Maximum path sum II", "Title"],
+ "\n",
+ StyleBox[" Problem 67", "Subtitle"],
+ "\n By starting at the top of the triangle below and moving to adjacent \
+numbers on the row below, the maximum total from top to bottom is 23.\n \n 3\n\
+ 7 4\n 2 4 6\n 8 5 9 3\n \n That is, 3 + 7 + 4 + 9 = 23.\n \n Find the \
+maximum total from top to bottom in triangle.txt (right click and' Save \
+Link/Target As ...'), a 15 K text file containing a triangle with one - \
+hundred rows.NOTE : This is a much more difficult version of Problem 18. It \
+is not possible to try every route to solve this problem, as there are 299 \
+altogether! If you could check one trillion (10^12) routes every second it \
+would take over twenty billion years to check them all.There is an efficient \
+algorithm to solve it. ; o)"
+}], "Text",
+ CellChangeTimes->{{3.6325618468460865`*^9, 3.632561861248107*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6325618764301286`*^9, 3.632561893800153*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{
+    RowBox[{"data", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"\"\<PE 067.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";", 
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "99"}], ",", 
+      RowBox[{"i", "\[GreaterEqual]", "1"}], ",", 
+      RowBox[{"i", "--"}], ",", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"j", "=", "1"}], ",", 
+        RowBox[{"j", "\[LessEqual]", "i"}], ",", 
+        RowBox[{"j", "++"}], ",", 
+        RowBox[{
+         RowBox[{"data", "\[LeftDoubleBracket]", 
+          RowBox[{"i", ",", "j"}], "\[RightDoubleBracket]"}], "+=", 
+         RowBox[{"Max", "[", 
+          RowBox[{
+           RowBox[{"data", "\[LeftDoubleBracket]", 
+            RowBox[{
+             RowBox[{"i", "+", "1"}], ",", "j"}], "\[RightDoubleBracket]"}], 
+           ",", 
+           RowBox[{"data", "\[LeftDoubleBracket]", 
+            RowBox[{
+             RowBox[{"i", "+", "1"}], ",", 
+             RowBox[{"j", "+", "1"}]}], "\[RightDoubleBracket]"}]}], 
+          "]"}]}]}], "]"}]}], "]"}], ";", 
+    RowBox[{"data", "\[LeftDoubleBracket]", 
+     RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.632562188511587*^9, 3.6325622323830967`*^9}, {
+  3.658720793269864*^9, 3.65872079904025*^9}},
+ NumberMarks->False],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.037208383368743006`", ",", "7273"}], "}"}]], "Output",
+ CellChangeTimes->{3.632561714795561*^9, 3.6325622365403347`*^9, 
+  3.658720804513501*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.632562788985854*^9, 3.6325627983663907`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"data", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<PE 067.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";", 
+   RowBox[{"data", "//.", "\[VeryThinSpace]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x___", ",", "a_", ",", "b_"}], "}"}], "\[RuleDelayed]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"a", "+", 
+        RowBox[{"Max", "/@", 
+         RowBox[{"Partition", "[", 
+          RowBox[{"b", ",", "2", ",", "1"}], "]"}]}]}]}], "}"}]}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6587208106586685`*^9, 3.658720818079194*^9}},
+ NumberMarks->False],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.022712369665598104`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "7273", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.632562780725382*^9, 3.6587208205793433`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 899, 15, 397, "Text"],
+Cell[CellGroupData[{
+Cell[1481, 39, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1608, 44, 1544, 39, 222, "Input"],
+Cell[3155, 85, 187, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3391, 95, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3518, 100, 736, 20, 124, "Input"],
+Cell[4257, 122, 211, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

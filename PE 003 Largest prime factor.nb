@@ -1,0 +1,88 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2156,         79]
+NotebookOptionsPosition[      1721,         58]
+NotebookOutlinePosition[      2075,         74]
+CellTagsIndexPosition[      2032,         71]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Largest prime factor", "Title"],
+ "\n",
+ StyleBox["Problem 3", "Subtitle"],
+ "\nThe prime factors of 13195 are 5, 7, 13 and 29.\nWhat is the largest \
+prime factor of the number 600851475143?"
+}], "Text",
+ CellChangeTimes->{{3.6012909637333183`*^9, 3.601291019473506*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution 1", "Subsubtitle",
+ CellChangeTimes->{{3.6012910535804567`*^9, 3.601291081170035*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"FactorInteger", "[", "600851475143", "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "1"}], "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.601291087288385*^9, 3.6012911045563726`*^9}, {
+  3.6587290783543773`*^9, 3.6587290803245077`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.000022237959855350625`", ",", "6857"}], "}"}]], "Output",
+ CellChangeTimes->{3.6012911061864657`*^9, 3.658729081159277*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 299, 7, 150, "Text"],
+Cell[CellGroupData[{
+Cell[881, 31, 101, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1007, 36, 518, 13, 124, "Input"],
+Cell[1528, 51, 165, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

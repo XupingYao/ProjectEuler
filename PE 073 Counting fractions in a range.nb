@@ -1,0 +1,109 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3021,        100]
+NotebookOptionsPosition[      2582,         79]
+NotebookOutlinePosition[      2938,         95]
+CellTagsIndexPosition[      2895,         92]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Counting fractions in a range", "Title"],
+ "\n",
+ StyleBox["Problem 73", "Subtitle"],
+ "\nConsider the fraction, n/d, where n and d are positive integers.If n < d \
+and HCF (n, d) = 1, it is called a reduced proper fraction.If we list the set \
+of reduced proper fractions for d <= 8 in ascending order of size, we get : \n\
+\n1/8, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 1/2, 4/7, 3/5, 5/8, 2/3, \
+5/7, 3/4, 4/5, 5/6, 6/7, 7/8\n\nIt can be seen that there are 3 fractions \
+between 1/3 and 1/2.\n\nHow many fractions lie between 1/3 and 1/2 in the \
+sorted set of reduced proper fractions for d <= 12, 000?"
+}], "Text",
+ CellChangeTimes->{{3.633085476112461*^9, 3.6330854857224746`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.633085499531501*^9, 3.633085508172513*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ParallelSum", "[", 
+   RowBox[{
+    RowBox[{"Count", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Floor", "[", 
+          RowBox[{
+           RowBox[{"1", "/", "3"}], "*", "n"}], "]"}], "+", "1"}], ",", 
+        RowBox[{
+         RowBox[{"Ceiling", "[", 
+          RowBox[{
+           RowBox[{"1", "/", "2"}], "*", "n"}], "]"}], "-", "1"}]}], "]"}], 
+      ",", 
+      RowBox[{"_", "?", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"CoprimeQ", "[", 
+          RowBox[{"#", ",", "n"}], "]"}], "&"}], ")"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "1", ",", "12000"}], "}"}]}], "]"}], "//", 
+  "AbsoluteTiming"}]}], "Input",
+ CellChangeTimes->{{3.633085029900057*^9, 3.63308503208406*^9}, {
+  3.633085322687768*^9, 3.633085363708907*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.709331047955305`", ",", "7295372"}], "}"}]], "Output",
+ CellChangeTimes->{3.633085081193133*^9, 3.633085379503959*^9, 
+  3.658722234270485*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{48, Automatic}, {Automatic, 60}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 720, 12, 302, "Text"],
+Cell[CellGroupData[{
+Cell[1302, 36, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1427, 41, 939, 28, 124, "Input"],
+Cell[2369, 71, 185, 4, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

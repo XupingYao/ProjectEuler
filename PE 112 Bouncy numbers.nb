@@ -1,0 +1,262 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8443,        253]
+NotebookOptionsPosition[      7809,        225]
+NotebookOutlinePosition[      8167,        241]
+CellTagsIndexPosition[      8124,        238]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Bouncy numbers", "Title"],
+ "\n",
+ StyleBox["Problem 112", "Subtitle"],
+ "\nWorking from left - to - right if no digit is exceeded by the digit to \
+its left it is called an increasing number; for example, ",
+ Cell[BoxData[
+  FormBox["134468", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nSimilarly if no digit is exceeded by the digit to its right it is \
+called a decreasing number; for example, ",
+ Cell[BoxData[
+  FormBox["66420", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nWe shall call a positive integer that is neither increasing nor \
+decreasing a \"bouncy\" number; for example, ",
+ Cell[BoxData[
+  FormBox["155349", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nClearly there cannot be any bouncy numbers below one - hundred, but \
+just over half of the numbers below one - thousand (",
+ Cell[BoxData[
+  FormBox["525", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") are bouncy.In fact, the least number for which the proportion of bouncy \
+numbers first reaches ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"50", " ", "%"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is ",
+ Cell[BoxData[
+  FormBox["538", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nSurprisingly, bouncy numbers become more and more common and by the \
+time we reach ",
+ Cell[BoxData[
+  FormBox["21780", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " the proportion of bouncy numbers is equal to ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"90", " ", "%"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".Find the least number for which the proportion of bouncy numbers is \
+exactly ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"99", " ", "%"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.6711691990868955`*^9, 3.6711691991025686`*^9}, 
+   3.671169376254181*^9, {3.6711694524303493`*^9, 3.6711694860504932`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6712341505052605`*^9, 3.671234163906148*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"n", "=", "100"}], ";", 
+   RowBox[{"m", "=", "99"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"m", "/", 
+       RowBox[{"(", 
+        RowBox[{"n", "-", "1"}], ")"}]}], "\[NotEqual]", 
+      RowBox[{"1", "-", 
+       RowBox[{"99", "/", "100"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"list", "=", 
+       RowBox[{"IntegerDigits", "[", "n", "]"}]}], ";", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"OrderedQ", "[", "list", "]"}], "||", 
+         RowBox[{"OrderedQ", "[", 
+          RowBox[{"Reverse", "[", "list", "]"}], "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"m", "=", 
+          RowBox[{"m", "+", "1"}]}], ";"}]}], "]"}], ";", 
+      RowBox[{"n", "=", 
+       RowBox[{"n", "+", "1"}]}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"n", "-", "1"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.671166864106222*^9, 3.6711673176216393`*^9}, {
+  3.6711673479542685`*^9, 3.6711676061918387`*^9}, {3.6711676900958023`*^9, 
+  3.6711677183696804`*^9}, {3.67116777594848*^9, 3.671167848144575*^9}, {
+  3.6711684021679416`*^9, 3.6711684665853415`*^9}, {3.67116860750999*^9, 
+  3.6711686077351975`*^9}, {3.6711687041513767`*^9, 3.671168725608631*^9}, {
+  3.67116899725022*^9, 3.6711689976350784`*^9}, {3.6711691037853136`*^9, 
+  3.6711691278360634`*^9}, {3.6711691760031495`*^9, 3.67116917909122*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"8.132665900580882`", ",", "1587000"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.671167147713394*^9, {3.671167191907899*^9, 3.6711673649448423`*^9}, {
+   3.671167401130847*^9, 3.6711674214157934`*^9}, {3.671167452583233*^9, 
+   3.6711675033305225`*^9}, {3.671167541724109*^9, 3.6711675872453833`*^9}, 
+   3.6711676777604094`*^9, 3.6711677191875772`*^9, 3.671167786312313*^9, {
+   3.6711678426814833`*^9, 3.671167857397009*^9}, {3.6711684502733483`*^9, 
+   3.6711684671858854`*^9}, 3.671168608173914*^9, {3.671168711659834*^9, 
+   3.6711687263103113`*^9}, 3.671169139451713*^9, 3.6711691951286163`*^9, 
+   3.671170140981657*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6712343676683044`*^9, 3.671234375519554*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"MultiChoose", "[", 
+     RowBox[{"n_", ",", "k_"}], "]"}], ":=", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{
+      RowBox[{"n", "+", "k", "-", "1"}], ",", "k"}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NonBouncyNumbers", "[", "x_", "]"}], ":=", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"MultiChoose", "[", 
+        RowBox[{"10", ",", "k"}], "]"}], "+", 
+       RowBox[{"MultiChoose", "[", 
+        RowBox[{"9", ",", "k"}], "]"}], "-", "10"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "x"}], "}"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"digit", "=", 
+    RowBox[{
+     RowBox[{"NestWhile", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "+", "1"}], "&"}], ",", "3", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"1", "-", 
+          RowBox[{
+           RowBox[{"NonBouncyNumbers", "[", "#", "]"}], "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"10", "^", "#"}], "-", "1"}], ")"}]}]}], "<", 
+         RowBox[{"99", "/", "100"}]}], "&"}]}], "]"}], "-", "1"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"n", "=", 
+    RowBox[{"10", "^", "digit"}]}], ";", 
+   RowBox[{"m", "=", 
+    RowBox[{"NonBouncyNumbers", "[", "digit", "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"m", "/", 
+       RowBox[{"(", 
+        RowBox[{"n", "-", "1"}], ")"}]}], "\[NotEqual]", 
+      RowBox[{"1", "-", 
+       RowBox[{"99", "/", "100"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"list", "=", 
+       RowBox[{"IntegerDigits", "[", "n", "]"}]}], ";", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"OrderedQ", "[", "list", "]"}], "||", 
+         RowBox[{"OrderedQ", "[", 
+          RowBox[{"Reverse", "[", "list", "]"}], "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"m", "=", 
+          RowBox[{"m", "+", "1"}]}], ";"}]}], "]"}], ";", 
+      RowBox[{"n", "=", 
+       RowBox[{"n", "+", "1"}]}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"n", "-", "1"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6712342073321204`*^9, 3.671234298816853*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.7595752859796043`", ",", "1587000"}], "}"}]], "Output",
+ CellChangeTimes->{3.6712343095461564`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1955, 53, 398, "Text"],
+Cell[CellGroupData[{
+Cell[2538, 77, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2665, 82, 1669, 39, 262, "Input"],
+Cell[4337, 123, 667, 11, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5053, 140, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5180, 145, 2457, 71, 396, "Input"],
+Cell[7640, 218, 141, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

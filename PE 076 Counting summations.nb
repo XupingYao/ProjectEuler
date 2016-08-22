@@ -1,0 +1,86 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2163,         77]
+NotebookOptionsPosition[      1729,         56]
+NotebookOutlinePosition[      2083,         72]
+CellTagsIndexPosition[      2040,         69]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Counting summations", "Title"],
+ "\n",
+ StyleBox["Problem 76", "Subtitle"],
+ "\nIt is possible to write five as a sum in exactly six different ways : \n\n\
+4 + 1\n3 + 2\n3 + 1 + 1\n2 + 2 + 1\n2 + 1 + 1 + 1\n1 + 1 + 1 + 1 + 1\n\nHow \
+many different ways can one hundred be written as a sum of at least two \
+positive integers?"
+}], "Text",
+ CellChangeTimes->{{3.633168597875081*^9, 3.6331686133901033`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.633168616640108*^9, 3.6331686251601195`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"PartitionsP", "[", "100", "]"}], "-", "1"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6331683441392164`*^9, 3.633168347449221*^9}, {
+  3.633168628980125*^9, 3.633168642840144*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.9957143459930047`*^-6", ",", "190569291"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.633168348309222*^9, 3.633168645380148*^9, {3.6587221184782305`*^9, 
+   3.658722125098694*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 434, 9, 302, "Text"],
+Cell[CellGroupData[{
+Cell[1016, 33, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1143, 38, 333, 7, 86, "Input"],
+Cell[1479, 47, 222, 5, 66, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

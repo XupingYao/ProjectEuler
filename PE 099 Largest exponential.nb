@@ -1,0 +1,207 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6334,        198]
+NotebookOptionsPosition[      5515,        163]
+NotebookOutlinePosition[      5872,        179]
+CellTagsIndexPosition[      5829,        176]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Largest exponential", "Title"],
+ "\n",
+ StyleBox["Problem 99", "Subtitle"],
+ "\nComparing two numbers written in index form like 211 and 37 is not \
+difficult, as any calculator would confirm that ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["2", "11"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = 2048 < ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["3", "7"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = 2187.\n\nHowever, confirming that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["632382", "518061"], ">", 
+    SuperscriptBox["519432", "525806"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "  would be much more difficult, as both numbers contain over three million \
+digits.\n\nUsing base_exp.txt (right click and' Save Link/Target As ...'), a \
+22 K text file containing one thousand lines with a base/exponent pair on \
+each line, determine which line number has the greatest numerical value.\n\n\
+NOTE : The first two lines in the file represent the numbers in the example \
+given above."
+}], "Text",
+ CellChangeTimes->{{3.656068732371251*^9, 3.656068805635112*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.656068809470044*^9, 3.656068817460413*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearSystemCache", ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Position", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"Max", "[", "#", "]"}]}], "]"}], "&"}], "[", 
+   RowBox[{"(", 
+    RowBox[{"MapThread", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#2", " ", 
+        RowBox[{"RealExponent", "[", "#1", "]"}]}], "&"}], ",", 
+      RowBox[{"Transpose", "[", 
+       RowBox[{"Import", "[", 
+        RowBox[{"\"\<PE 099.txt\>\"", ",", "\"\<Data\>\""}], "]"}], "]"}]}], 
+     "]"}], ")"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6560675922607713`*^9, 3.656067602510787*^9}, {
+  3.6560679391131897`*^9, 3.656067944693197*^9}, {3.656068068654002*^9, 
+  3.6560681014163823`*^9}, {3.6560681557841043`*^9, 3.656068261832722*^9}, {
+  3.6560683044248257`*^9, 3.656068312624836*^9}, {3.6560684480779543`*^9, 
+  3.6560684508879585`*^9}, {3.658720255170067*^9, 3.6587202709511604`*^9}, {
+  3.6587203631744695`*^9, 3.658720376747244*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.04158698064385166`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "709", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6560684585379734`*^9, {3.6587202404390917`*^9, 3.658720271961176*^9}, {
+   3.658720379257416*^9, 3.658720386587902*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.656069094796395*^9, 3.6560691085463023`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearSystemCache", ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Ordering", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"#2", " ", 
+       RowBox[{"RealExponent", "[", "#1", "]"}]}], "&"}], "@@@", 
+     RowBox[{"Import", "[", 
+      RowBox[{"\"\<PE 099.txt\>\"", ",", "\"\<Data\>\""}], "]"}]}], ",", 
+    RowBox[{"-", "1"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6560689605062065`*^9, 3.6560689605162115`*^9}, {
+   3.6560689935880766`*^9, 3.6560690105842915`*^9}, {3.6560690583475575`*^9, 
+   3.656069079823287*^9}, 3.6587204013588886`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.040856834295267645`", ",", 
+   RowBox[{"{", "709", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6560690131142936`*^9, {3.6560690603675613`*^9, 3.656069084383294*^9}, 
+   3.6587204036690693`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.6560694112890725`*^9, 3.656069422529415*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearSystemCache", ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Ordering", "[", 
+   RowBox[{
+    RowBox[{"Power", "@@@", 
+     RowBox[{"N", "@", 
+      RowBox[{"Import", "[", 
+       RowBox[{"\"\<PE 099.txt\>\"", ",", "\"\<CSV\>\""}], "]"}]}]}], ",", 
+    RowBox[{"-", "1"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6560693093313355`*^9, 3.6560693511240654`*^9}, {
+   3.656069390609044*^9, 3.656069395409051*^9}, 3.658720412849654*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.018316951369573224`", ",", 
+   RowBox[{"{", "709", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6560693280487385`*^9, 3.656069352774065*^9}, 
+   3.6560693973990526`*^9, 3.6587204142897615`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1161, 29, 325, "Text"],
+Cell[CellGroupData[{
+Cell[1744, 53, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1869, 58, 1221, 28, 238, "Input"],
+Cell[3093, 88, 288, 7, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3430, 101, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3557, 106, 694, 15, 146, "Input"],
+Cell[4254, 123, 242, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4545, 135, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4672, 140, 573, 12, 124, "Input"],
+Cell[5248, 154, 239, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

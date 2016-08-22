@@ -1,0 +1,353 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10796,        345]
+NotebookOptionsPosition[      9979,        311]
+NotebookOutlinePosition[     10336,        327]
+CellTagsIndexPosition[     10293,        324]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Special subset sums : testing", "Title"],
+ "\n",
+ StyleBox["Problem 105\n", "Subtitle"],
+ "\nLet ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", " ", 
+    RowBox[{"(", "A", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " represent the sum of elements in set ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " of size ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".We shall call it a special sum set if for any two non - empty disjoint \
+subsets, ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox["C", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the following properties are true :\n",
+ StyleBox["S(B) \[NotEqual] S(C); that is, sums of subsets cannot be equal.", 
+  "Item"]
+}], "Text",
+ CellChangeTimes->{{3.6783421845439377`*^9, 3.678342232146163*^9}, 
+   3.678342262784855*^9}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", " ", 
+     RowBox[{"(", "B", ")"}]}], " ", "\[NotEqual]", "  ", 
+    RowBox[{"S", " ", 
+     RowBox[{"(", "C", ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "; that is, sums of subsets cannot be equal."
+}], "Item",
+ CellChangeTimes->{{3.6783422911089473`*^9, 3.6783423487561264`*^9}}],
+
+Cell[TextData[{
+ "If B contains more elements than C then ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", 
+     RowBox[{"(", "B", ")"}]}], " ", ">", " ", 
+    RowBox[{"S", 
+     RowBox[{"(", "C", ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Item",
+ CellChangeTimes->{{3.6783422911089473`*^9, 3.6783423270271597`*^9}, 
+   3.6783423575054455`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "For example,",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"{", 
+     RowBox[{
+     "81", ",", " ", "88", ",", " ", "75", ",", " ", "42", ",", " ", "87", 
+      ",", " ", "84", ",", " ", "86", ",", " ", "65"}], "}"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is not a special sum set because ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"65", " ", "+", " ", "87", " ", "+", " ", "88"}], " ", "=", " ", 
+    RowBox[{"75", " ", "+", " ", "81", " ", "+", " ", "84"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", whereas ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+    "157", ",", " ", "150", ",", " ", "164", ",", " ", "119", ",", " ", "79", 
+     ",", " ", "159", ",", " ", "161", ",", " ", "139", ",", " ", "158"}], 
+    "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " satisfies both rules for all possible subset pair combinations and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", " ", 
+     RowBox[{"(", "A", ")"}]}], " ", "=", " ", "1286"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nUsing sets.txt (right click and \"Save Link/Target As...\"), a 4 K \
+text file with one - hundred sets containing seven to twelve elements (the \
+two examples given above are the first two sets in the file), identify all \
+the special sum sets, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A1", ",", " ", "A2", ",", " ", "...", ",", " ", "Ak", ","}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and find the value of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"S", " ", 
+       RowBox[{"(", "A1", ")"}]}], " ", "+", " ", 
+      RowBox[{"S", " ", 
+       RowBox[{"(", "A2", ")"}]}], " ", "+"}], " ", "..."}], " ", "+", " ", 
+    RowBox[{"S", " ", 
+     RowBox[{"(", "Ak", ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nNOTE : This problem is related to Problem 103 and Problem 106."
+}], "Text",
+ CellChangeTimes->{{3.6783423716208005`*^9, 3.678342412787899*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6783426086337748`*^9, 3.6783426399570284`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "set_", "]"}], ":=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{"And", ",", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{"Greater", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Total", "[", 
+             RowBox[{"Take", "[", 
+              RowBox[{"set", ",", "i"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "2", ",", 
+              RowBox[{"Ceiling", "[", 
+               RowBox[{
+                RowBox[{"Length", "[", "set", "]"}], "/", "2"}], "]"}]}], 
+             "}"}]}], "]"}], ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Total", "[", 
+             RowBox[{"Take", "[", 
+              RowBox[{"set", ",", 
+               RowBox[{"-", "i"}]}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{
+               RowBox[{"Ceiling", "[", 
+                RowBox[{
+                 RowBox[{"Length", "[", "set", "]"}], "/", "2"}], "]"}], "-", 
+               "1"}]}], "}"}]}], "]"}]}], "}"}]}], "]"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", "set_", "]"}], ":=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{"And", ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Equal", "[", 
+         RowBox[{
+          RowBox[{"Length", "[", 
+           RowBox[{"Union", "[", 
+            RowBox[{"Map", "[", 
+             RowBox[{"Total", ",", 
+              RowBox[{"Subsets", "[", 
+               RowBox[{"set", ",", 
+                RowBox[{"{", "i", "}"}]}], "]"}]}], "]"}], "]"}], "]"}], ",", 
+          RowBox[{"Binomial", "[", 
+           RowBox[{
+            RowBox[{"Length", "[", "set", "]"}], ",", "i"}], "]"}]}], "]"}], 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Ceiling", "[", 
+           RowBox[{
+            RowBox[{"Length", "[", "set", "]"}], "/", "2"}], "]"}]}], "}"}]}],
+        "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Map", "[", 
+       RowBox[{"Sort", ",", 
+        RowBox[{"Import", "[", 
+         RowBox[{"\"\<PE 105.txt\>\"", ",", "\"\<CSV\>\""}], "]"}]}], "]"}], 
+      ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Apply", "[", 
+         RowBox[{"And", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"f", "[", "#", "]"}], ",", 
+            RowBox[{"g", "[", "#", "]"}]}], "}"}]}], "]"}], "\[Equal]", 
+        "True"}], "&"}]}], "]"}], "~", "Total", "~", "2"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.678337659523262*^9, 3.678337664011457*^9}, {
+  3.6783377155573325`*^9, 3.6783377379752593`*^9}, {3.6783381557712517`*^9, 
+  3.6783381805517216`*^9}, {3.6783382114045467`*^9, 3.6783382205317717`*^9}, {
+  3.678338305838428*^9, 3.6783383220795965`*^9}, {3.6783383851557655`*^9, 
+  3.6783383893600473`*^9}, {3.678338534316892*^9, 3.678338648553528*^9}, {
+  3.67834203938837*^9, 3.6783420755061493`*^9}, {3.6783421287662024`*^9, 
+  3.678342157606413*^9}, {3.6807829535025167`*^9, 3.680782965898472*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.079771109649686`", ",", "73702"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6783420456631627`*^9, 3.6783420885094275`*^9, 3.6783421601723213`*^9, {
+   3.6783425541313257`*^9, 3.678342561958475*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.680782978979372*^9, 3.6807829896213217`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Import", "[", 
+   RowBox[{"\"\<PE 105.txt\>\"", ",", "\"\<CSV\>\""}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Join", "@@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Sort", "[", 
+        RowBox[{"Tr", "/@", 
+         RowBox[{"#", "~", "Subsets", "~", 
+          RowBox[{"{", "i", "}"}]}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "@", "#"}]}], "}"}]}], "]"}]}], "&"}], "/@", "%"}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Pick", "[", 
+   RowBox[{"%%", ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Union", "@", "#"}], "===", "#"}], "&"}], "/@", "%"}]}], "]"}],
+   "~", "Total", "~", "2"}]}], "Input",
+ CellChangeTimes->{{3.6783426457458944`*^9, 3.678342693526287*^9}, {
+   3.678342731374631*^9, 3.678342756394787*^9}, 3.6807829998676877`*^9}],
+
+Cell[BoxData["73702"], "Output",
+ CellChangeTimes->{{3.6783426636177645`*^9, 3.6783426948756423`*^9}, {
+  3.67834273889781*^9, 3.6783427576004114`*^9}, {3.678343026542936*^9, 
+  3.6783430368179345`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 984, 32, 170, "Text"],
+Cell[CellGroupData[{
+Cell[1567, 56, 374, 11, 29, "Item"],
+Cell[1944, 69, 384, 13, 29, "Item"]
+}, Open  ]],
+Cell[2343, 85, 2059, 59, 182, "Text"],
+Cell[CellGroupData[{
+Cell[4427, 148, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4556, 153, 3558, 93, 468, "Input"],
+Cell[8117, 248, 241, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8407, 259, 102, 1, 28, "Subsubtitle"],
+Cell[8512, 262, 123, 3, 48, "Input"],
+Cell[CellGroupData[{
+Cell[8660, 269, 1085, 33, 200, "Input"],
+Cell[9748, 304, 203, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

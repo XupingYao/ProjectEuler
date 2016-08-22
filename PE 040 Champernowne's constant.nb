@@ -1,0 +1,177 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5085,        168]
+NotebookOptionsPosition[      4458,        140]
+NotebookOutlinePosition[      4814,        156]
+CellTagsIndexPosition[      4771,        153]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Champernowne' s constant", "Title"],
+ "\n",
+ StyleBox["Problem 40", "Subtitle"],
+ "\nAn irrational decimal fraction is created by concatenating the positive \
+integers : 0.123456789101112131415161718192021 ...\n\nIt can be seen that the \
+12 th digit of the fractional part is 1.\n\nIf dn represents the nth digit of \
+the fractional part, find the value of the following ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"expression", "."}], TraditionalForm]]],
+ "\n",
+ "d1 \[Times] d10 \[Times] d100 \[Times] d1000 \[Times] d10000 \[Times] \
+d100000 \[Times] d1000000"
+}], "Text",
+ CellChangeTimes->{{3.605789787142599*^9, 3.6057898904945107`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.605789894597745*^9, 3.6057899043643036`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"digits", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"IntegerDigits", "/@", 
+      RowBox[{"Range", "[", "190000", "]"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Times", "@@", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"digits", "[", 
+       RowBox[{"[", 
+        RowBox[{"10", "^", "i"}], "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "6"}], "}"}]}], "]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6057876035967073`*^9, 3.6057876165914507`*^9}, {
+  3.60578775277324*^9, 3.6057878515358887`*^9}, {3.65872468107167*^9, 
+  3.658724712613781*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.24399289981856107`", ",", "210"}], "}"}]], "Output",
+ CellChangeTimes->{3.6587247144738703`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.605790222758515*^9, 3.605790231219999*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ChampernowneDigit", "[", "n_", "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"m", "=", "n"}], ",", 
+        RowBox[{"i", "=", "1"}], ",", "z"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"z", "=", 
+            RowBox[{"i", "*", "9", "*", 
+             RowBox[{"10", "^", 
+              RowBox[{"(", 
+               RowBox[{"i", "-", "1"}], ")"}]}]}]}], ")"}], "<", "m"}], ",", 
+         RowBox[{
+          RowBox[{"i", "++"}], ";", 
+          RowBox[{"m", "-=", "z"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"z", "=", 
+        RowBox[{
+         RowBox[{"Floor", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"m", "-", "1"}], ")"}], "/", "i"}], "]"}], "+", 
+         RowBox[{"10", "^", 
+          RowBox[{"(", 
+           RowBox[{"i", "-", "1"}], ")"}]}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"IntegerDigits", "[", "z", "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"Mod", "[", 
+          RowBox[{"m", ",", "i", ",", "1"}], "]"}], "]"}], "]"}]}]}], "]"}]}],
+    ";", "\n", 
+   RowBox[{"Times", "@@", 
+    RowBox[{"ChampernowneDigit", "/@", 
+     RowBox[{"(", 
+      RowBox[{"10", "^", 
+       RowBox[{"Range", "@", "6"}]}], ")"}]}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6057902133669777`*^9, 3.605790216415152*^9}, {
+  3.658724731064955*^9, 3.658724736855397*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00011603653411702185`", ",", "210"}], "}"}]], "Output",
+ CellChangeTimes->{3.605790218987299*^9, 3.6587247377354136`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 667, 15, 245, "Text"],
+Cell[CellGroupData[{
+Cell[1249, 39, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1376, 44, 847, 22, 162, "Input"],
+Cell[2226, 68, 138, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2413, 77, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2538, 82, 1726, 49, 258, "Input"],
+Cell[4267, 133, 163, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

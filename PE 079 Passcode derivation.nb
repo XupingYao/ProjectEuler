@@ -1,0 +1,135 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4092,        126]
+NotebookOptionsPosition[      3617,        104]
+NotebookOutlinePosition[      3971,        120]
+CellTagsIndexPosition[      3928,        117]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Passcode derivation", "Title"],
+ "\n",
+ StyleBox["Problem 79", "Subtitle"],
+ "\nA common security method used for online banking is to ask the user for \
+three random characters from a passcode.For example, if the passcode was \
+531278, they may ask for the 2 nd, 3 rd, and 5 th characters; the expected \
+reply would be : 317.\n\nThe text file, keylog.txt, contains fifty successful \
+login attempts.Given that the three characters are always asked for in order, \
+analyse the file so as to determine the shortest possible secret passcode of \
+unknown length."
+}], "Text",
+ CellChangeTimes->{{3.633775415448268*^9, 3.6337754240757856`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6337754380508113`*^9, 3.633775446240823*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "@", "\"\<Global`*\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "0", ",", "1", ",", "2", ",", "3", ",", "6", ",", "7", ",", "8", ",", 
+      "9"}], "}"}], "//.", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"IntegerDigits", "@", 
+          RowBox[{"ReadList", "[", "\"\<PE 079.txt\>\"", "]"}]}], "/.", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}], "\[RuleDelayed]", 
+          RowBox[{"Sequence", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"a", ",", "b"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", "c"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c"}], "}"}]}], "]"}]}]}], "//", "Union"}], 
+       ")"}], "/.", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"b_", ",", "a_"}], "}"}], "\[Rule]", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"A___", ",", "a", ",", "B___", ",", "b", ",", "C___"}], 
+          "}"}], "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"A", ",", "b", ",", "B", ",", "a", ",", "C"}], "}"}]}], 
+        ")"}]}]}], ")"}]}], "//", "FromDigits"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6337744829840593`*^9, 3.6337744880420675`*^9}, {
+  3.633774784171443*^9, 3.633774857990058*^9}, {3.633775450130828*^9, 
+  3.633775471490858*^9}, {3.6337756473911133`*^9, 3.6337756653261404`*^9}, {
+  3.6587207280665026`*^9, 3.6587207406473923`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.002024224550935762`", ",", "73162890"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6337748371445217`*^9, 3.6337748613930635`*^9}, 
+   3.63377547284086*^9, 3.6337756677891445`*^9, 3.658720760348667*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.633775533385947*^9, 3.6337755435259614`*^9}, 
+   3.6337756585991306`*^9}]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 668, 12, 245, "Text"],
+Cell[CellGroupData[{
+Cell[1250, 36, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1377, 41, 1843, 49, 296, "Input"],
+Cell[3223, 92, 241, 4, 64, "Output"]
+}, Open  ]],
+Cell[3479, 99, 122, 2, 31, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,219 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6251,        210]
+NotebookOptionsPosition[      5437,        175]
+NotebookOutlinePosition[      5791,        191]
+CellTagsIndexPosition[      5748,        188]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Cubic permutations", "Title"],
+ "\n",
+ StyleBox["Problem 62", "Subtitle"],
+ "\nThe cube, 41063625 (345^3), can be permuted to produce two other cubes : \
+56623104 (384^3) and 66430125 (405^3).In fact, 41063625 is the smallest cube \
+which has exactly three permutations of its digits which are also cube.Find \
+the smallest cube for which exactly five permutations of its digits are cube."
+}], "Text",
+ CellChangeTimes->{{3.632393218972457*^9, 3.6323932485535*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6323932562745123`*^9, 3.6323932678395295`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"table", "=", 
+    RowBox[{"Sort", "/@", 
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{
+       RowBox[{"Range", "[", "10000", "]"}], "^", "3"}], "]"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"digits", "=", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Tally", "[", "table", "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "5"}], "&"}]}], "]"}], 
+     "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Min", "[", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Position", "[", 
+         RowBox[{"table", ",", 
+          RowBox[{"digits", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "digits", "]"}]}], "}"}]}], "]"}], "]"}], 
+     "]"}], "^", "3"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6323922575980372`*^9, 3.6323922605980415`*^9}, {
+   3.6323925484644775`*^9, 3.632392548866478*^9}, {3.632392867907798*^9, 
+   3.632392889015005*^9}, 3.632393715767709*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.04341990171962152`", ",", "127035954683"}], "}"}]], "Output",
+ CellChangeTimes->{3.6323928964214287`*^9, 3.6323936270464287`*^9, 
+  3.6587227271112013`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.632393751501832*^9, 3.6323937606198454`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"cubes", "=", 
+    RowBox[{"Sort", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Sort", "@", 
+          RowBox[{"IntegerDigits", "[", 
+           RowBox[{"k", "^", "3"}], "]"}]}], ",", 
+         RowBox[{"k", "^", "3"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "1", ",", "30000"}], "}"}]}], "]"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Split", "[", 
+       RowBox[{"cubes", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#1", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "===", 
+          RowBox[{"#2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "&"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "#", "]"}], "\[Equal]", "5"}], "&"}]}], "]"}], 
+    "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1", ",", "2"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6323937240847874`*^9, 3.6323937483518276`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.14465621824675925`", ",", "127035954683"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6323937432818203`*^9, {3.658722731131474*^9, 3.6587227337216415`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.6323939297177467`*^9, 3.6323939394787617`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Cases", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Reap", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "~", "Sow", "~", 
+           RowBox[{"{", 
+            RowBox[{"DigitCount", "[", 
+             RowBox[{"#", "^", "3"}], "]"}], "}"}]}], "&"}], "~", "Array", 
+         "~", "1*^4"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"_", ",", "_", ",", "_", ",", "_", ",", "_"}], "}"}]}], "]"}], 
+    "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}], "^", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6323938041705546`*^9, 3.632393820657578*^9}, {
+  3.632393884840681*^9, 3.6323939117197213`*^9}, {3.658722743412286*^9, 
+  3.658722792375554*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.38016932780919604`", ",", "127035954683"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.632393831568594*^9, {3.6323938899906883`*^9, 3.6323939271677437`*^9}, {
+   3.658722751762834*^9, 3.6587228024162292`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 492, 9, 188, "Text"],
+Cell[CellGroupData[{
+Cell[1074, 33, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1203, 38, 1286, 36, 162, "Input"],
+Cell[2492, 76, 198, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2739, 86, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2866, 91, 1090, 33, 124, "Input"],
+Cell[3959, 126, 198, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4206, 136, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4335, 141, 821, 23, 108, "Input"],
+Cell[5159, 166, 250, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

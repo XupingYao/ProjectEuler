@@ -1,0 +1,114 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3146,        105]
+NotebookOptionsPosition[      2709,         84]
+NotebookOutlinePosition[      3063,        100]
+CellTagsIndexPosition[      3020,         97]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Number spiral diagonals", "Title"],
+ StyleBox["\nProblem 28", "Subtitle"],
+ "\nStarting with the number 1 and moving to the right in a clockwise \
+direction a 5 by 5 spiral is formed as follows :\n\n",
+ Cell[BoxData[GridBox[{
+    {"21", "22", "23", "24", "25"},
+    {"20", "7", "8", "9", "10"},
+    {"19", "6", "1", "2", "11"},
+    {"18", "5", "4", "3", "12"},
+    {"17", "16", "15", "14", "13"}
+   }]]],
+ "\n\nIt can be verified that the sum of the numbers on the diagonals is 101.\
+\n\nWhat is the sum of the numbers on the diagonals in a 1001 by 1001 spiral \
+formed in the same way?"
+}], "Text",
+ CellChangeTimes->{{3.6032814132177534`*^9, 3.603281420783186*^9}, 
+   3.658725876754077*^9, {3.658725917146772*^9, 3.6587260275885487`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.603281433862934*^9, 3.6032814454255953`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{"i", "^", "2"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "#"}], "}"}]}], "]"}], "+", 
+      FractionBox[
+       RowBox[{"#", "-", "1"}], "2"], "+", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{"i", " ", 
+         RowBox[{"(", 
+          RowBox[{"i", "+", "1"}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"#", "-", "1"}]}], "}"}]}], "]"}], "+", "#", "-", "1"}], 
+     ")"}], "&"}], "[", "1001", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.603281196159338*^9, 3.603281285388442*^9}, {
+  3.603281326494793*^9, 3.6032813660640564`*^9}, {3.658725883534525*^9, 
+  3.658725886394663*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00023977082356858815`", ",", "669171001"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6032812666243687`*^9, 3.6032812874315586`*^9}, 
+   3.603281367229123*^9, 3.658725896925364*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 768, 17, 350, "Text"],
+Cell[CellGroupData[{
+Cell[1350, 41, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1477, 46, 980, 28, 147, "Input"],
+Cell[2460, 76, 221, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,130 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3429,        121]
+NotebookOptionsPosition[      2808,         93]
+NotebookOutlinePosition[      3164,        109]
+CellTagsIndexPosition[      3121,        106]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Powerful digit counts", "Title"],
+ "\n",
+ StyleBox["Problem 63", "Subtitle"],
+ "\nThe 5 - digit number, 16807 = 7^5, is also a fifth power.Similarly, the 9 \
+- digit number, 134217728 = 8^9, is a ninth power.How many n - digit positive \
+integers exist which are also an nth power?"
+}], "Text",
+ CellChangeTimes->{{3.632396200282155*^9, 3.6323962272381935`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.632396318664913*^9, 3.632396327888441*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"10", "-", 
+      RowBox[{"Ceiling", "[", 
+       RowBox[{"10", "^", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"#", "-", "1"}], ")"}], "/", "#"}], ")"}]}], "]"}]}], 
+     "&"}], "~", "Array", "~", "21"}], "//", "Tr"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6323958964196444`*^9, 3.6323959475175667`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0002645747018687869`", ",", "49"}], "}"}]], "Output",
+ CellChangeTimes->{{3.632395924583255*^9, 3.6323959479285903`*^9}, 
+   3.632396725927129*^9, {3.6587226947097855`*^9, 3.6587227030803585`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.632396740443151*^9, 3.632396750253165*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Boole", "[", 
+        RowBox[{
+         RowBox[{"IntegerLength", "[", 
+          RowBox[{"#", "^", "#2"}], "]"}], "\[Equal]", "#2"}], "]"}], "&"}], 
+      "~", "Array", "~", 
+      RowBox[{"{", 
+       RowBox[{"9", ",", "50"}], "}"}]}], ")"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6323965721049023`*^9, 3.6323966435560083`*^9}, {
+  3.6323966770530567`*^9, 3.6323967152671137`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0011415486059079987`", ",", "49"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6323966087199554`*^9, 3.6323966458360114`*^9}, {
+  3.632396682205064*^9, 3.632396715597114*^9}, {3.6587226978999977`*^9, 
+  3.6587227081906977`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{72, Automatic}, {38, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 389, 8, 169, "Text"],
+Cell[CellGroupData[{
+Cell[971, 32, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1096, 37, 443, 13, 48, "Input"],
+Cell[1542, 52, 239, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1830, 62, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1955, 67, 555, 15, 86, "Input"],
+Cell[2513, 84, 267, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

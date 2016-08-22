@@ -1,0 +1,262 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8513,        253]
+NotebookOptionsPosition[      7694,        218]
+NotebookOutlinePosition[      8048,        234]
+CellTagsIndexPosition[      8005,        231]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Lychrel numbers", "Title"],
+ "\n",
+ StyleBox["Problem 55", "Subtitle"],
+ "\nIf we take 47, reverse and add, 47 + 74 = 121, which is palindromic.Not \
+all numbers produce palindromes so quickly.For example, 349 + 943 = 1292, \
+1292 + 2921 = 4213\n4213 + 3124 = 7337\n\nThat is, 349 took three iterations \
+to arrive at a palindrome.Although no one has proved it yet, it is thought \
+that some numbers, like 196, never produce a palindrome.A number that never \
+forms a palindrome through the reverse and add process is called a Lychrel \
+number.Due to the theoretical nature of these numbers, and for the purpose of \
+this problem, we shall assume that a number is Lychrel until proven \
+otherwise.In addition you are given that for every number below ten - \
+thousand, it will either (i) become a palindrome in less than fifty \
+iterations, or, (ii) no one, with all the computing power that exists, has \
+managed so far to map it to a palindrome.In fact, 10677 is the first number \
+to be shown to require over fifty iterations before producing a palindrome : \
+4668731596684224866951378664 (53 iterations, 28 - digits).Surprisingly, there \
+are palindromic numbers that are themselves Lychrel numbers; the first \
+example is 4994.\n\nHow many Lychrel numbers are there below ten - \
+thousand?NOTE : Wording was modified slightly on 24 April 2007 to emphasise \
+the theoretical nature of Lychrel numbers."
+}], "Text",
+ CellChangeTimes->{{3.628253847931262*^9, 3.6282538580812783`*^9}, {
+  3.628255324405443*^9, 3.6282553328154545`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6282553489954777`*^9, 3.628255360885494*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Lychrel", "[", "num_", "]"}], ":=", 
+    RowBox[{"Catch", "[", 
+     RowBox[{"Nest", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"FromDigits", "[", 
+            RowBox[{"Reverse", "[", 
+             RowBox[{"IntegerDigits", "[", "#", "]"}], "]"}], "]"}], 
+           "\[Equal]", "#"}], ",", 
+          RowBox[{"Throw", "[", "#", "]"}], ",", 
+          RowBox[{"#", "+", 
+           RowBox[{"FromDigits", "[", 
+            RowBox[{"Reverse", "[", 
+             RowBox[{"IntegerDigits", "[", "#", "]"}], "]"}], "]"}]}]}], 
+         "]"}], "&"}], ",", 
+       RowBox[{"num", "+", 
+        RowBox[{"FromDigits", "[", 
+         RowBox[{"Reverse", "[", 
+          RowBox[{"IntegerDigits", "[", "num", "]"}], "]"}], "]"}]}], ",", 
+       "50"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Palindrome", "[", "x_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"FromDigits", "[", 
+      RowBox[{"Reverse", "[", 
+       RowBox[{"IntegerDigits", "[", "x", "]"}], "]"}], "]"}], "\[Equal]", 
+     "x"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"1", ",", "10000"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"Not", "[", 
+        RowBox[{"Palindrome", "[", 
+         RowBox[{"Lychrel", "[", "#", "]"}], "]"}], "]"}], "&"}]}], "]"}], "//",
+     "Length"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6282535156954823`*^9, 3.6282535257754965`*^9}, {
+  3.628254721648427*^9, 3.628254735848448*^9}, {3.6282548387336593`*^9, 
+  3.6282549131162653`*^9}, {3.6587230169538383`*^9, 3.6587230308947687`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.21253017805193192`", ",", "249"}], "}"}]], "Output",
+ CellChangeTimes->{3.6282549151362677`*^9, 3.658723032434866*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6282553639754987`*^9, 3.6282553744255133`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GetHW", "[", "x_", "]"}], ":=", 
+    RowBox[{"FromDigits", "@", 
+     RowBox[{"Reverse", "@", 
+      RowBox[{"IntegerDigits", "[", "x", "]"}]}]}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"IsNotHW", "[", "x_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"FromDigits", "@", 
+      RowBox[{"Reverse", "@", 
+       RowBox[{"IntegerDigits", "[", "x", "]"}]}]}], "\[NotEqual]", "x"}]}], 
+   ";", "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{"IsLychrel", "[", "t_", "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{"t", "+", 
+          RowBox[{"GetHW", "[", "t", "]"}]}]}], ",", 
+        RowBox[{"Result", "=", "True"}]}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "<=", "50"}], ",", 
+         RowBox[{"i", "+=", "1"}], ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"IsNotHW", "[", "x", "]"}], ",", 
+           RowBox[{"x", "=", 
+            RowBox[{"x", "+", 
+             RowBox[{"GetHW", "[", "x", "]"}]}]}], ",", 
+           RowBox[{
+            RowBox[{"Result", "=", "False"}], ";", "Break"}]}], "]"}]}], 
+        "]"}], ";", "\[IndentingNewLine]", "Result"}]}], "]"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"1", ",", "10000"}], "]"}], ",", "IsLychrel"}], "]"}], "//", 
+    "Length"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6282542489502025`*^9, 3.628254291912763*^9}, {
+  3.62825480355361*^9, 3.62825481092112*^9}, {3.6587230425855756`*^9, 
+  3.658723057796588*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.331027998161662`", ",", "249"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6282548187411313`*^9, {3.658723060566743*^9, 3.6587230661071124`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.628255377523018*^9, 3.628255390218036*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"f1", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Reverse", "@", "#"}], "+", "#"}], "&"}], "@", 
+      RowBox[{"IntegerDigits", "@", 
+       RowBox[{"FromDigits", "@", "#"}]}]}], "&"}]}], ";", "\n", 
+   RowBox[{"pQ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Max", "@", "#"}], ">", "9"}], "&"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"f2", "=", 
+    RowBox[{
+     RowBox[{"pQ", "@", 
+      RowBox[{"NestWhile", "[", 
+       RowBox[{"f1", ",", 
+        RowBox[{"f1", "@", 
+         RowBox[{"{", "#", "}"}]}], ",", "pQ", ",", "1", ",", "50"}], "]"}]}],
+      "&"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Tr", "@", 
+    RowBox[{"Boole", "[", 
+     RowBox[{"f2", "~", "Array", "~", "1*^4"}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6282550392018447`*^9, 3.628255055384368*^9}, {
+  3.6587230736676197`*^9, 3.6587230818881955`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.15576693021500115`", ",", "249"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6282550593643737`*^9, {3.6587230830382414`*^9, 3.6587230878485627`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1564, 24, 435, "Text"],
+Cell[CellGroupData[{
+Cell[2146, 48, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2273, 53, 1752, 46, 296, "Input"],
+Cell[4028, 101, 160, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4237, 110, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4366, 115, 1758, 48, 316, "Input"],
+Cell[6127, 165, 187, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6363, 175, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6488, 180, 984, 28, 200, "Input"],
+Cell[7475, 210, 191, 4, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

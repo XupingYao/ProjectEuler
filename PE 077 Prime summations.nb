@@ -1,0 +1,100 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2712,         91]
+NotebookOptionsPosition[      2273,         70]
+NotebookOutlinePosition[      2629,         86]
+CellTagsIndexPosition[      2586,         83]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Prime summations", "Title"],
+ "\n",
+ StyleBox["Problem 77", "Subtitle"],
+ "\nIt is possible to write ten as the sum of primes in exactly five \
+different ways :\n\n7 + 3\n5 + 5\n5 + 3 + 2\n3 + 3 + 2 + 2\n2 + 2 + 2 + 2 + 2\
+\n\nWhat is the first value which can be written as the sum of primes in over \
+five thousand different ways?"
+}], "Text",
+ CellChangeTimes->{{3.633172790040807*^9, 3.63317280595783*^9}, 
+   3.6588276486639023`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.633172808679834*^9, 3.6331728183958483`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "+", "1"}], "&"}], ",", "5", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Length", "[", 
+        RowBox[{"IntegerPartitions", "[", 
+         RowBox[{"#", ",", "All", ",", 
+          RowBox[{"Prime", "[", 
+           RowBox[{"Range", "[", 
+            RowBox[{"PrimePi", "[", "#", "]"}], "]"}], "]"}]}], "]"}], "]"}], 
+       "\[LessEqual]", "5000"}], "&"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6331719350506487`*^9, 3.6331720435029078`*^9}, {
+  3.6331726079819436`*^9, 3.6331726884790754`*^9}, {3.6331727535293717`*^9, 
+  3.633172768248394*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.014836425550161425`", ",", "71"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6331719378906527`*^9, {3.6331720117517595`*^9, 3.6331720440929084`*^9}, {
+   3.6331726133039513`*^9, 3.6331726204039617`*^9}, 3.6331726895240774`*^9, 
+   3.6331727687083945`*^9, 3.6587221078238635`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 465, 10, 284, "Text"],
+Cell[CellGroupData[{
+Cell[1047, 34, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1174, 39, 747, 19, 162, "Input"],
+Cell[1924, 60, 321, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

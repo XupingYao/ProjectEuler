@@ -1,0 +1,140 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4446,        131]
+NotebookOptionsPosition[      4006,        110]
+NotebookOutlinePosition[      4360,        126]
+CellTagsIndexPosition[      4317,        123]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Digit factorial chains", "Title"],
+ "\n",
+ StyleBox["Problem 74", "Subtitle"],
+ "\nThe number 145 is well known for the property that the sum of the \
+factorial of its digits is equal to 145 :\n\n 1! + 4! + 5! = 1 + 24 + 120 = \
+145\n\nPerhaps less well known is 169, in that it produces the longest chain \
+of numbers that link back to 169; it turns out that there are only three such \
+loops that exist : \n\n169 \[RightArrow] 363601 \[RightArrow] 1454 \
+\[RightArrow] 169\n871 \[RightArrow] 45361 \[RightArrow] 871\n872 \
+\[RightArrow] 45362 \[RightArrow] 872\n\nIt is not difficult to prove that \
+EVERY starting number will eventually get stuck in a loop.For example,\n\n 69 \
+\[RightArrow] 363600 \[RightArrow] 1454 \[RightArrow] 169 \[RightArrow] \
+363601 (\[RightArrow] 1454)\n78 \[RightArrow] 45360 \[RightArrow] 871 \
+\[RightArrow] 45361 (\[RightArrow] 871)\n540 \[RightArrow] 145 (\[RightArrow] \
+145)\n\nStarting with 69 produces a chain of five non - repeating terms, but \
+the longest non - repeating chain with a starting number below one million is \
+sixty terms.How many chains, with a starting number below one million, \
+contain exactly sixty non - repeating terms?"
+}], "Text",
+ CellChangeTimes->{{3.633158380671322*^9, 3.6331583869663415`*^9}, {
+  3.6331586637185163`*^9, 3.6331587079240923`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6331587110740967`*^9, 3.6331587194141083`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"F", "[", "1", "]"}], "=", 
+    RowBox[{
+     RowBox[{"F", "[", "2", "]"}], "=", 
+     RowBox[{
+      RowBox[{"F", "[", "145", "]"}], "=", 
+      RowBox[{
+       RowBox[{"F", "[", "40585", "]"}], "=", "1"}]}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"F", "[", "169", "]"}], "=", 
+    RowBox[{
+     RowBox[{"F", "[", "363601", "]"}], "=", 
+     RowBox[{
+      RowBox[{"F", "[", "1454", "]"}], "=", "3"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"F", "[", "871", "]"}], "=", 
+    RowBox[{
+     RowBox[{"F", "[", "45361", "]"}], "=", 
+     RowBox[{
+      RowBox[{"F", "[", "872", "]"}], "=", 
+      RowBox[{
+       RowBox[{"F", "[", "45362", "]"}], "=", "2"}]}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"F", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"F", "[", "n", "]"}], "=", 
+     RowBox[{"1", "+", 
+      RowBox[{"F", "[", 
+       RowBox[{"Total", "[", 
+        RowBox[{"Factorial", "[", 
+         RowBox[{"IntegerDigits", "[", "n", "]"}], "]"}], "]"}], "]"}]}]}]}], 
+   ";", "\[IndentingNewLine]", 
+   RowBox[{"Count", "[", 
+    RowBox[{
+     RowBox[{"ParallelMap", "[", 
+      RowBox[{"F", ",", 
+       RowBox[{"Range", "[", 
+        RowBox[{"1000000", "-", "1"}], "]"}]}], "]"}], ",", "60"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.633160088044603*^9, 3.633160088044603*^9}, 
+   3.6331601220956564`*^9, {3.633160194826377*^9, 3.6331603582656116`*^9}, {
+   3.633160855892573*^9, 3.6331608591925774`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.6807327464792747`", ",", "402"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.633160172065545*^9, 3.6331603128945465`*^9, {3.6331603541846056`*^9, 
+   3.633160362275617*^9}, 3.6331608810736084`*^9, 3.6587222181533194`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1345, 21, 530, "Text"],
+Cell[CellGroupData[{
+Cell[1927, 45, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2056, 50, 1657, 49, 202, "Input"],
+Cell[3716, 101, 262, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

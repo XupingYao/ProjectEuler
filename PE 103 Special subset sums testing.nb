@@ -1,0 +1,353 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10928,        345]
+NotebookOptionsPosition[     10336,        319]
+NotebookOutlinePosition[     10693,        335]
+CellTagsIndexPosition[     10650,        332]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Special subset sums : testing", "Title"],
+ "\n",
+ StyleBox["Problem 105\n", "Subtitle"],
+ "\nLet ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", " ", 
+    RowBox[{"(", "A", ")"}]}], TraditionalForm]]],
+ " represent the sum of elements in set ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]]],
+ " of size ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]]],
+ ".We shall call it a special sum set if for any two non - empty disjoint \
+subsets, ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox["C", TraditionalForm]]],
+ ", the following properties are true :\n",
+ StyleBox["S(B) \[NotEqual] S(C); that is, sums of subsets cannot be equal.", 
+  "Item"]
+}], "Text",
+ CellChangeTimes->{{3.6783421845439377`*^9, 3.678342232146163*^9}, 
+   3.678342262784855*^9}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", " ", 
+     RowBox[{"(", "B", ")"}]}], " ", "\[NotEqual]", "  ", 
+    RowBox[{"S", " ", 
+     RowBox[{"(", "C", ")"}]}]}], TraditionalForm]]],
+ "; that is, sums of subsets cannot be equal."
+}], "Item",
+ CellChangeTimes->{{3.6783422911089473`*^9, 3.6783423487561264`*^9}}],
+
+Cell[TextData[{
+ "If B contains more elements than C then ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", 
+     RowBox[{"(", "B", ")"}]}], " ", ">", " ", 
+    RowBox[{"S", 
+     RowBox[{"(", "C", ")"}]}]}], TraditionalForm]]],
+ "."
+}], "Item",
+ CellChangeTimes->{{3.6783422911089473`*^9, 3.6783423270271597`*^9}, 
+   3.6783423575054455`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "If ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", " ", 
+    RowBox[{"(", "A", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is minimised for a given n, we shall call it an optimum special sum \
+set.The first five optimum special sum sets are given below.\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{"n", " ", "=", " ", 
+    RowBox[{"1", " ", ":", " ", 
+     RowBox[{"{", "1", "}"}]}]}], TraditionalForm], "\n", 
+  FormBox[
+   RowBox[{"n", " ", "=", " ", 
+    RowBox[{"2", " ", ":", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", "2"}], "}"}]}]}], TraditionalForm], "\n", 
+  FormBox[
+   RowBox[{"n", " ", "=", " ", 
+    RowBox[{"3", " ", ":", " ", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", " ", "3", ",", " ", "4"}], "}"}]}]}], 
+   TraditionalForm], "\n", 
+  FormBox[
+   RowBox[{"n", " ", "=", " ", 
+    RowBox[{"4", " ", ":", " ", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", " ", "5", ",", " ", "6", ",", " ", "7"}], "}"}]}]}], 
+   TraditionalForm], "\n", 
+  FormBox[
+   RowBox[{"n", " ", "=", " ", 
+    RowBox[{"5", " ", ":", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "6", ",", " ", "9", ",", " ", "11", ",", " ", "12", ",", " ", "13"}], 
+      "}"}]}]}], TraditionalForm]}],
+  FormatType->"TraditionalForm"],
+ "\n\nIt seems that for a given optimum set, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{"a1", ",", " ", "a2", ",", " ", "\[Ellipsis]", ",", " ", "an"}], 
+     "}"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the next optimum set is of the form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"B", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{"b", ",", " ", 
+      RowBox[{"a1", " ", "+", " ", "b"}], ",", " ", 
+      RowBox[{"a2", " ", "+", " ", "b"}], ",", " ", "\[Ellipsis]", ",", " ", 
+      RowBox[{"an", " ", "+", " ", "b"}]}], "}"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", where b is the \"middle\" element on the previous row.\n\nBy applying \
+this \"rule\" we would expect the optimum set for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", " ", "=", " ", "6"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " to be ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "11", ",", " ", "17", ",", " ", "20", ",", " ", "22", ",", " ", "23", 
+      ",", " ", "24"}], "}"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", " ", 
+     RowBox[{"(", "A", ")"}]}], " ", "=", " ", "117"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". However, this is not the optimum set, as we have merely applied an \
+algorithm to provide a near optimum set.The optimum set for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", " ", "=", " ", "6"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "11", ",", " ", "18", ",", " ", "19", ",", " ", "20", ",", " ", "22", 
+      ",", " ", "25"}], "}"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", " ", 
+     RowBox[{"(", "A", ")"}]}], " ", "=", " ", "115"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and corresponding set string : ",
+ Cell[BoxData[
+  FormBox["111819202225", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nGiven that A is an optimum special sum set for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", " ", "=", " ", "7"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", find its set string.\n\nNOTE : This problem is related to Problem 105 and \
+Problem 106."
+}], "Text",
+ CellChangeTimes->{{3.6783456515345325`*^9, 3.678345724029085*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.678345913808029*^9, 3.6783459289737854`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "set_", "]"}], ":=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{"And", ",", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{"Greater", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Total", "[", 
+             RowBox[{"Take", "[", 
+              RowBox[{"set", ",", "i"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "2", ",", 
+              RowBox[{"Ceiling", "[", 
+               RowBox[{
+                RowBox[{"Length", "[", "set", "]"}], "/", "2"}], "]"}]}], 
+             "}"}]}], "]"}], ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Total", "[", 
+             RowBox[{"Take", "[", 
+              RowBox[{"set", ",", 
+               RowBox[{"-", "i"}]}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{
+               RowBox[{"Ceiling", "[", 
+                RowBox[{
+                 RowBox[{"Length", "[", "set", "]"}], "/", "2"}], "]"}], "-", 
+               "1"}]}], "}"}]}], "]"}]}], "}"}]}], "]"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", "set_", "]"}], ":=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{"And", ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Equal", "[", 
+         RowBox[{
+          RowBox[{"Length", "[", 
+           RowBox[{"Union", "[", 
+            RowBox[{"Map", "[", 
+             RowBox[{"Total", ",", 
+              RowBox[{"Subsets", "[", 
+               RowBox[{"set", ",", 
+                RowBox[{"{", "i", "}"}]}], "]"}]}], "]"}], "]"}], "]"}], ",", 
+          RowBox[{"Binomial", "[", 
+           RowBox[{
+            RowBox[{"Length", "[", "set", "]"}], ",", "i"}], "]"}]}], "]"}], 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Ceiling", "[", 
+           RowBox[{
+            RowBox[{"Length", "[", "set", "]"}], "/", "2"}], "]"}]}], "}"}]}],
+        "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"A", "=", 
+    RowBox[{"{", 
+     RowBox[{"20", ",", 
+      RowBox[{"11", "+", "20"}], ",", 
+      RowBox[{"18", "+", "20"}], ",", 
+      RowBox[{"19", "+", "20"}], ",", 
+      RowBox[{"20", "+", "20"}], ",", 
+      RowBox[{"22", "+", "20"}], ",", 
+      RowBox[{"25", "+", "20"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Flatten", "[", 
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{"MinimalBy", "[", 
+       RowBox[{
+        RowBox[{"Parallelize", "@", 
+         RowBox[{"Select", "[", 
+          RowBox[{
+           RowBox[{"Union", "[", 
+            RowBox[{"Map", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Sort", "[", 
+                RowBox[{"A", "+", "#"}], "]"}], "&"}], ",", 
+              RowBox[{"Tuples", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", 
+                  RowBox[{"-", "1"}], ",", "1", ",", "2", ",", 
+                  RowBox[{"-", "2"}], ",", "3", ",", 
+                  RowBox[{"-", "3"}]}], "}"}], ",", "7"}], "]"}]}], "]"}], 
+            "]"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Apply", "[", 
+              RowBox[{"And", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"f", "[", "#", "]"}], ",", 
+                 RowBox[{"g", "[", "#", "]"}]}], "}"}]}], "]"}], "\[Equal]", 
+             "True"}], "&"}]}], "]"}]}], ",", "Total"}], "]"}], "]"}], "]"}], 
+    "//", "FromDigits"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6783442628257327`*^9, 3.6783442883845654`*^9}, {
+   3.6783444228779383`*^9, 3.678344427178611*^9}, 3.6783445621432467`*^9, {
+   3.678345407700972*^9, 3.678345408503199*^9}, {3.6783454973914537`*^9, 
+   3.6783454994835052`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"31.738995995485535`", ",", "20313839404245"}], "}"}]], "Output",
+ CellChangeTimes->{3.678345471105733*^9, 3.678346085766983*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 819, 27, 170, "Text"],
+Cell[CellGroupData[{
+Cell[1402, 51, 341, 10, 29, "Item"],
+Cell[1746, 63, 351, 12, 29, "Item"]
+}, Open  ]],
+Cell[2112, 78, 3778, 113, 374, "Text"],
+Cell[CellGroupData[{
+Cell[5915, 195, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6042, 200, 4095, 110, 602, "Input"],
+Cell[10140, 312, 168, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,174 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5453,        165]
+NotebookOptionsPosition[      4902,        140]
+NotebookOutlinePosition[      5258,        156]
+CellTagsIndexPosition[      5215,        153]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Permuted multiples", "Title"],
+ "\n",
+ StyleBox["Problem 52", "Subtitle"],
+ "\nIt can be seen that the number, 125874, and its double, 251748, contain \
+exactly the same digits, but in a different order.Find the smallest positive \
+integer, x, such that 2 x, 3 x, 4 x, 5 x, and 6 x, contain the same digits."
+}], "Text",
+ CellChangeTimes->{{3.6280532708522124`*^9, 3.628053278537652*^9}, {
+  3.6280550760847845`*^9, 3.6280550813187923`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6280550966288137`*^9, 3.6280551061868277`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CheckOut", "[", "num_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Union", "@", 
+      RowBox[{"Flatten", "@", 
+       RowBox[{"IntegerDigits", "@", 
+        RowBox[{"(", 
+         RowBox[{"num", "*", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "3", ",", "4", ",", "5", ",", "6"}], "}"}]}], 
+         ")"}]}]}]}], "\[Equal]", 
+     RowBox[{"Union", "@", 
+      RowBox[{"IntegerDigits", "@", "num"}]}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"n", "=", "1"}], ";", 
+   RowBox[{"Catch", "[", 
+    RowBox[{"While", "[", 
+     RowBox[{"True", ",", 
+      RowBox[{
+       RowBox[{"result", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{
+          RowBox[{"Range", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"10", "^", 
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1"}], ")"}]}], "+", "8"}], ",", 
+            RowBox[{
+             RowBox[{"10", "^", "n"}], "/", "6"}], ",", "9"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"CheckOut", "[", "#", "]"}], "&"}]}], "]"}]}], ";", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "@", "result"}], "\[Equal]", "0"}], ",", 
+         RowBox[{"n", "=", 
+          RowBox[{"n", "+", "1"}]}], ",", 
+         RowBox[{"Throw", "[", 
+          RowBox[{"Min", "[", "result", "]"}], "]"}]}], "]"}]}]}], "]"}], 
+    "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6280533016997166`*^9, 3.6280533105728884`*^9}, {
+   3.6280534220876274`*^9, 3.628053450113701*^9}, {3.6280534837237673`*^9, 
+   3.6280534875847797`*^9}, {3.628053548271907*^9, 3.6280536177660522`*^9}, {
+   3.628053749685333*^9, 3.6280538416235137`*^9}, 3.628054568687269*^9, 
+   3.6280546628904147`*^9, {3.6280547051634893`*^9, 3.6280547109614987`*^9}, {
+   3.6280549387076263`*^9, 3.628054943271633*^9}, {3.6280549796292114`*^9, 
+   3.6280550403756857`*^9}, 3.62805565033219*^9, {3.6280556823722377`*^9, 
+   3.62805568446224*^9}, {3.6280557435154176`*^9, 3.6280557468854227`*^9}, {
+   3.658825949489993*^9, 3.6588259606852703`*^9}, {3.658826009161769*^9, 
+   3.658826017016367*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.4136556435394084`", ",", "142857"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6280549863295946`*^9, 3.6280550146302137`*^9}, {
+   3.6280556727812243`*^9, 3.628055687562245*^9}, 3.6280557482054243`*^9, 
+   3.6587231729663053`*^9, {3.6588259342419915`*^9, 3.6588259615356045`*^9}, 
+   3.6588260214284487`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"NestWhile", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"IntegerDigits", "[", "#", "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+       RowBox[{"#", "+", "9"}], ",", 
+       RowBox[{
+        RowBox[{"10", "^", 
+         RowBox[{"(", 
+          RowBox[{"IntegerLength", "[", "#", "]"}], ")"}]}], "+", "8"}]}], 
+      "]"}], "&"}], ",", "9", ",", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"Equal", "@@", 
+       RowBox[{"(", 
+        RowBox[{"Sort", "/@", 
+         RowBox[{"IntegerDigits", "/@", 
+          RowBox[{"(", 
+           RowBox[{"#", " ", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6"}], 
+             "}"}]}], ")"}]}]}], ")"}]}]}], "&"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.628055589527096*^9, 3.6280556004691114`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.07658354231313556`", ",", "142857"}], "}"}]], "Output",
+ CellChangeTimes->{3.628055603799116*^9, 3.658723176116515*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 468, 9, 151, "Text"],
+Cell[CellGroupData[{
+Cell[1050, 33, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1179, 38, 2171, 52, 296, "Input"],
+Cell[3353, 92, 348, 6, 64, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3738, 103, 972, 28, 162, "Input"],
+Cell[4713, 133, 161, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

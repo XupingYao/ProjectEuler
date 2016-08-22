@@ -1,0 +1,419 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13652,        410]
+NotebookOptionsPosition[     13012,        382]
+NotebookOutlinePosition[     13369,        398]
+CellTagsIndexPosition[     13326,        395]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Path sum : two ways", "Title"],
+ "\n",
+ StyleBox["Problem 81", "Subtitle"],
+ "\nIn the 5 by 5 matrix below, the minimal path sum from the top left to the \
+bottom right, by only moving to the right and down, is indicated in bold red \
+and is equal to 2427.\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", Cell[BoxData[
+     FormBox[GridBox[{
+        {Cell[TextData[{
+          " ",
+          Cell[BoxData["131"], "InlineFormula",
+           FontColor->RGBColor[1, 0, 0]],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["673", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["234", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["103", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["18", "InlineFormula"],
+          " "
+         }]]},
+        {Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["201",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["96",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["342",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["965", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["150", "InlineFormula"],
+          " "
+         }]]},
+        {Cell[TextData[{
+          " ",
+          Cell["630", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["803", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["746",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["422",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["111", "InlineFormula"],
+          " "
+         }]]},
+        {Cell[TextData[{
+          " ",
+          Cell["537", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["699", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["497", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["121",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["956", "InlineFormula"],
+          " "
+         }]]},
+        {Cell[TextData[{
+          " ",
+          Cell["805", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["732", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell["524", "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["37",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]], Cell[TextData[{
+          " ",
+          Cell[BoxData[
+           StyleBox["331",
+            FontColor->RGBColor[1, 0, 0]]], "InlineFormula"],
+          " "
+         }]]}
+       }], TraditionalForm]]], ")"}], TraditionalForm]]],
+ "\n\nFind the minimal path sum, in matrix.txt (right click and \"Save \
+Link/Target As...\"), a 31 K text file containing a 80 by 80 matrix, from the \
+top left to the bottom right by only moving right and down.\n"
+}], "Text",
+ CellChangeTimes->{{3.6547731754767027`*^9, 3.6547732855853124`*^9}, {
+   3.6547733213287816`*^9, 3.6547734076572547`*^9}, {3.6547735182626457`*^9, 
+   3.654773527928462*^9}, {3.6547735838181105`*^9, 3.6547735966670485`*^9}, {
+   3.65477373695548*^9, 3.654773740412825*^9}, {3.6547737726381006`*^9, 
+   3.6547738610586076`*^9}, {3.654773891388074*^9, 3.654773900378087*^9}, {
+   3.6547740019982457`*^9, 3.654774020677369*^9}, 3.6547740994890413`*^9, {
+   3.6547742580507193`*^9, 3.654774259260723*^9}, {3.654774507057597*^9, 
+   3.6547745177927866`*^9}, {3.654774679572955*^9, 3.654774680062955*^9}, {
+   3.6547747344385753`*^9, 3.654774739105873*^9}, {3.65477487266656*^9, 
+   3.654774873076559*^9}, {3.6547749055511866`*^9, 3.6547750946194663`*^9}, {
+   3.6547751411532774`*^9, 3.6547751518632917`*^9}, {3.6547752378617077`*^9, 
+   3.6547753051051683`*^9}, {3.65477537507755*^9, 3.6547754355898027`*^9}, {
+   3.6547755474628787`*^9, 3.6547755714889107`*^9}, {3.6547756333800287`*^9, 
+   3.654775637900035*^9}, {3.654776233147671*^9, 3.654776272318118*^9}, {
+   3.654776363744464*^9, 3.654776375510933*^9}, {3.6547764066289062`*^9, 
+   3.6547764371553836`*^9}, {3.654776600753027*^9, 3.654776606453025*^9}, {
+   3.6547768447611623`*^9, 3.6547768734127665`*^9}, 3.6547769046344433`*^9, {
+   3.6547770355198216`*^9, 3.654777045854601*^9}, 3.654777078784222*^9, {
+   3.654777547140872*^9, 3.654777555404215*^9}, {3.6547777588084755`*^9, 
+   3.654777759898443*^9}, {3.654777791939293*^9, 3.6547778203214493`*^9}, {
+   3.6547778691672387`*^9, 3.6547778993397965`*^9}, {3.654777940598349*^9, 
+   3.65477799730548*^9}, 3.6547780664712057`*^9, {3.6547781290599365`*^9, 
+   3.654778163116046*^9}, {3.654778300520072*^9, 3.6547783025070467`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.633777260752797*^9, 3.6337772686328087`*^9}, {
+  3.6587206747380514`*^9, 3.658720676338109*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"G", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<PE 081.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"G", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"131", ",", "673", ",", "234", ",", "103", ",", "18"}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"201", ",", "96", ",", "342", ",", "965", ",", "150"}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"630", ",", "803", ",", "746", ",", "422", ",", " ", "111"}],
+          "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"537", ",", "699", ",", "497", ",", "121", ",", "956"}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"805", ",", "732", ",", "524", ",", "37", ",", "331"}], 
+         "}"}]}], "}"}]}], ";"}], "*)"}], "\n", 
+   RowBox[{"n", "=", 
+    RowBox[{"Length", "[", "G", "]"}]}], ";", "\n", 
+   RowBox[{"WAG", "=", 
+    RowBox[{"WeightedAdjacencyGraph", "[", 
+     RowBox[{"SparseArray", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"m", ",", 
+               RowBox[{"m", "+", "1"}]}], "}"}], "\[Rule]", 
+             RowBox[{"G", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Quotient", "[", 
+                  RowBox[{"m", ",", "n"}], "]"}], "+", "1"}], ",", 
+                RowBox[{
+                 RowBox[{"Mod", "[", 
+                  RowBox[{"m", ",", "n"}], "]"}], "+", "1"}]}], "]"}], 
+              "]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"m", ",", 
+              RowBox[{
+               RowBox[{"n", " ", "i"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}]}], ",", 
+              RowBox[{
+               RowBox[{"n", " ", "i"}], "-", "1"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", "\n", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"m", ",", 
+               RowBox[{"m", "+", "n"}]}], "}"}], "\[Rule]", 
+             RowBox[{"G", "[", 
+              RowBox[{"[", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Mod", "[", 
+                    RowBox[{
+                    RowBox[{"m", "+", "n"}], ",", "n"}], "]"}], "\[Equal]", 
+                   "0"}], ",", 
+                  RowBox[{"Quotient", "[", 
+                   RowBox[{
+                    RowBox[{"m", "+", "n"}], ",", "n"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"Quotient", "[", 
+                    RowBox[{
+                    RowBox[{"m", "+", "n"}], ",", "n"}], "]"}], "+", "1"}]}], 
+                 "]"}], ",", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Mod", "[", 
+                    RowBox[{
+                    RowBox[{"m", "+", "n"}], ",", "n"}], "]"}], "\[Equal]", 
+                   "0"}], ",", "n", ",", 
+                  RowBox[{"Mod", "[", 
+                   RowBox[{"m", ",", "n"}], "]"}]}], "]"}]}], "]"}], "]"}]}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"m", ",", "1", ",", 
+              RowBox[{"n", 
+               RowBox[{"(", 
+                RowBox[{"n", "-", "1"}], ")"}]}]}], "}"}]}], "]"}]}], "}"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], ",", 
+         RowBox[{"n", "^", "2"}]}], "}"}], ",", "Infinity"}], "]"}], "]"}]}], 
+   ";", "\n", 
+   RowBox[{
+    RowBox[{"GraphDistance", "[", 
+     RowBox[{"WAG", ",", "1", ",", 
+      RowBox[{"n", "^", "2"}]}], "]"}], "+", 
+    RowBox[{"G", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.633776379838519*^9, 3.63377639441654*^9}, {
+   3.633776580996542*^9, 3.633776658837653*^9}, {3.6337767675641336`*^9, 
+   3.633776792927436*^9}, {3.633777197541279*^9, 3.6337772215766535`*^9}, {
+   3.6337776106944413`*^9, 3.633777640372484*^9}, 3.654778057991989*^9, {
+   3.658720680238361*^9, 3.658720690459049*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.07158769910101621`", ",", "427337.`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6337765833735867`*^9, {3.633776628041713*^9, 3.6337766599716606`*^9}, 
+   3.6337767936284537`*^9, {3.633777197995305*^9, 3.633777222470705*^9}, 
+   3.633777640932485*^9, 3.6547780751911836`*^9, 3.6587207001015277`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6547791755659027`*^9, 3.654779191662106*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mat", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<PE 081.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"l", "[", 
+   RowBox[{"i_", ",", "j_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"l", "[", 
+    RowBox[{"i", ",", "j"}], "]"}], "=", 
+   RowBox[{"Which", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"i", ">", "80"}], "\[Or]", 
+      RowBox[{"j", ">", "80"}], "\[Or]", 
+      RowBox[{"i", "<", "1"}], "\[Or]", 
+      RowBox[{"j", "<", "1"}]}], ",", "Infinity", ",", 
+     RowBox[{
+      RowBox[{"i", "\[Equal]", "1"}], "&&", 
+      RowBox[{"j", "\[Equal]", "1"}]}], ",", 
+     RowBox[{"mat", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "True", ",", 
+     RowBox[{
+      RowBox[{"Min", "[", 
+       RowBox[{
+        RowBox[{"l", "[", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "j"}], "]"}], ",", 
+        RowBox[{"l", "[", 
+         RowBox[{"i", ",", 
+          RowBox[{"j", "-", "1"}]}], "]"}]}], "]"}], "+", 
+      RowBox[{"mat", "[", 
+       RowBox[{"[", 
+        RowBox[{"i", ",", "j"}], "]"}], "]"}]}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$RecursionLimit", "=", "Infinity"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"l", "[", 
+   RowBox[{"80", ",", "80"}], "]"}], "//", "AbsoluteTiming"}]}], "Input",
+ CellChangeTimes->{3.6587207093721895`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.035683657608404355`", ",", "427337"}], "}"}]], "Output",
+ CellChangeTimes->{3.6547792105216703`*^9, 3.65872071677264*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5547, 160, 363, "Text"],
+Cell[CellGroupData[{
+Cell[6130, 184, 153, 2, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6308, 190, 4561, 121, 450, "Input"],
+Cell[10872, 313, 342, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11263, 325, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[11390, 330, 1428, 43, 220, "Input"],
+Cell[12821, 375, 163, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

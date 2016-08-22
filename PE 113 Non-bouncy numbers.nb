@@ -1,0 +1,140 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4181,        130]
+NotebookOptionsPosition[      3738,        109]
+NotebookOutlinePosition[      4096,        125]
+CellTagsIndexPosition[      4053,        122]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Non - bouncy numbers", "Title"],
+ "\nProblem 113\nWorking from left - to - right if no digit is exceeded by \
+the digit to its left it is called an increasing number; for example, ",
+ Cell[BoxData[
+  FormBox["134468", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nSimilarly if no digit is exceeded by the digit to its right it is \
+called a decreasing number; for example, ",
+ Cell[BoxData[
+  FormBox["66420", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nWe shall call a positive integer that is neither increasing nor \
+decreasing a \"bouncy\" number; for example, ",
+ Cell[BoxData[
+  FormBox["155349", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nAs n increases, the proportion of bouncy numbers below n increases \
+such that there are only ",
+ Cell[BoxData[
+  FormBox["12951", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " numbers below one - million that are not bouncy and only ",
+ Cell[BoxData[
+  FormBox["277032", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " non - bouncy numbers below ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", "10"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nHow many numbers below a googol (",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", "100"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") are not bouncy?"
+}], "Text",
+ CellChangeTimes->{{3.671231828595849*^9, 3.6712319108945885`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6712319822175117`*^9, 3.671231993349298*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"MultiChoose", "[", 
+     RowBox[{"n_", ",", "k_"}], "]"}], ":=", 
+    RowBox[{"Binomial", "[", 
+     RowBox[{
+      RowBox[{"n", "+", "k", "-", "1"}], ",", "k"}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NonBouncyNumbers", "[", "x_", "]"}], ":=", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"MultiChoose", "[", 
+        RowBox[{"10", ",", "k"}], "]"}], "+", 
+       RowBox[{"MultiChoose", "[", 
+        RowBox[{"9", ",", "k"}], "]"}], "-", "10"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "x"}], "}"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"NonBouncyNumbers", "[", "100", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.671230470014685*^9, 3.6712305200368166`*^9}, {
+  3.6712305967194424`*^9, 3.6712306307200413`*^9}, {3.671231230591009*^9, 
+  3.6712312315396814`*^9}, {3.6712312807760754`*^9, 3.6712313161078963`*^9}, {
+  3.6712313506044235`*^9, 3.671231379362702*^9}, {3.6712314281997643`*^9, 
+  3.6712314953225513`*^9}, {3.671231574873966*^9, 3.671231577392558*^9}, {
+  3.671231921708666*^9, 3.6712319594918747`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0004553848022091496`", ",", "51161058134250"}], "}"}]], "Output",
+ CellChangeTimes->{3.671231962982974*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1452, 38, 334, "Text"],
+Cell[CellGroupData[{
+Cell[2035, 62, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2162, 67, 1396, 33, 242, "Input"],
+Cell[3561, 102, 149, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

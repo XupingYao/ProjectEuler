@@ -1,0 +1,163 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4757,        154]
+NotebookOptionsPosition[      4132,        126]
+NotebookOutlinePosition[      4486,        142]
+CellTagsIndexPosition[      4443,        139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Square root convergents", "Title"],
+ "\n",
+ StyleBox["Problem 57", "Subtitle"],
+ "\nIt is possible to show that the square root of two can be expressed as an \
+infinite continued ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"fraction", "."}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "= 1 + 1/(2 + 1/(2 + 1/(2 + ...))) = 1.414213 ...\n\nBy expanding this for \
+the first four iterations, we get : 1 + 1/2 = 3/2 = 1.5\n1 + 1/(2 + 1/2) = \
+7/5 = 1.4\n1 + 1/(2 + 1/(2 + 1/2)) = 17/12 = 1.41666 ...\n1 + 1/(2 + 1/(2 + \
+1/(2 + 1/2))) = 41/29 = 1.41379 ...\n\nThe next three expansions are 99/70, \
+239/169, and 577/408, but the eighth expansion, 1393/985, is the first \
+example where the number of digits in the numerator exceeds the number of \
+digits in the denominator.In the first one - thousand expansions, how many \
+fractions contain a numerator with more digits than denominator?"
+}], "Text",
+ CellChangeTimes->{{3.630638568092857*^9, 3.6306385770448694`*^9}, {
+  3.6587229090782585`*^9, 3.658722922739171*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.630638591024889*^9, 3.6306386022549067`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"NestList", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"1", "+", 
+         RowBox[{"1", "/", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", "#"}], ")"}]}]}], "&"}], ",", 
+       RowBox[{"3", "/", "2"}], ",", "999"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Length", "[", 
+        RowBox[{"IntegerDigits", "[", 
+         RowBox[{"Numerator", "[", "#", "]"}], "]"}], "]"}], ">", 
+       RowBox[{"Length", "[", 
+        RowBox[{"IntegerDigits", "[", 
+         RowBox[{"Denominator", "[", "#", "]"}], "]"}], "]"}]}], "&"}]}], 
+    "]"}], "//", "Length"}], "]"}]], "Input",
+ CellChangeTimes->{{3.630638348020057*^9, 3.6306383836651087`*^9}, {
+  3.6306384142201543`*^9, 3.6306384884012637`*^9}, {3.6587229318598037`*^9, 
+  3.658722933829935*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.009277505790422623`", ",", "153"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6306384812112536`*^9, 3.6306384890812645`*^9}, 
+   3.6587229351199656`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.630638955696509*^9, 3.6306389700455303`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Count", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"IntegerDigits", "[", 
+          RowBox[{"Numerator", "[", "#", "]"}], "]"}], "]"}], ">", 
+        RowBox[{"Length", "[", 
+         RowBox[{"IntegerDigits", "[", 
+          RowBox[{"Denominator", "[", "#", "]"}], "]"}], "]"}]}], "&"}], 
+      ")"}], "/@", 
+     RowBox[{"FromContinuedFraction", "/@", 
+      RowBox[{"ContinuedFraction", "[", 
+       RowBox[{
+        RowBox[{"Sqrt", "[", "2", "]"}], ",", 
+        RowBox[{"Range", "[", "1000", "]"}]}], "]"}]}]}], ",", "True"}], 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.630638971635533*^9, 3.630638971635533*^9}, {
+  3.6587229389502525`*^9, 3.6587229411503983`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.27650593753528135`", ",", "153"}], "}"}]], "Output",
+ CellChangeTimes->{3.6306389784155426`*^9, 3.658722942680481*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1153, 25, 346, "Text"],
+Cell[CellGroupData[{
+Cell[1735, 49, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1862, 54, 886, 24, 162, "Input"],
+Cell[2751, 80, 193, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2993, 90, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3120, 95, 821, 22, 238, "Input"],
+Cell[3944, 119, 160, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

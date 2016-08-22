@@ -1,0 +1,224 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6912,        215]
+NotebookOptionsPosition[      6286,        187]
+NotebookOutlinePosition[      6640,        203]
+CellTagsIndexPosition[      6597,        200]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Integer right triangles", "Title"],
+ "\n",
+ StyleBox["Problem 39", "Subtitle"],
+ "\nIf p is the perimeter of a right angle triangle with integral length \
+sides, {a, b, c}, there are exactly three solutions for p = 120.\n\n{20, 48, \
+52}, {24, 45, 51}, {30, 40, 50}\n\nFor which value of p <= 1000, is the \
+number of solutions maximised?"
+}], "Text",
+ CellChangeTimes->{{3.605787114645741*^9, 3.6057871197150307`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.605787132554765*^9, 3.6057871424853334`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"max", "=", "0"}], ";", 
+      RowBox[{"answer", "=", "0"}], ";", 
+      RowBox[{"p", "=", "1000"}]}], ",", 
+     RowBox[{"p", ">", "0"}], ",", 
+     RowBox[{"p", "=", 
+      RowBox[{"p", "-", "1"}]}], ",", 
+     RowBox[{
+      RowBox[{"length", "=", 
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"Solve", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"x", "^", "2"}], "+", 
+              RowBox[{"y", "^", "2"}]}], "==", 
+             RowBox[{"z", "^", "2"}]}], "&&", 
+            RowBox[{
+             RowBox[{"x", "+", "y", "+", "z"}], "\[Equal]", "p"}], "&&", 
+            RowBox[{"x", ">", "0"}], "&&", 
+            RowBox[{"y", ">", "0"}], "&&", 
+            RowBox[{"z", ">", "0"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "Integers"}], 
+          "]"}], "]"}], "/", "2"}]}], ";", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"max", "<", "length"}], ",", 
+        RowBox[{
+         RowBox[{"max", "=", "length"}], ";", 
+         RowBox[{"answer", "=", "p"}]}]}], "]"}]}]}], "]"}], ";", 
+   "\[IndentingNewLine]", "answer"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.605785622950421*^9, 3.60578562817272*^9}, {
+   3.605785668605032*^9, 3.6057858381567297`*^9}, {3.6057858753578577`*^9, 
+   3.6057859045705285`*^9}, {3.6057859372904*^9, 3.6057859785247583`*^9}, 
+   3.6057860346029663`*^9, {3.658724769477523*^9, 3.6587247828884673`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"19.15458860344472`", ",", "840"}], "}"}]], "Output",
+ CellChangeTimes->{3.605785986817233*^9, 3.605786097999592*^9, 
+  3.658724803509799*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6057871453154955`*^9, 3.6057871557060895`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"limit", "=", "1000"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"numsols", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "limit"}], "}"}]}], "]"}]}], ";", 
+   RowBox[{"(*", 
+    RowBox[{
+    "record", " ", "number", " ", "of", " ", "solutions", " ", "for", " ", 
+     "each", " ", "p"}], "*)"}], 
+   RowBox[{"(*", 
+    RowBox[{
+    "the", " ", "shortest", " ", "side", " ", "cannot", " ", "be", " ", 
+     "longer", " ", "than", " ", "this"}], "*)"}], 
+   RowBox[{"amax", "=", 
+    RowBox[{"x", "/.", 
+     RowBox[{
+      RowBox[{"Solve", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"2", " ", "x"}], "+", 
+          RowBox[{
+           RowBox[{"Sqrt", "[", "2", "]"}], " ", "x"}]}], "\[Equal]", 
+         "limit"}], ",", "x"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"a", "=", "1"}], ",", 
+     RowBox[{"a", "\[LessEqual]", "amax"}], ",", 
+     RowBox[{"++", "a"}], ",", 
+     RowBox[{
+      RowBox[{"bmax", "=", 
+       RowBox[{"x", "/.", 
+        RowBox[{
+         RowBox[{"Solve", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"a", "+", "x", "+", 
+             RowBox[{"Sqrt", "[", 
+              RowBox[{
+               RowBox[{"a", "^", "2"}], "+", 
+               RowBox[{"x", "^", "2"}]}], "]"}]}], "\[Equal]", "limit"}], ",",
+            "x"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"b", "=", "a"}], ",", 
+        RowBox[{"b", "\[LessEqual]", "bmax"}], ",", 
+        RowBox[{"++", "b"}], ",", 
+        RowBox[{
+         RowBox[{"c", "=", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{
+            RowBox[{"a", "^", "2"}], "+", 
+            RowBox[{"b", "^", "2"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"IntegerQ", "[", "c", "]"}], ",", 
+           RowBox[{
+            RowBox[{"numsols", "[", 
+             RowBox[{"[", 
+              RowBox[{"a", "+", "b", "+", "c"}], "]"}], "]"}], "++"}]}], 
+          "]"}], ";"}]}], "]"}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Position", "[", 
+    RowBox[{"numsols", ",", 
+     RowBox[{"Max", "[", "numsols", "]"}]}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6057870163991213`*^9, 3.605787021600419*^9}, {
+  3.658724806280004*^9, 3.658724823141129*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9052628697916132`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "840", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.605787025956668*^9, 3.6587248296315465`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 446, 9, 226, "Text"],
+Cell[CellGroupData[{
+Cell[1028, 33, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1155, 38, 1782, 46, 340, "Input"],
+Cell[2940, 86, 181, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3170, 96, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3299, 101, 2748, 75, 412, "Input"],
+Cell[6050, 178, 208, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

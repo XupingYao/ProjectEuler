@@ -1,0 +1,142 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3876,        133]
+NotebookOptionsPosition[      3436,        112]
+NotebookOutlinePosition[      3791,        128]
+CellTagsIndexPosition[      3748,        125]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{"Special", " ", "Pythagorean", " ", "triplet"}], 
+  "Title"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{"Problem", " ", "9"}], "Subtitle"], "\n", 
+ RowBox[{
+  StyleBox[
+   RowBox[{
+   "A", " ", "Pythagorean", " ", "triplet", " ", "is", " ", "a", " ", "set", 
+    " ", "of", " ", "three", " ", "natural", " ", "numbers"}], "Text"], 
+  StyleBox[",", "Text"], 
+  StyleBox[
+   RowBox[{"a", "<", "b", "<", "c"}], "Text"], 
+  StyleBox[",", "Text"], 
+  StyleBox[
+   RowBox[{"for", " ", "which"}], "Text"], 
+  StyleBox[",", "Text"], 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["a", "2"], "+", 
+    SuperscriptBox["b", "2"]}], "=", 
+   SuperscriptBox["c", "2"]}]}], "\n", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"For", " ", "example"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["3", "2"], "+", 
+     SuperscriptBox["4", "2"]}], "=", 
+    RowBox[{
+     RowBox[{"9", "+", "16"}], "=", 
+     RowBox[{"25", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["5", "2"], ".", "\n", "There"}], " ", "exists", " ", 
+         "exactly", " ", "one", " ", "Pythagorean", " ", "triplet", " ", 
+         "for", " ", "which", " ", "a"}], "+", "b", "+", "c"}], "=", 
+       "1000."}]}]}]}]}], "Text"], "\n", 
+ StyleBox[
+  RowBox[{"Find", " ", "the", " ", "product", " ", 
+   RowBox[{"abc", "."}]}], "Text"]}], "Text",
+ CellChangeTimes->{{3.6014674270084352`*^9, 3.6014674736231017`*^9}, {
+  3.65872866240484*^9, 3.658728663004905*^9}, {3.658752210551299*^9, 
+  3.658752307375901*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Suolution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.601467493371231*^9, 3.6014675109052343`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"a", " ", "b", " ", "c"}], "/.", 
+   RowBox[{"Solve", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "^", "2"}], "+", 
+        RowBox[{"b", "^", "2"}]}], "\[Equal]", 
+       RowBox[{"c", "^", "2"}]}], "&&", 
+      RowBox[{
+       RowBox[{"a", "+", "b", "+", "c"}], "\[Equal]", "1000"}], "&&", 
+      RowBox[{"a", ">", "0"}], "&&", 
+      RowBox[{"b", ">", "0"}], "&&", 
+      RowBox[{"c", ">", "0"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "Integers"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6014675243490033`*^9, 3.6014675398498898`*^9}, {
+  3.6587286418334365`*^9, 3.658728650274*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.06841565369908505`", ",", 
+   RowBox[{"{", 
+    RowBox[{"31875000", ",", "31875000"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.601467541535986*^9, 3.658728652914173*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{96, Automatic}, {8, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1548, 46, 176, "Text"],
+Cell[CellGroupData[{
+Cell[2130, 70, 103, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2258, 75, 928, 26, 200, "Input"],
+Cell[3189, 103, 219, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

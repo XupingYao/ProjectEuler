@@ -1,0 +1,300 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11044,        292]
+NotebookOptionsPosition[     10409,        264]
+NotebookOutlinePosition[     10766,        280]
+CellTagsIndexPosition[     10723,        277]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Red, green or blue tiles", "Title"],
+ "\n",
+ StyleBox["Problem 116", "Subtitle"],
+ "\nA row of five black square tiles is to have a number of its tiles \
+replaced with coloured oblong tiles chosen from red (length two), green \
+(length three), or blue (length four).If red tiles are chosen there are \
+exactly seven ways this can be done.\n\nIf green tiles are chosen there are \
+three ways.\n\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJztlbGOXUUQRJ8gIeQXyF8OKSGpEQGhLYxFYiQbCZHtB/Y/mUVCqw1fa6pv
+1YzOkbEA2aXuPne2vnv355vfv7rdbp+/ef7tzdu/f/z06e0/P3/7/B+/fPz8
+x4eP73/76eNf7z+8//TDu6+f/+evz/98//zn//v3LwAAAAAAAAAAAAAAAAAA
+AAAAAAAQzxNcDr72Al97ga+9eETKilPocr/fV/46vi4GX3uBr714xBdSLoZH
+tBf42gt87UWrpO4xqOaJzVlxKvSF9wdzDvN1vHd8jeaoeNzXayl1u9l/vZ7n
+tkByzsIb+jIxj116uPc0X6ocu/Qh76f6UuXYpVfTV/LwaXJVOQtviJJq7KXK
+SfOlyrFLH/J+qi9Vjl16UVJjclU5C2+IkmrspcpJ86XKsUsf8n6qL1WOXXpR
+UmNyVTkLb4iSauylyknzpcqxSx/yfqovVY5delFSY3JVOQtviJJq7KXKSfOl
+yrFLH/J+qi9Vjl16UVJjclU5C2+IkmrspcpJ86XKsUsf8n6qL1WOXXpRUmNy
+VTkLb4iSauylyknzpcqxSx/yfqovVY5delFSY3JVOQtviJJq7KXKSfOlyrFL
+H/J+qi9Vjl16UVJjclU5C2+IkmrspcpJ86XKsUsf8n6qL1WOXXpRUmNyVTkL
+b4iSauylyknzpcqxSx/yfqovVY5delFSY3JVOQtviJJq7KXKSfOlyrFLH/J+
+qi9Vjl16UVJjclU5C2+IkmrspcpJ86XKsUsf8n6qL1WOXXpRUmNyVTkLb4iS
+auylyknzpcqxSx/yfqovVY5delFSY3JVOQtviJJq7KXKSfOlyrFLH/J+qi9V
+jl16UVJjclU5C2+IkmrspcpJ86XKsUsf8n6qL1WOXXpRUmNyVTkLb4iSauyl
+yknzpcqxSx/yfqovVY5delFSY3JVOQtviJJq7KXKSfOlyrFLH/J+qi9Vjl16
+UVJjclU5C2+IkmrspcpJ86XKsUsf8n6qL1WOXXpRUmNyVTkLb4iSauylyknz
+pcqxSx/yfqovVY5delFSY3JVOQtviJJq7KXKSfOlyrFLH/J+qi9Vjl16UVJj
+clU5C2+IkmrspcpJ86XKsUsf8n6qL1WOXXotlNRTBqp5YnMW3pDSF94fzDnM
+1/He8TWao+JxXy9/GK5B9YjgGvC1F/jaC0oqEB7RXuBrL/C1Fw+W1B2uZcUp
+vq4HX3uBr71Y8QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfwBJeDr73A116s+IJA
+cHox9/t95a/j62LwtReLviAQHtHF8ENvL/C1F5TUebw8onsMp87zkoOv0RwV
+ab5i7xOCxBcE8voR1e1m/5U8z22B1zmn+lLdx75Uzfg69T72YYS+IJDkj80+
+TFFSjvvYlypKqnMf+zBCXxBI8sdmH6YoKcd97EsVJdW5j30YoS8IJPljsw9T
+lJTjPvalipLq3Mc+jNAXBJL8sdmHKUrKcR/7UkVJde5jH0boCwJJ/tjswxQl
+5biPfamipDr3sQ8j9AWBJH9s9mGKknLcx75UUVKd+9iHEfqCQJI/NvswRUk5
+7mNfqiipzn3swwh9QSDJH5t9mKKkHPexL1WUVOc+9mGEviCQ5I/NPkxRUo77
+2JcqSqpzH/swQl8QSPLHZh+mKCnHfexLFSXVuY99GKEvCCT5Y7MPU5SU4z72
+pYqS6tzHPozQFwSS/LHZhylKynEf+1JFSXXuYx9G6AsCSf7Y7MMUJeW4j32p
+oqQ697EPI/QFgSR/bPZhipJy3Me+VFFSnfvYhxH6gkCSPzb7MEVJOe5jX6oo
+qc597MMIfUEgyR+bfZiipBz3sS9VlFTnPvZhhL4gkOSPzT5MUVKO+9iXKkqq
+cx/7MEJfEEjyx2Yfpigpx33sSxUl1bmPfRihLwgk+WOzD1OUlOM+9qWKkurc
+xz6M0BcEkvyx2YcpSspxH/tSRUl17mMfRugLAnkt9ymDU+d5ycHXaI6KNF+x
+93EP8j8SXxDIi1y4BtUPPbgGfO0FJXUePKKL4YfeXuBrLyip83h+RHe4Fnzt
+Bb72YsUXAAAAAAAAAAAAAAAAAAAAAICLfwFsJ8oh
+     "], {{0, 89}, {567, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSize->Automatic,
+   ImageSizeRaw->{567, 89},
+   PlotRange->{{0, 567}, {0, 89}}]], "Input"],
+ "\n\nAnd if blue tiles are chosen there are two ways.\n\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJzt1DGKVFEQRuGnJoZuwVR6AaaGpiMuYAbbwaSFGUHMZjduxj1pmwhmXbyq
+95/XnIOKiha373erX999vfn8fFmWx5fnX25uv797eLj98eHV+Q8fT49f7k/H
+T+9P3473x4e3dy/Of/nm/PPns2X5+/vfZmZmZmZmZmZmZmZmZmbG68k2T699
+pde+ugRljalVOxwOa/67Xhun1766xEuUjXOJ9pVe+6r0pXe4uro+V/ucNaaN
+XrpfOOfKvK7evYSy/Fqu5sd/n2tFE3O6lqjtc6Wx4O44r645aawh9xpK+uRD
+l0B7bLglSmPB3XFeXXPSWEPuNZT0yYcugfbYcEuUxoK747y65qSxhtxrKOmT
+D10C7bHhliiNBXfHeXXNSWMNuddQ0icfugTaY8MtURoL7o7z6pqTxhpyr6Gk
+Tz50CbTHhluiNBbcHefVNSeNNeReQ0mffOgSaI8Nt0RpLLg7zqtrThpryL2G
+kj750CXQHhtuidJYcHecV9ecNNaQew0lffKhS6A9NtwSpbHg7jivrjlprCH3
+Gkr65EOXQHtsuCVKY8HdcV5dc9JYQ+41lPTJhy6B9thwS5TGgrvjvLrmpLGG
+3Gso6ZMPXQLtseGWKI0Fd8d5dc1JYw2511DSJx+6BNpjwy1RGgvujvPqmpPG
+GnKvoaRPPnQJtMeGW6I0Ftwd59U1J4015F5DSZ986BJojw23RGksuDvOq2tO
+GmvIvYaSPvnQJdAeG26J0lhwd5xX15w01pB7DSV98qFLoD023BKlseDuOK+u
+OWmsIfcaSvrkQ5dAe2y4JUpjwd1xXl1z0lhD7jWU9MmHLoH22HBLlMaCu+O8
+uuaksYbcayjpkw9dAu2x4ZYojQV3x3l1zUljDbnXUNInH7oE2mPDLVEaC+6O
+8+qak8Yaci+hPF1XXZ+rfU7XEkE+Fy29tplD63Kvf//YtqlriWyb9NpXfukB
+c4n2lV776sIvvYNt2xpTvbZPr321xsvMzMzMzMzMzMzMzMzMzMzMrKU/ek0g
+dQ==
+     "], {{0, 42}, {423, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSize->Automatic,
+   ImageSizeRaw->{423, 42},
+   PlotRange->{{0, 423}, {0, 42}}]], "Input"],
+ "\n\nAssuming that colours cannot be mixed there are 7 + 3 + 2 = 12 ways of \
+replacing the black tiles in a row measuring five units in length.\n\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJztk7FqAkEARNeksUyX2irNfoBtyrSGfICSU2wucAqSzg/0n+JZCJpqj13n
+7ob3GEUFF25m32z1s1g/hRB20/ZtsTy8N83y9/Ol/fJV77abuvr+qPfVpmrm
+q+f2x7f29ToJ4fL5DwAAAAAAAK4cQQ57jYuUUXI2ha7EGHP+zl5iUvZiFDFI
+NC46SRSzKXWOK+mjaPZypfh97jRKyOD+nBP5l9t+SknU+0MNMI+4z0g0kCCR
+vmckMgsS6XtGIrMgkb5nJDILEul7RiKzIJG+ZyQyCxLpe0YisyCRvmckMgsS
+6XtGIrMgkb5nJDILEul7RiKzIJG+ZyQyCxLpe0YisyCRvmckMgsS6XtGIrMg
+kb5nJDILEul7RiKzIJG+ZyQyCxLpe0YisyCRvmckMgsS6XvuRaJjHqXOcaW4
+RH0/0EApfp/TRwENpSQCDUg0QJBoXCRKFEFLzqbspSdnLwAAAAAAAAAAACjL
+GTn/oN0=
+     "], {{0, 39}, {279, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSize->Automatic,
+   ImageSizeRaw->{279, 39},
+   PlotRange->{{0, 279}, {0, 39}}]], "Input"],
+ "\n\nHow many different ways can the black tiles in a row measuring fifty \
+units in length be replaced if colours cannot be mixed and at least one \
+coloured tile must be used?\n\nNOTE : This is related to Problem 117."
+}], "Text",
+ CellChangeTimes->{{3.6807605413869257`*^9, 3.680760673141055*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.680770225322468*^9, 3.680770237287196*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"n_", "/;", 
+      RowBox[{"n", "<", "4"}]}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"f", "[", "n", "]"}], "=", 
+     RowBox[{"n", "-", "1"}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"f", "[", "n", "]"}], "=", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"n", "-", "1"}], "]"}], "+", 
+      RowBox[{"f", "[", 
+       RowBox[{"n", "-", "2"}], "]"}], "+", "1"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"n_", "/;", 
+      RowBox[{"n", "<", "6"}]}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"g", "[", "n", "]"}], "=", 
+     RowBox[{"n", "-", "2"}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"g", "[", "n", "]"}], "=", 
+     RowBox[{
+      RowBox[{"g", "[", 
+       RowBox[{"n", "-", "1"}], "]"}], "+", 
+      RowBox[{"g", "[", 
+       RowBox[{"n", "-", "3"}], "]"}], "+", "1"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "[", 
+     RowBox[{"n_", "/;", 
+      RowBox[{"n", "<", "8"}]}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"h", "[", "n", "]"}], "=", 
+     RowBox[{"n", "-", "3"}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"h", "[", "n", "]"}], "=", 
+     RowBox[{
+      RowBox[{"h", "[", 
+       RowBox[{"n", "-", "1"}], "]"}], "+", 
+      RowBox[{"h", "[", 
+       RowBox[{"n", "-", "4"}], "]"}], "+", "1"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Plus", "@@", 
+    RowBox[{"Through", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"f", ",", "g", ",", "h"}], "}"}], "[", "50", "]"}], "]"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6807595173699913`*^9, 3.680759597674822*^9}, {
+   3.680759638378992*^9, 3.6807597627148514`*^9}, {3.6807597951583085`*^9, 
+   3.6807598119450083`*^9}, {3.680759866973737*^9, 3.680759913255207*^9}, 
+   3.680759949900485*^9, {3.6807599851992135`*^9, 3.6807600150886936`*^9}, {
+   3.680760189674882*^9, 3.680760207535989*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0009029736180729287`", ",", "20492570929"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.680760016541768*^9, 3.6807602106563053`*^9, {3.6807606798109136`*^9, 
+   3.680760685395612*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.680771674449213*^9, 3.6807716859112062`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "n_", "]"}], ":=", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{"Binomial", "[", 
+         RowBox[{
+          RowBox[{"n", "-", 
+           RowBox[{"j", "*", "k"}]}], ",", "k"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "1", ",", 
+          RowBox[{"Floor", "[", 
+           RowBox[{"n", "/", 
+            RowBox[{"(", 
+             RowBox[{"j", "+", "1"}], ")"}]}], "]"}]}], "}"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", "3"}], "}"}]}], "]"}]}], ";", "\n", 
+   RowBox[{"f", "[", "50", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.680771608928554*^9, 3.680771623192217*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00014482039399352288`", ",", "20492570929"}], "}"}]], "Output",
+ CellChangeTimes->{3.6807716241917458`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5779, 112, 606, "Text"],
+Cell[CellGroupData[{
+Cell[6362, 136, 100, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6487, 141, 2383, 69, 282, "Input"],
+Cell[8873, 212, 225, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9147, 223, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[9274, 228, 955, 27, 184, "Input"],
+Cell[10232, 257, 149, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

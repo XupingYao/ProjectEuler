@@ -1,0 +1,125 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3640,        116]
+NotebookOptionsPosition[      3204,         95]
+NotebookOutlinePosition[      3558,        111]
+CellTagsIndexPosition[      3515,        108]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Largest palindrome product", "Title"],
+ "\n",
+ StyleBox["Problem 4", "Subtitle"],
+ "\nA palindromic number reads the same both ways.The largest palindrome made \
+from the product of two 2 - digit numbers is 9009 = 91*99.\nFind the largest \
+palindrome made from the product of two 3 - digit numbers."
+}], "Text",
+ CellChangeTimes->{{3.6014267772430367`*^9, 3.6014267893427286`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Sulution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6014388700117035`*^9, 3.6014388910099044`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"PalindromeQ", "[", "i", "]"}], ",", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"100", "\[LessEqual]", 
+          RowBox[{"i", "/", 
+           RowBox[{"NestWhile", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "-", "11"}], "&"}], ",", "990", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Mod", "[", 
+                RowBox[{"i", ",", "#"}], "]"}], "!=", "0"}], "&"}], ",", "1", 
+             ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"990", "-", "110"}], ")"}], "/", "11"}], "+", "1"}]}],
+             "]"}]}], "\[LessEqual]", "999"}], ",", 
+         RowBox[{"Throw", "[", "i", "]"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{
+        RowBox[{"999", "^", "2"}], "-", 
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"999", "^", "2"}], ",", "11"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"100", "^", "2"}], "+", 
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"100", "^", "2"}], ",", "11"}], "]"}]}], ",", 
+       RowBox[{"-", "11"}]}], "}"}]}], "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.601438130245391*^9, 3.60143814753438*^9}, {
+  3.601438228364003*^9, 3.6014383790186205`*^9}, {3.6014384175678253`*^9, 
+  3.601438450665718*^9}, {3.601438611656926*^9, 3.6014387923402605`*^9}, {
+  3.6587290625145345`*^9, 3.658729070005034*^9}, {3.6587517064622917`*^9, 
+  3.6587517669991136`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.15892813230408998`", ",", "906609"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6587517697122726`*^9, 3.6587517890832615`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 409, 8, 151, "Text"],
+Cell[CellGroupData[{
+Cell[991, 32, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1120, 37, 1886, 49, 336, "Input"],
+Cell[3009, 88, 167, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

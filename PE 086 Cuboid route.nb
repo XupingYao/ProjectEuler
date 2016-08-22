@@ -1,0 +1,217 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8882,        208]
+NotebookOptionsPosition[      8437,        187]
+NotebookOutlinePosition[      8794,        203]
+CellTagsIndexPosition[      8751,        200]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Cuboid route", "Title"],
+ "\n",
+ StyleBox["Problem 86", "Subtitle"],
+ "\nA spider, S, sits in one corner of a cuboid room, measuring 6 by 5 by 3, \
+and a fly, F, sits in the opposite corner.By travelling on the surfaces of \
+the room the shortest \"straight line\" distance from S to F is 10 and the \
+path is shown on the diagram.\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJztnT9s1UoWhy2yIvyTQKKBBrE0ICrKlNktEBIKQm8bEA3vSbuiW/R2peVJ
+kVIGCSTKSGkoKSNRLFWUkpJ0UZpFqVAq0lHezXF8Lr7O2B7b45nr8fdJ85IH
+yTVz5pyZn+ccj//82z9/+ceZJEn+de74P7/8+p+//P77r3/87U/H//PXP/79
+998Wjr/573H733GTPwQAAAAAAAAAAAAAAAAAAAAAAAAAAADwzMSiAYBbiDsA
+/xBbAP4h7gD8Q9wB+Ie4A/AP+yoA/iHuAPxDbAH4h7gD8A9xB+Af4g7AP8Qd
+gH+IOwD/EHcA/iHuAAAAAAAAAAAAYC75+vXrZH19fbK2tjb5/Pkz+5gAPfL9
++/fJgwcPTj3jc+fOncmXL1+IPwDHSMzdu3ev9Pm6K1euEHsAjnn37l3ts63L
+y8vEHYBDREsmFs+V7+3tEXuWXLt2zcqmNFpd29nZka9Qw6dPn9RmAKWcO3fO
+Ku7Y36xH7pVz+gGglOfPn9fGnOimHz9+4Es1iC3fv39P3EEtjx49qo27V69e
+4Uc1iL7McjEC9oJSJD+e1MRcth5CBaovv337RtxBJRsbGzPxdebMmcnjx481
+ZzB58uTJJNsjgBpy+lLBbnCKra2tU+taFocKfmNJQV8q2A9mkHxAcQ/z6dOn
++E0LDPpSwX4wReq9pO4rycXcrVu3TD6C31hg0JcK9oMUedbg5s2bMzF39uxZ
+01ydJPhNLSX6UsF+UMznTvdRNjc38ZsWVOhLBfuNHMl3Ly0tzcTc+fPnJ/fv
+36/yDfymggp9qWC/kVN8rk7u7y5fvlw1VycJflNKjb5UsN+IKdaAXb16dbK4
+uFg3VycJfmPEQl8q2G+kFGtRZI27ffu2zVydJPiNEQt9qWC/EVKsRZF83bNn
+z1KNaTFXJwl+cwqpNZB6Hssfx34jw1SL8vr16zT2LOfqJMFvZpC5Ss7CsJyz
+BOw3Iky1KG/evEl9xlJfKvhNDqlV/fDhA/aDU5hqUeT5HbnPa6AvFfwmQ+JN
+4q7hr2G/EWCqRZE9AInFhvpSwW+SVvpSwX6RY6pFEU2p5/M11JeK8Xf29/dT
+vbW6ujq91srKSlr3cnh4GJ2vtdCXSnS2gJ+YalEk1uTPW+pLpar+qbRJXLa4
+1lzSUl8q0dgBTlOsRRGtKetcB32pGH/vxYsX6flG+bXt6OhI6zwn8vctrzdX
+dNCXShR2gNMUa1Hk7CG5z5O1roO+VNqukVH4Wwd9qURhB5ilWIuSP0u9o75U
+Gv2urHlJJOtdR32pDN4OMIupFkXPQXGgLxXr35d7Ot1nGfr9nQN9qQzaDjCL
+qRZF9ZAjfanY1pJN17mhx5zgQF8qg7cFnGCqRcneKZLiSF8qjeJOfHXoeQRH
++lIZtC3ghLJaFP172WN0pC8V6885ODiY6kz53tH1veJQXyqDtAP8pKwWRf9e
+9KXkzR3pS6XRZ2VrXdW5EXONQ32pDNIOcEJZLUr+XQWy7jnUl8po8giO9aUy
+ODvACbpPkhhqUfRnsnf0uNSXyijirgd9qQzKDnCCxFZZLUr+Z2QtbPAsZhMa
+febu7m76b8zu8wZDD/pSGZQd4ISyWpT8z4i+lD/vYa5OkhK/kbiSNTbLk6dI
+zElttPxOFn+DoCd9qQzGDnBCtk9prEVRVF/2NFcnSYu66CHtqfSoL5XB2AKS
+JMvHGWtRFNWXPc7VSVLzHFBWDzbVltvb24Pysx71pTIoe4yZzA+MtSh5etaX
+SrR+07O+VKK1X0zImlZVi6J40JdKlH7jQV8qUdovJupqURRP+lKJ0m886Esl
+SvvFguxRimZMSmpR8njSl0p0fuNJXyrR2S8WJBdXrP8q1qIoHvWlEpXfeNSX
+SlT2i4WyWpR8Xjz/sx71pRKV33jUl0pU9ouBslqUsrnYs75UovEbz/pSicZ+
+sVCsRZE9lWItihJAXypR+E0AfalEYb9YKNaiSO6gWIuiBNKXShR+E0BfKlHY
+LwZsalHyBNKXyuD9JpC+VAZvvxgw1aJUPbsTUF8qg/Yb2Z+6ePFiaS0pjWZq
+ly5dCjlXJ9m/Y+hgv5FiqkV5+fKlzZgYcwoeicFvsN8IMdWiNFjDQo9b6Ou7
+gLgbGU1qUUoIPW6hr+8C4m5ENKlFqSD0uIW+vguIu5HQtBalgtDjFvr6LiDu
+RkKTWpQaQo9b6Ou7gLgbAU1qUSwIPW6hr+8C4i5ymtaiWBB63EJf3wXEXcQ0
+rUWxJPS4hb6+C4i7SDGdi7K+vu7C5qHHLfT1XUDcRUiHWhQbQo9b6Ou7gLiL
+jI61KDaEHrfQ13cBcRcRDmpRbAg9bqGv7wLiLhIktu7evdu1FsWG0OMW+vou
+IO4GjtSbyH7J9evXXdSi2BB63EJf3wVB+iD+sLCwcGqPm0araxcuXJCvQydI
+H+Q+X+Zjx/cd0aNrW/EeLt9u3LjRpRbFhiBjFvAcoD7w3gfN5e7s7MRgPy+I
+zYo1zcUme5hSD9ay5rIJwebqgGdLuMZrP2SuEv/I3pUEFUj86PlBSUW8yTtV
+Yz/3NPA5QH3gtS/oy2rELlLHVbe2iQ1Fb47hPK/I9KXirS/oy3L29vZSDVCs
+MSk2mbc61jS7wPtcHZG+VLz0B315Gl3blpaWKmNNzoeVZwrmaL73OldHpi8V
+L31CX/5Ezp+UZ1Cr1japZ5afyc6qnDe8zdUR6kul9z6hL0/qtzY2NtK1K6lZ
+2+TnAp+TV4e3uTpCfan02q+x60uZa2TdKj6Pk2+y7ol95B4v5L+1AV7m6kj1
+pdJr38aoL21y29Lkvk7u7wZom97n6oj1pdJb38amL2WfMZujK3Pb8hzcgNY2
+E73P1RHrS6WX/o1FX0pue21trXZtk3xcRL7U61wdub5Ueulj7Ppyzuq2fNPb
+XD0Cfak472Os+tK2bmtOctt90ttcHZEmqMNpP2PTl7a57cB1W77pZa4eib5U
+nPY1Fn1pU7elue3I1zYTzufqEelLxVlfh64vJVdtW7c1gNx2nzifq0ekLxUn
+/R2yvtS6rarc9pzXbfnG6Vw9Mn2pOOnz0PSlbd3WgHPbfeJsrh6hvlQ693lI
++lJz25HVbfnG2Vw9Qn2pdOr3EPSlbd3W8vIya5sdTubqkepLpVPf51lfbm1t
+WdVtRZrb7pPOc3WFvqwcry7XnTNa92Ue9aVtbjuyui3fdJ6rK2xP3FUwb/rS
+pm5Lc9usbZ1pbT/RIHIOU81nj2F8WvVxHvSl7HtIbT91W95pZUvZQ5b945r9
+S+KuhJD6ssmZJCOq2/JNK5tK/tPinZfEnYFQ+rJJ3Ra57d5pbF/RG9l9gM1n
+j2H8GvXRp76M7EySmGhkZ0t9mf/saVtZWUn3YI6OjmIbW+v++NKXNnVbmtvu
++T0AYKaRzS31Zf6zTzWJv8hiz6ovfetL+XzqtgaDte0b6Esj+/v7k9XV1XTs
+I8v7WPWlL31peyYJdVtzhdU4NNSXpRwcHEzXvC6fM2fU9sW1vrSt2yK3PbdY
+jUlDfWlzzZh8obIvLvWlxFCWM61c26jbmntqx6arviy5Zkw+UdmXrvqyyZkk
+UsvQ5hrgncpxcqUvld3d3dRH3r59G5N/lPali75sUrdFbntwVI5XW30pmkr2
+sg8PD6e/KzGX3ddNsviLBWNf2ujLgb1LCtpTOnYd9WWpz0R4n2/sj62+bFK3
+RW47Goxj2FVfynq2ubmpc33aJIcQ2TqnnOqTjb4UPUDd1mgxjqfj/cvYmbFT
+lb5sciYJa1vUnBrXHvYvY2fGViZ92aRui9z2KJgZY9f7lyNhaqu8vtTcNnVb
+YGBmrNGX9khcyTuzj79Nbab68uHDh5xJAnVMxx19aYesSzI/JYZ4WlhYqIw3
+6rYgI/UB9KU9dbnsYpN7PXm/G2sb5Eh9AX1pR1aHZdXIbUMFE/SlPXU1ydqY
+w6AG9GUD5DzkpIHGpNFMbXFxkfv8Btje27HeQRXkjJqheYO6hn4AcIfs+9o8
+KxDwnwgQJXL+VlnsiQ5FQwD0g6x7ojlln0Ua+XCAbmxvb888vyTfyzNNkT7D
+5Aw5m/Hjx4/TM+OkRXZ+FfRE3mdKGhjInyVgaAClyFx9/CWdr7PzBlNkHhe/
+ymISCujZjNJEK+TP9gCoQ+fryM6y7h3V5OhwaAm6qCFyBvjxF/aUoDU6b+c1
+JlSjz/lm8QfQGLk3SbI1T+71iL96dB9K4k72fJPcPiZrINii83e+yRm73LuU
+Urn/y14U2CLrnMRfPoeX4ENlGPcxZf3TfSrWPWiK5hDwoVJK96I0v+D7fdIQ
+D5G+P8wFdXvA7BFDV/ChAtn7Zapy5dgMKqnSkGgmM9n58Ub9rbm9yN79BO5J
+daT4Ur5mRfxH91iyXANkiJ303jdvm/y+Crk9qKKirpd5uwJ9p6GpsQ8FNogP
+SXzlYzDi9xg5Q3R4Pm+OzQAAAAAAAAAAAAAAAAAAAAAAAAAAANzwfwYXStQ=
+
+     "], {{0, 182}, {222, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag[
+    "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 1],
+    Selectable->False],
+   BaseStyle->"ImageGraphics",
+   ImageSize->Magnification[1],
+   ImageSizeRaw->{222, 182},
+   PlotRange->{{0, 222}, {0, 182}}]], "Input"],
+ "\nHowever, there are up to three \"shortest\" path candidates for any given \
+cuboid and the shortest route doesn' t always have integer length.\n\nIt can \
+be shown that there are exactly 2060 distinct cuboids, ignoring rotations, \
+with integer dimensions, up to a maximum size of M by M by M, for which the \
+shortest route has integer length when M = 100. This is the least value of M \
+for which the number of solutions first exceeds two thousand; the number of \
+solutions when M = 99 is 1975.\n\nFind the least value of M such that the \
+number of solutions first exceeds one million."
+}], "Text",
+ CellChangeTimes->{{3.655675510821335*^9, 3.6556756044913206`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6556756112313313`*^9, 3.6556756208982472`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"M", "=", "1"}], ";", 
+      RowBox[{"n", "=", "0"}]}], ",", 
+     RowBox[{"n", "\[LessEqual]", "1000000"}], ",", 
+     RowBox[{"M", "=", 
+      RowBox[{"M", "+", "1"}]}], ",", 
+     RowBox[{"n", "=", 
+      RowBox[{"n", "+", 
+       RowBox[{"Total", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Floor", "[", 
+            RowBox[{"#", "/", "2"}], "]"}], "+", "1", "-", 
+           RowBox[{"Max", "[", 
+            RowBox[{"1", ",", 
+             RowBox[{"#", "-", "M"}]}], "]"}]}], "&"}], "/@", 
+         RowBox[{"Select", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"Reverse", "[", "#", "]"}], "-", "#"}], ")"}], "/", 
+              "2"}], "&"}], "[", 
+            RowBox[{"Divisors", "[", 
+             RowBox[{"M", "^", "2"}], "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"IntegerQ", "[", "#", "]"}], "&&", 
+             RowBox[{"0", "<", "#", "<=", 
+              RowBox[{"2", "M"}]}]}], "&"}]}], "]"}]}], "]"}]}]}]}], "]"}], 
+   ";", 
+   RowBox[{"M", "-", "1"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.655674987530591*^9, 3.6556751372245555`*^9}, {
+  3.65567522350176*^9, 3.6556753506814194`*^9}, {3.6556754635915375`*^9, 
+  3.655675494961115*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.1040072233455243`", ",", "1818"}], "}"}]], "Output",
+ CellChangeTimes->{3.65567535159142*^9, 3.6556754972011213`*^9, 
+  3.658721583768571*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5955, 104, 522, "Text"],
+Cell[CellGroupData[{
+Cell[6538, 128, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6667, 133, 1555, 44, 224, "Input"],
+Cell[8225, 179, 184, 4, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

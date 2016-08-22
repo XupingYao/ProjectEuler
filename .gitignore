@@ -1,0 +1,8 @@
+#ignore pdf files
+*.pdf
+
+#ignore exe files
+*.exe
+
+#ignore emergency account recovery key files
+EmergencyAccountRecoveryKey.txt

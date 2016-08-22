@@ -1,0 +1,483 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     14783,        474]
+NotebookOptionsPosition[     13466,        421]
+NotebookOutlinePosition[     13820,        437]
+CellTagsIndexPosition[     13777,        434]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Prime permutations", "Title"],
+ "\n",
+ StyleBox["Problem 49", "Subtitle"],
+ "\nThe arithmetic sequence, 1487, 4817, 8147, in which each of the terms \
+increases by 3330, is unusual in two ways : \n(i) each of the three terms are \
+prime, and, \n(ii) each of the 4 - digit numbers are permutations of one \
+another.\nThere are no arithmetic sequences made up of three 1 -, 2 -, or 3 - \
+digit primes, exhibiting this property, but there is one other 4 - digit \
+increasing sequence.\nWhat 12 - digit number do you form by concatenating the \
+three terms in this sequence?"
+}], "Text",
+ CellChangeTimes->{{3.621169861873213*^9, 3.621169897992279*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6211709592089767`*^9, 3.621170972081713*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"p", "=", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"Range", "[", 
+          RowBox[{"1000", ",", "9999"}], "]"}], ",", "PrimeQ"}], "]"}]}], ",", 
+      RowBox[{"tag", "=", 
+       RowBox[{"Composition", "[", 
+        RowBox[{"FromDigits", ",", "Sort", ",", "IntegerDigits"}], "]"}]}]}], 
+     "}"}], ",", 
+    RowBox[{"Cases", "[", 
+     RowBox[{
+      RowBox[{"Last", "@", 
+       RowBox[{"Reap", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Sow", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"tag", "[", "#", "]"}]}], "]"}], "&"}], "/@", "p"}], 
+        "]"}]}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "___", ",", "x_", ",", "___", ",", "y_", ",", "___", ",", "z_", ",", 
+          "___"}], "}"}], "/;", 
+        RowBox[{
+         RowBox[{"2", " ", "y"}], "\[Equal]", 
+         RowBox[{"x", "+", "z"}]}]}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "]"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.621165519893866*^9, 3.621165519895866*^9}, {
+  3.621168798023364*^9, 3.621168812059167*^9}, {3.621169251732315*^9, 
+  3.6211692695183325`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.013087324476923269`", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1487", ",", "4817", ",", "8147"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2969", ",", "6299", ",", "9629"}], "}"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.62116552136595*^9, 3.6211688126322002`*^9, 
+  3.621169906417761*^9, 3.658723523165099*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.621170976477965*^9, 3.6211709902677536`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"p", "=", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"Range", "[", 
+          RowBox[{"1000", ",", "9999"}], "]"}], ",", "PrimeQ"}], "]"}]}], ",", 
+      RowBox[{"tag", "=", 
+       RowBox[{"Composition", "[", 
+        RowBox[{"FromDigits", ",", "Sort", ",", "IntegerDigits"}], "]"}]}]}], 
+     "}"}], ",", 
+    RowBox[{"Cases", "[", 
+     RowBox[{
+      RowBox[{"Gather", "[", 
+       RowBox[{"p", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"tag", "[", "#1", "]"}], "==", 
+          RowBox[{"tag", "[", "#2", "]"}]}], "&"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "___", ",", "x_", ",", "___", ",", "y_", ",", "___", ",", "z_", ",", 
+          "___"}], "}"}], "/;", 
+        RowBox[{
+         RowBox[{"2", " ", "y"}], "\[Equal]", 
+         RowBox[{"x", "+", "z"}]}]}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y", ",", "z"}], "}"}]}]}], "]"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.621166772768526*^9, 3.6211667727715263`*^9}, {
+   3.6211669327326756`*^9, 3.621166964175474*^9}, {3.6211674774558325`*^9, 
+   3.621167526350629*^9}, {3.6211675604995823`*^9, 3.621167565266855*^9}, {
+   3.6211676441303654`*^9, 3.6211677115682225`*^9}, 3.621167856881534*^9, {
+   3.6211679599234276`*^9, 3.621168002925887*^9}, {3.6211680850005817`*^9, 
+   3.6211680876337323`*^9}, {3.621168825206919*^9, 3.621168827895073*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.008131965755822639`", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1487", ",", "4817", ",", "8147"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2969", ",", "6299", ",", "9629"}], "}"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.621168003652929*^9, 3.621168089048813*^9, 
+  3.6211688284091024`*^9, 3.658723529805545*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.621170993022911*^9, 3.621171003989538*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Cases", "[", 
+       RowBox[{
+        RowBox[{"Subsets", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"{", "3", "}"}]}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}], "/;", 
+         RowBox[{
+          RowBox[{"a", "-", 
+           RowBox[{"2", " ", "b"}], "+", "c"}], "\[Equal]", "0"}]}]}], "]"}], 
+      "&"}], "/@", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"GatherBy", "[", 
+        RowBox[{
+         RowBox[{"Prime", "[", 
+          RowBox[{"Range", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"PrimePi", "[", "1000", "]"}], "+", "1"}], ",", 
+            RowBox[{"PrimePi", "[", "9999", "]"}]}], "]"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"Sort", "@", 
+           RowBox[{"IntegerDigits", "[", "#", "]"}]}], "&"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "#", "]"}], "\[GreaterEqual]", "3"}], "&"}]}],
+       "]"}]}], ",", "1"}], "]"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.006598686934001156`", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1487", ",", "4817", ",", "8147"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2969", ",", "6299", ",", "9629"}], "}"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6211710121590056`*^9, 3.658723536595997*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"FromDigits", "@", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{"IntegerDigits", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1487", ",", "4817", ",", "8147"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2969", ",", "6299", ",", "9629"}], "}"}]}], "}"}], ",", 
+       "1"}], "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6211694375589437`*^9, 3.6211694567730427`*^9}, {
+  3.62116948959592*^9, 3.6211695485112896`*^9}, {3.6211696573065124`*^9, 
+  3.62116969222751*^9}, {3.6211697711520243`*^9, 3.6211697906731405`*^9}, {
+  3.6587235450565667`*^9, 3.65872354723676*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.000025088980349626346`", ",", "296962999629"}], "}"}]], "Output",
+ CellChangeTimes->{{3.621169683739024*^9, 3.6211696933225727`*^9}, {
+   3.6211697829897013`*^9, 3.6211697912271724`*^9}, 3.6587235481567683`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t4", "Subsubtitle",
+ CellChangeTimes->{{3.6211711821537285`*^9, 3.6211711889151154`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"list", "=", 
+    RowBox[{"Prime", "[", 
+     RowBox[{"Range", "[", 
+      RowBox[{"169", ",", "1229"}], "]"}], "]"}]}], ";", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"PrimePi", "[", "1000", "]"}], "=", 
+     RowBox[{
+      RowBox[{"168", " ", "and", " ", 
+       RowBox[{"PrimePi", "[", "999", "]"}]}], "=", "1229"}]}], "*)"}], 
+   RowBox[{"a", "=", 
+    RowBox[{
+     RowBox[{"Sort", "/@", 
+      RowBox[{"IntegerDigits", "/@", "list"}]}], "//", "Tally"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"b", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{"a", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "\[GreaterEqual]", "3"}], "&"}]}], 
+     "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"c", "=", 
+    RowBox[{"Cases", "[", 
+     RowBox[{"b", ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"m_", ",", "n_"}], "}"}], "\[Rule]", "m"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"d", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"FromDigits", "/@", 
+         RowBox[{"Permutations", "[", "#", "]"}]}], ",", "PrimeQ"}], "]"}], 
+      "&"}], "/@", "c"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"e", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Select", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "@", 
+           RowBox[{"IntegerDigits", "[", "#", "]"}]}], "\[Equal]", "4"}], 
+         "&"}]}], "]"}], "&"}], "/@", "d"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"sequences", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Subsets", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"{", "3", "}"}]}], "]"}], "&"}], "/@", "e"}], ",", "1"}], 
+     "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Select", "[", 
+    RowBox[{"sequences", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "+", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "\[Equal]", 
+       RowBox[{"2", " ", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], "&"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6211711496918716`*^9, 3.6211711496958723`*^9}, 
+   3.658723556567337*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.012001940974752504`", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1487", ",", "4817", ",", "8147"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2969", ",", "6299", ",", "9629"}], "}"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6211711516759853`*^9, 3.658723560857614*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t5", "Subsubtitle",
+ CellChangeTimes->{{3.6211713044597244`*^9, 3.6211713160413866`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"pList", "=", 
+    RowBox[{"Prime", "[", 
+     RowBox[{"Range", "@@", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"PrimePi", "[", 
+         RowBox[{"{", 
+          RowBox[{"1000", ",", "10000"}], "}"}], "]"}], "+", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0"}], "}"}]}], ")"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"pSequenceCandidate", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Extract", "[", 
+       RowBox[{"pList", ",", "#"}], "]"}], "&"}], "/@", 
+     RowBox[{
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Gather", "[", 
+         RowBox[{
+          RowBox[{"MapIndexed", "[", 
+           RowBox[{"List", ",", 
+            RowBox[{"FromDigits", "/@", 
+             RowBox[{"Sort", "/@", 
+              RowBox[{"IntegerDigits", "/@", "pList"}]}]}]}], "]"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"First", "[", "#1", "]"}], "\[Equal]", 
+            RowBox[{"First", "[", "#2", "]"}]}], "&"}]}], "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "#", "]"}], ">", "2"}], "&"}]}], "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "All", ",", "2"}], "]"}], "]"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"pSequence", "=", 
+    RowBox[{"DeleteCases", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Select", "[", 
+         RowBox[{
+          RowBox[{"Subsets", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"{", "3", "}"}]}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"Equal", "@@", 
+            RowBox[{"Differences", "[", "#", "]"}]}], "&"}]}], "]"}], "&"}], "/@",
+        "pSequenceCandidate"}], ",", 
+      RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"StringJoin", "/@", 
+    RowBox[{"Map", "[", 
+     RowBox[{"ToString", ",", "pSequence", ",", 
+      RowBox[{"{", "3", "}"}]}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6211712796063027`*^9, 3.6211712796093025`*^9}, 
+   3.6587235654279737`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.008514857808203869`", ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"148748178147\"\>", ",", "\<\"296962999629\"\>"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.621171280661363*^9, 3.658723568028105*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 676, 12, 245, "Text"],
+Cell[CellGroupData[{
+Cell[1258, 36, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1385, 41, 1324, 39, 184, "Input"],
+Cell[2712, 82, 401, 11, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3162, 99, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3289, 104, 1564, 40, 184, "Input"],
+Cell[4856, 146, 402, 11, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5307, 163, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5432, 168, 1150, 34, 162, "Input"],
+Cell[6585, 204, 355, 10, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6977, 219, 767, 18, 146, "Input"],
+Cell[7747, 239, 253, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8049, 249, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[8178, 254, 2396, 73, 334, "Input"],
+Cell[10577, 329, 355, 10, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10981, 345, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[11110, 350, 2078, 59, 336, "Input"],
+Cell[13191, 411, 247, 6, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

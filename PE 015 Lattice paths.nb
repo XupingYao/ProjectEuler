@@ -1,0 +1,183 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6034,        174]
+NotebookOptionsPosition[      5405,        146]
+NotebookOutlinePosition[      5761,        162]
+CellTagsIndexPosition[      5718,        159]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Lattice paths", "Title"],
+ StyleBox["\nProblem 15", "Subtitle"],
+ "\nStarting in the top left corner of a 2*2 grid, and only being able to \
+move to the right and down, there are exactly 6 routes to the bottom right \
+corner.\n\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJztnMttVFEQRC1gQRqEAiGYCGwJtkgGCTkS0iIjM96OmPG8232rf2dRCBCi
+X51bhyWfHn/cf393d3f38+Pph/uH35+fnh6ev344/eLL869vj+9PP/lzyt9T
+Xn/z5eWFLOYVnyLRPeGVp1snht36wKtGty78ojtWYtWJ1/+YRX9PxV106KLg
+1InXJWbRW6/GsMse8MfPHwU/5ftU7tPVn+q8LvWovjc1wy57wB+fHtX3pmbY
+ZQ/449Oj+t7UDLvsAX98elTfm5phlz3gj0+P6ntTM+yyB/zx6VF9b2qGXfaA
+Pz49qu9NzbDLHvDHp0f1vakZdtkD/vj0qL43NcMue8Afnx7V96Zm2GUP+OPT
+o/re1Ay77AF/fHpU35uaYZc94I9Pj+p7UzPssgf88elRfW9qhl32gD8+Parv
+Tc2wyx7wx6dH9b2pGXbZA/749Ki+NzXDLnvAH58e1femZthlD/jj06P63tQM
+u+wBf3x6VN+bmmGXPeCPT4/qe1Mz7LIH/PHpUX1vaobqPezMbk4RvNQ9qu9N
+zVC9B/zJ8/aX/Kn+VhH+dIjSnw6dLvkDQzvHipzgZWel9EfFsFMX/Mnz9viT
+vwu88nbBn/xd4JW3C/7k7wKvvF3wJ38XeOXtgj/5u8Arb5fK/pxzsiS6C7x8
+OeGPdhMZusDLjxP+6PaQpQu8/Djhj24TmbrAy7+f+k0m+ZOtC7z8+6nfpJo/
+lk1k7AIv327qN5niT9Yu8PLtpn6Tiv6sbCJzF3j59VK/yQR/sneBl18v9ZtU
+9efIJip0gZdPJ/WbdPenShd4+XRSvwn+5OgCL59O1/7Mjh6V/XlrE9W6wMve
+Z/XPrPbAnzxd4GXvc6SzR4/q/lziU7ULvGxdbu270h1/8neBl63LrX1XGHT1
+55xR9S7wWuth9ectHvhTowu81np4+XPp75rgT4cu8DreY2eu9VDcV0a1hy6B
+Vz5ehKiDP4SsB3cI2RO8IWQ9eEPIevCGkPXgDSHrwRtC1oM3hKwHbwhZD94Q
+QgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgght0Xx/zWqAzN4qZgp
+WareSr2H6l3gtX4Hf2bvAV62O/gzew/wst3Bn9l7gJftDv7M3gO8bHfwZ/Ye
+4GW7gz+z9wAv2x38mb0HeNnu4M/sPcDLdgd/Zu8BXrY7+DN7D/Cy3cGf2XuA
+l+0O/szeA7xsd/Bn9h7gZbuDP7P3AC/bHfyZvQd42e7gz+w9wMt2B39m7wFe
+tjv4M3sP8LLdwZ/Ze4CX7Q7+zN4DvGx38Gf2HuBlu4M/s/cAL9sd/Jm9B3jZ
+7px36xD1Hip3wh/8wZ/cm+vAaZI/is11itqfDq523YLinbp16eaPok/E3d13
+lO/UpQv++NzAn5ld8MfnBv7M7II/PjfwZ2YX/PG5gT8zu+CPz40q/py/hSXR
+XY70zPoemboo+0Tc9bqDP7neI0sXZZ+Iu153Mrizmxn+5O4TcdfzDv7keo8M
+XZR9Iu563ol2Zzcz/MndJ+Ku9x38yd1B3UXZJ+Ku951Id3Yzw5/cfSLu7riD
+P3k7qLso+0Tc3XEnyp3dzPAnd5+Iu7vu4E/ODuouyj4Rd3fdiXBnNzP8yd0n
+4u6uOxP98eo1yZ+dzCr78783qv5v963+WDtO9GcHM/zJ0+WWt/bqOtkfT2bV
+/bnEp0uXW7dwtDf++DDDn9xdjm7h1v7448Osgz/njCp38fLnLRb448MMf3J1
+8fbn2t+j4FTRnyPMuvlTvcvqWx/dRIQ/VXONWfS37erKLuJZRferyIzU2V6H
+DvhDIrbXoQPuEPX2OnXBG6LaYvR3w4xkCDuAGdFsIfpbswRm5MgWor8xW2BG
+btlC9LdlDczIW1uI/q7MgRm5tIXo76kQmJHzLUR/R6XAjBBCSJf8A9uUibc=
+
+     "], {{0, 151}, {208, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   BaseStyle->"ImageGraphics",
+   ImageSizeRaw->{208, 151},
+   PlotRange->{{0, 208}, {0, 151}}]]],
+ "\nHow many such routes are there through a 20*20 grid?"
+}], "Text",
+ CellChangeTimes->{{3.601702375777774*^9, 3.6017023811020784`*^9}, {
+  3.658728038353696*^9, 3.658728071145928*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.60170257677927*^9, 3.601702600002599*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"m", "=", "20"}], ";", 
+   RowBox[{"Total", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"m", "-", "1"}], ",", "i"}], "]"}], " ", ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", 
+         RowBox[{"m", "-", "1"}]}], "}"}]}], "]"}], 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"m", "+", "1"}], ",", "i"}], "]"}], " ", ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "m"}], "}"}]}], "]"}]}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6587279877003365`*^9, 3.6587279940607862`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0004490357278484261`", ",", "137846528820"}], "}"}]], "Output",
+ CellChangeTimes->{3.6017026124973135`*^9, 3.658727995180818*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6587280232326765`*^9, 3.658728032323333*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"m", "=", "20"}], ";", 
+   RowBox[{"Binomial", "[", 
+    RowBox[{
+     RowBox[{"2", "m"}], ",", "m"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6017029541808567`*^9, 3.6017029732259455`*^9}, {
+  3.658728006951645*^9, 3.658728013852106*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.000013684898372523462`", ",", "137846528820"}], "}"}]], "Output",
+ CellChangeTimes->{3.601702973752976*^9, 3.65872801471212*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 2735, 52, 339, "Text"],
+Cell[CellGroupData[{
+Cell[3317, 76, 99, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3441, 81, 917, 27, 200, "Input"],
+Cell[4361, 110, 171, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4581, 119, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4708, 124, 496, 13, 162, "Input"],
+Cell[5207, 139, 170, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

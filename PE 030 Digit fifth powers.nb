@@ -1,0 +1,178 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5247,        169]
+NotebookOptionsPosition[      4620,        141]
+NotebookOutlinePosition[      4974,        157]
+CellTagsIndexPosition[      4931,        154]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Digit fifth powers", "Title"],
+ StyleBox["\nProblem 30", "Subtitle"],
+ "\nSurprisingly there are only three numbers that can be written as the sum \
+of fourth powers of their digits :\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1634", "=", 
+    RowBox[{
+     SuperscriptBox["1", "4"], "+", 
+     SuperscriptBox["6", "4"], "+", 
+     SuperscriptBox["3", "4"], "+", 
+     SuperscriptBox["4", "4"]}]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"8208", "=", 
+    RowBox[{
+     SuperscriptBox["8", "4"], "+", 
+     SuperscriptBox["2", "4"], "+", 
+     SuperscriptBox["0", "4"], "+", 
+     SuperscriptBox["8", "4"]}]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"9474", "=", 
+    RowBox[{
+     SuperscriptBox["9", "4"], "+", 
+     SuperscriptBox["4", "4"], "+", 
+     SuperscriptBox["7", "4"], "+", 
+     SuperscriptBox["4", "4"]}]}], TraditionalForm]]],
+ "\n\nAs ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "=", 
+    SuperscriptBox["1", "4"]}], TraditionalForm]]],
+ " is not a sum it is not included.\n\nThe sum of these numbers is 1634 + \
+8208 + 9474 = 19316.\n\nFind the sum of all the numbers that can be written \
+as the sum of fifth powers of their digits."
+}], "Text",
+ CellChangeTimes->{{3.603712847952077*^9, 3.603712908432536*^9}, {
+  3.65872578460318*^9, 3.6587257857932606`*^9}, {3.6587263099912367`*^9, 
+  3.658726427516492*^9}, {3.6588065857233477`*^9, 3.6588065959253273`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.603712916128976*^9, 3.6037129302617846`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Rest", "[", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"10", "^", "6"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Total", "[", 
+         RowBox[{
+          RowBox[{"IntegerDigits", "[", "#", "]"}], "^", "5"}], "]"}], 
+        "\[Equal]", "#"}], "&"}]}], "]"}], "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.603711400635295*^9, 3.603711406027603*^9}, {
+   3.6037114578025646`*^9, 3.603711478558752*^9}, {3.6037115110746117`*^9, 
+   3.603711540466293*^9}, {3.6037115810176125`*^9, 3.603711610943324*^9}, {
+   3.6037116892448025`*^9, 3.6037117367695208`*^9}, 3.6037117727325773`*^9, {
+   3.6037118252345805`*^9, 3.6037118474788527`*^9}, 3.603712024238963*^9, {
+   3.603712341212093*^9, 3.6037123760860877`*^9}, {3.6037125024593153`*^9, 
+   3.6037125031863575`*^9}, {3.658725768072053*^9, 3.6587257702922263`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.149873585751284`", ",", "443839"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.60371171402722*^9, {3.603711808315613*^9, 3.6037118574034204`*^9}, 
+   3.603712105157591*^9, {3.603712369352702*^9, 3.603712385978653*^9}, 
+   3.6587257735524035`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6037157992208796`*^9, 3.6037158154838095`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Boole", "[", 
+      RowBox[{"n", "\[Equal]", 
+       RowBox[{"Tr", "[", 
+        RowBox[{
+         RowBox[{"IntegerDigits", "[", "n", "]"}], "^", "5"}], "]"}]}], "]"}],
+      " ", "n"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "2", ",", "1*^6"}], "}"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6037156938188505`*^9, 3.603715693822851*^9}, 
+   3.6037157891253023`*^9, {3.658725712708331*^9, 3.658725714698471*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.7855220047463789`", ",", "443839"}], "}"}]], "Output",
+ CellChangeTimes->{3.603715794979637*^9, 3.658725730999561*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1460, 42, 321, "Text"],
+Cell[CellGroupData[{
+Cell[2042, 66, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2169, 71, 1110, 24, 124, "Input"],
+Cell[3282, 97, 287, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3618, 109, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3747, 114, 682, 18, 86, "Input"],
+Cell[4432, 134, 160, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

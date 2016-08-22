@@ -1,0 +1,270 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8358,        262]
+NotebookOptionsPosition[      7539,        227]
+NotebookOutlinePosition[      7893,        243]
+CellTagsIndexPosition[      7850,        240]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Non-abundant sums", "Title"],
+ "\n",
+ StyleBox["Problem 23", "Subtitle"],
+ "\nA perfect number is a number for which the sum of its proper divisors is \
+exactly equal to the number. For example, the sum of the proper divisors of \
+28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect number.\
+\n\nA number n is called deficient if the sum of its proper divisors is less \
+than n and it is called abundant if this sum exceeds n.\n\nAs 12 is the \
+smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest number that \
+can be written as the sum of two abundant numbers is 24. By mathematical \
+analysis, it can be shown that all integers greater than 28123 can be written \
+as the sum of two abundant numbers. \n\nHowever, this upper limit cannot be \
+reduced any further by analysis even though it is known that the greatest \
+number that cannot be expressed as the sum of two abundant numbers is less \
+than this limit.\n\nFind the sum of all the positive integers which cannot be \
+written as the sum of two abundant numbers."
+}], "Text",
+ CellChangeTimes->{{3.6029307533696365`*^9, 3.6029307886496544`*^9}, {
+  3.6029309013140984`*^9, 3.6029309168439865`*^9}, {3.658727074930744*^9, 
+  3.658727080281124*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6029311302611933`*^9, 3.6029311396617312`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"dic", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "28123"}], "}"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Total", "[", 
+         RowBox[{"Most", "[", 
+          RowBox[{"Divisors", "[", "#", "]"}], "]"}], "]"}], ">", 
+        RowBox[{"Last", "[", 
+         RowBox[{"Divisors", "[", "#", "]"}], "]"}]}], "&"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"28123", "+", "1"}], ")"}], " ", 
+     RowBox[{"28123", "/", "2"}]}], "-", 
+    RowBox[{"Total", "[", 
+     RowBox[{"Union", "[", 
+      RowBox[{
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"Map", "[", 
+          RowBox[{"Total", ",", 
+           RowBox[{"Subsets", "[", 
+            RowBox[{"dic", ",", 
+             RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"#", "<", "28123"}], "&"}]}], "]"}], ",", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"2", " ", "dic"}], ",", 
+         RowBox[{
+          RowBox[{"#", "<", "28123"}], "&"}]}], "]"}]}], "]"}], "]"}], "-", 
+    "28123"}]}], "]"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"23.73974093149462`", ",", "4179871"}], "}"}]], "Output",
+ CellChangeTimes->{3.680829311470251*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6029311422908816`*^9, 3.602931154470578*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"n", "=", "28123"}], ";", 
+   RowBox[{"s", "=", 
+    RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"a", "=", 
+    RowBox[{
+     RowBox[{"Reap", "[", 
+      RowBox[{"Array", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"DivisorSigma", "[", 
+              RowBox[{"1", ",", "#"}], "]"}], "-", "#"}], ">", "#"}], ",", 
+           RowBox[{"Sow", "@", "#"}]}], "]"}], "&"}], ",", "n"}], "]"}], 
+      "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ";", "\n", 
+   RowBox[{"p", "=", 
+    RowBox[{
+     RowBox[{"Position", "[", 
+      RowBox[{"a", ",", 
+       RowBox[{"x_", "/;", 
+        RowBox[{"x", ">", 
+         RowBox[{"n", "/", "2"}]}]}], ",", "1", ",", "1"}], "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"s", "=", 
+      RowBox[{"Union", "[", 
+       RowBox[{"s", ",", 
+        RowBox[{
+         RowBox[{"a", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"Drop", "[", 
+          RowBox[{"a", ",", 
+           RowBox[{"i", "-", "1"}]}], "]"}]}]}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "p"}], "}"}]}], "]"}], ";", "\n", 
+   RowBox[{"Tr", "@", 
+    RowBox[{"Complement", "[", 
+     RowBox[{
+      RowBox[{"Range", "@", "n"}], ",", "s"}], "]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6029311580737844`*^9, 3.6029311701794767`*^9}, {
+  3.658727100562454*^9, 3.658727136130211*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.3535077245549272`", ",", "4179871"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.602931179691021*^9, {3.658727129099698*^9, 3.658727147840948*^9}, 
+   3.6587275503795786`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.6587272007244654`*^9, 3.6587272085550423`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"IsAbundantNum", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Total", "@", 
+       RowBox[{"Divisors", "[", "n", "]"}]}], "-", "n"}], ">", "n"}]}], ";", 
+   "\n", 
+   RowBox[{"AbundantNumList", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", "28123", "]"}], ",", "IsAbundantNum"}], "]"}]}], 
+   ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"CanNotBeDevide", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Length", "[", 
+      RowBox[{"Intersection", "[", 
+       RowBox[{
+        RowBox[{"n", "-", "AbundantNumList"}], ",", "AbundantNumList"}], 
+       "]"}], "]"}], "\[Equal]", "0"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", "28123", "]"}], ",", "CanNotBeDevide"}], "]"}], "//",
+     "Total"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.60293150591868*^9, 3.6029315129140797`*^9}, {
+  3.6587271644420547`*^9, 3.658727184063367*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"6.819864827416326`", ",", "4179871"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6029315501142077`*^9, {3.658727176472858*^9, 3.658727205124769*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1261, 20, 417, "Text"],
+Cell[CellGroupData[{
+Cell[1843, 44, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1972, 49, 1532, 46, 296, "Input"],
+Cell[3507, 97, 138, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3694, 106, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3821, 111, 1865, 54, 296, "Input"],
+Cell[5689, 167, 216, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5954, 178, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6083, 183, 1236, 34, 296, "Input"],
+Cell[7322, 219, 189, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

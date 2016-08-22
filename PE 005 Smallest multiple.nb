@@ -1,0 +1,87 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2200,         78]
+NotebookOptionsPosition[      1763,         57]
+NotebookOutlinePosition[      2119,         73]
+CellTagsIndexPosition[      2076,         70]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Smallest multiple", "Title"],
+ "\n",
+ StyleBox["Problem 5", "Subtitle"],
+ "\n2520 is the smallest number that can be divided by each of the numbers \
+from 1 to 10 without any remainder.What is the smallest positive number that \
+is evenly divisible by all of the numbers from 1 to 20?"
+}], "Text",
+ CellChangeTimes->{{3.6014268530683737`*^9, 3.6014268576806374`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6587289812126455`*^9, 3.6587289903319645`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Apply", "[", 
+   RowBox[{"LCM", ",", 
+    RowBox[{"Range", "[", "20", "]"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6014277404671297`*^9, 3.60142775673006*^9}, {
+  3.6587289614113245`*^9, 3.6587289631214914`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00001767632706450947`", ",", "232792560"}], "}"}]], "Output",
+ CellChangeTimes->{3.601427804539795*^9, 3.658728974202188*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 394, 8, 169, "Text"],
+Cell[CellGroupData[{
+Cell[976, 32, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1105, 37, 460, 11, 124, "Input"],
+Cell[1568, 50, 167, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

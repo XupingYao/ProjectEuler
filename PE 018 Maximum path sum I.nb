@@ -1,0 +1,317 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10447,        308]
+NotebookOptionsPosition[      9447,        268]
+NotebookOutlinePosition[      9803,        284]
+CellTagsIndexPosition[      9760,        281]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Maximum path sum I", "Title"],
+ StyleBox["\nProblem 18", "Subtitle"],
+ "\nBy starting at the top of the triangle below and moving to adjacent \
+numbers on the row below, the maximum total from top to bottom is 23."
+}], "Text",
+ CellChangeTimes->{{3.601797110082885*^9, 3.6017971146551466`*^9}, {
+  3.658755208240756*^9, 3.6587552089110904`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"example", "=", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "3", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "4", ",", "6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"8", ",", "5", ",", "9", ",", "3"}], "}"}]}], "}"}], "//", 
+   "TableForm"}]}]], "Input",
+ CellChangeTimes->{{3.6017976732190943`*^9, 3.6017977036428347`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {"3", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"7", "4", "\<\"\"\>", "\<\"\"\>"},
+    {"2", "4", "6", "\<\"\"\>"},
+    {"8", "5", "9", "3"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  TableForm[{{3}, {7, 4}, {2, 4, 6}, {8, 5, 9, 3}}]]], "Output",
+ CellChangeTimes->{3.601797705190923*^9}]
+}, Open  ]],
+
+Cell["\<\
+That is, 3 + 7 + 4 + 9 = 23.
+Find the maximum total from top to bottom of the triangle below :\
+\>", "Text",
+ CellChangeTimes->{{3.601797774258874*^9, 3.6017977844554567`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+  RowBox[{"number", "=", 
+   RowBox[{
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<PE 018.txt\>\"", ",", "\"\<Table\>\""}], "]"}], "//", 
+    "TableForm"}]}]}]], "Input",
+ CellChangeTimes->{{3.6587551847120686`*^9, 3.6587551943681393`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {"75", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\
+\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"95", 
+     "64", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\
+\"\>", "\<\"\"\>"},
+    {"17", "47", 
+     "82", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\
+\"\>"},
+    {"18", "35", "87", 
+     "10", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"20", "4", "82", "47", 
+     "65", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"19", "1", "23", "75", "3", 
+     "34", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"88", "2", "77", "73", "7", "63", 
+     "67", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"99", "65", "4", "28", "6", "16", "70", 
+     "92", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>", "\<\"\"\>"},
+    {"41", "41", "26", "56", "83", "40", "80", "70", 
+     "33", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>"},
+    {"41", "48", "72", "33", "47", "32", "37", "16", "94", 
+     "29", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"53", "71", "44", "65", "25", "43", "91", "52", "97", "51", 
+     "14", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"70", "11", "33", "28", "77", "73", "17", "78", "39", "68", "17", 
+     "57", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"91", "71", "52", "38", "17", "14", "91", "43", "58", "50", "27", "29", 
+     "48", "\<\"\"\>", "\<\"\"\>"},
+    {"63", "66", "4", "68", "89", "53", "67", "30", "73", "16", "69", "87", 
+     "40", "31", "\<\"\"\>"},
+    {"4", "62", "98", "27", "23", "9", "70", "98", "73", "93", "38", "53", 
+     "60", "4", "23"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  TableForm[{{75}, {95, 64}, {17, 47, 82}, {18, 35, 87, 10}, {20, 4, 82, 47, 
+    65}, {19, 1, 23, 75, 3, 34}, {88, 2, 77, 73, 7, 63, 67}, {99, 65, 4, 28, 
+    6, 16, 70, 92}, {41, 41, 26, 56, 83, 40, 80, 70, 33}, {41, 48, 72, 33, 47,
+     32, 37, 16, 94, 29}, {53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14}, {70, 
+    11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57}, {91, 71, 52, 38, 17, 14, 91, 
+    43, 58, 50, 27, 29, 48}, {63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 
+    40, 31}, {4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 
+    23}}]]], "Output",
+ CellChangeTimes->{3.6017978024274845`*^9, 3.658755196500292*^9}]
+}, Open  ]],
+
+Cell["\<\
+NOTE : As there are only 16384 routes, it is possible to solve this problem \
+by trying every route.However, Problem 67, is the same challenge with a \
+triangle containing one - hundred rows; it cannot be solved by brute force, \
+and requires a clever method!; o)\
+\>", "Text",
+ CellChangeTimes->{{3.601797824127726*^9, 3.6017978290710087`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6017978334872613`*^9, 3.601797842744791*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"table", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{"i", ",", "2", ",", "15"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", 
+       RowBox[{
+        RowBox[{"2", "^", "14"}], "-", "1"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"m", "=", "1"}], ";", 
+    RowBox[{"total", "=", "0"}]}], ",", 
+   RowBox[{"m", "\[LessEqual]", 
+    RowBox[{"2", "^", "14"}]}], ",", 
+   RowBox[{"m", "=", 
+    RowBox[{"m", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"n", "=", 
+        RowBox[{"i", "=", 
+         RowBox[{"j", "=", "1"}]}]}], ";", 
+       RowBox[{"sum", "=", "0"}]}], ",", 
+      RowBox[{"n", "\[LessEqual]", "15"}], ",", 
+      RowBox[{
+       RowBox[{"n", "=", 
+        RowBox[{"n", "+", "1"}]}], ";", 
+       RowBox[{"i", "=", 
+        RowBox[{"i", "+", "1"}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"j", "=", 
+        RowBox[{"j", "+", 
+         RowBox[{"table", "[", 
+          RowBox[{"[", 
+           RowBox[{"m", ",", "n"}], "]"}], "]"}]}]}], ";", 
+       RowBox[{"sum", "=", 
+        RowBox[{"sum", "+", 
+         RowBox[{"number", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}]}]}], ";"}]}], "]"}], ";", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"total", "<", "sum"}], ",", 
+      RowBox[{"total", "=", "sum"}]}], "]"}]}]}], "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["total"], "Input",
+ CellChangeTimes->{{3.6017981346094847`*^9, 3.6017981365885973`*^9}}],
+
+Cell[BoxData["1074"], "Output",
+ CellChangeTimes->{3.6017981375956554`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6326373799211817`*^9, 3.632637387381192*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"data", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<PE 018.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"data", "//.", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x___", ",", "a_", ",", "b_"}], "}"}], "\[RuleDelayed]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"a", "+", 
+        RowBox[{"Max", "/@", 
+         RowBox[{"Partition", "[", 
+          RowBox[{"b", ",", "2", ",", "1"}], "]"}]}]}]}], "}"}]}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6326372458609943`*^9, 3.6326373520111427`*^9}, {
+  3.658721128840326*^9, 3.6587211351807194`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.009624189882526552`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "1074", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.632637354011145*^9, 3.6587211378308783`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 372, 7, 132, "Text"],
+Cell[CellGroupData[{
+Cell[954, 31, 445, 13, 48, "Input"],
+Cell[1402, 46, 703, 18, 72, "Output"]
+}, Open  ]],
+Cell[2120, 67, 186, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[2331, 75, 354, 9, 86, "Input"],
+Cell[2688, 86, 3244, 62, 251, "Output"]
+}, Open  ]],
+Cell[5947, 151, 355, 6, 68, "Text"],
+Cell[CellGroupData[{
+Cell[6327, 161, 102, 1, 28, "Subsubtitle"],
+Cell[6432, 164, 334, 11, 48, "Input"],
+Cell[6769, 177, 1237, 38, 164, "Input"],
+Cell[CellGroupData[{
+Cell[8031, 219, 101, 1, 31, "Input"],
+Cell[8135, 222, 75, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8259, 229, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[8386, 234, 819, 23, 124, "Input"],
+Cell[9208, 259, 211, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

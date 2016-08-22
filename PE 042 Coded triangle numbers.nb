@@ -1,0 +1,246 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7592,        237]
+NotebookOptionsPosition[      6773,        202]
+NotebookOutlinePosition[      7127,        218]
+CellTagsIndexPosition[      7084,        215]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Coded triangle numbers", "Title"],
+ "\n",
+ StyleBox["Problem 42", "Subtitle"],
+ "\nThe nth term of the sequence of triangle numbers is given by, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["t", "n"], "=", 
+    RowBox[{
+     FractionBox["1", "2"], 
+     RowBox[{"n", "(", 
+      RowBox[{"n", "+", "1"}], ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "; so the first ten triangle numbers are : 1, 3, 6, 10, 15, 21, 28, 36, 45, \
+55, ...\nBy converting each letter in a word to a number corresponding to its \
+alphabetical position and adding these values we form a word value.For \
+example, the word value for SKY is 19 + 11 + 25 = 55 = t10.If the word value \
+is a triangle number then we shall call the word a triangle word.\nUsing \
+words.txt (right click and' Save Link/Target As ...'), a 16 K text file \
+containing nearly two - thousand common English words, how many are triangle \
+words?"
+}], "Text",
+ CellChangeTimes->{{3.611493414488611*^9, 3.61149344488835*^9}, {
+  3.658819153644617*^9, 3.658819163108615*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.611493454088876*^9, 3.6114934637304277`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Total", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"#", "-", 
+             RowBox[{"ToCharacterCode", "[", "\"\<A\>\"", "]"}], "+", "1"}], 
+            ")"}], "&"}], ",", 
+          RowBox[{"ToCharacterCode", "[", 
+           RowBox[{"ReadList", "[", 
+            RowBox[{"\"\<PE 042.txt\>\"", ",", "Word", ",", 
+             RowBox[{"WordSeparators", "->", 
+              RowBox[{"{", 
+               RowBox[{"\"\<\\\",\\\"\>\"", ",", "\"\<\\\"\>\""}], "}"}]}]}], 
+            "]"}], "]"}], ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}], " ", "]"}], ",", 
+     RowBox[{
+      RowBox[{"MemberQ", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"1", "/", "2"}], " ", "n", " ", 
+           RowBox[{"(", 
+            RowBox[{"n", "+", "1"}], ")"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "1", ",", "20"}], "}"}]}], "]"}], ",", "#"}], 
+       "]"}], "&"}]}], "]"}], "//", "Length"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.611492250439031*^9, 3.611492362119419*^9}, {
+  3.611492458457929*^9, 3.611492510339897*^9}, {3.6114925680131955`*^9, 
+  3.611492590983509*^9}, {3.611492622617319*^9, 3.611492684675868*^9}, {
+  3.6114927874407463`*^9, 3.611492789595869*^9}, {3.6114929236085343`*^9, 
+  3.6114929658209486`*^9}, {3.611493005891241*^9, 3.611493079616458*^9}, {
+  3.611493115554513*^9, 3.611493116015539*^9}, {3.611493329613756*^9, 
+  3.611493390643247*^9}, {3.65872099592577*^9, 3.6587210042363243`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.05779075562306772`", ",", "162"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.611492511231948*^9, 3.6114930803795013`*^9, 3.6114932017004404`*^9, 
+   3.6114932905505223`*^9, {3.611493338660274*^9, 3.6114933934914103`*^9}, 
+   3.658721009806677*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6114941443793583`*^9, 3.611494155840014*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"TriQ", "[", "n_", "]"}], ":=", 
+    RowBox[{"IntegerQ", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", 
+       RowBox[{
+        RowBox[{"2", " ", "n"}], "+", 
+        RowBox[{"1", "/", "4"}]}], "]"}], "-", 
+      RowBox[{"1", "/", "2"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"words", "=", 
+    RowBox[{"Import", "[", "\"\<PE 042.txt\>\"", "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"string", "=", 
+    RowBox[{"StringReplace", "[", 
+     RowBox[{"words", ",", 
+      RowBox[{"\"\<\\\"\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"str", "=", 
+    RowBox[{"StringSplit", "[", 
+     RowBox[{"string", ",", "\"\<,\>\""}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"charstr", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"ToCharacterCode", "[", "#", "]"}], "-", "64"}], "&"}], "/@", 
+     "str"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"value", "=", 
+    RowBox[{"Total", "/@", "charstr"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Length", "@", 
+    RowBox[{"Select", "[", 
+     RowBox[{"value", ",", "TriQ"}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.611494121036023*^9, 3.611494128687461*^9}, 
+   3.65872101704734*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.046875`", ",", "162"}], "}"}]], "Output",
+ CellChangeTimes->{3.6114941390730553`*^9, 3.658721020687528*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.611494263415167*^9, 3.6114942772369576`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Length", "@", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Total", "/@", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"ToCharacterCode", "[", 
+          RowBox[{"StringSplit", "[", 
+           RowBox[{
+            RowBox[{"Import", "[", "\"\<PE 042.txt\>\"", "]"}], ",", 
+            "\"\<,\>\""}], "]"}], "]"}], "-", "64"}], ")"}]}], "+", "60"}], 
+     ",", 
+     RowBox[{
+      RowBox[{"MemberQ", "[", 
+       RowBox[{
+        RowBox[{"Accumulate", "@", 
+         RowBox[{"Range", "@", "20"}]}], ",", "#"}], "]"}], "&"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6114941698268137`*^9, 3.611494200411563*^9}, {
+   3.611494247107234*^9, 3.611494254488656*^9}, 3.6587210270480103`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.03125`", ",", "162"}], "}"}]], "Output",
+ CellChangeTimes->{3.611494203782756*^9, 3.6114942571398077`*^9, 
+  3.6587210294081097`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1080, 24, 239, "Text"],
+Cell[CellGroupData[{
+Cell[1662, 48, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1789, 53, 1899, 46, 276, "Input"],
+Cell[3691, 101, 289, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4029, 113, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4156, 118, 1301, 36, 276, "Input"],
+Cell[5460, 156, 149, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5658, 165, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5785, 170, 782, 22, 200, "Input"],
+Cell[6570, 194, 175, 4, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

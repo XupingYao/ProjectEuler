@@ -1,0 +1,343 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11107,        334]
+NotebookOptionsPosition[     10286,        299]
+NotebookOutlinePosition[     10640,        315]
+CellTagsIndexPosition[     10597,        312]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Sub - string divisibility", "Title"],
+ "\n",
+ StyleBox["Problem 43", "Subtitle"],
+ "\nThe number, 1406357289, is a 0 to 9 pandigital number because it is made \
+up of each of the digits 0 to 9 in some order, but it also has a rather \
+interesting sub - string divisibility property.Let d1 be the 1 st digit, d2 \
+be the 2 nd digit, and so on.In this way, we note the following : \nd",
+ Cell[BoxData[
+  FormBox["2", TraditionalForm]]],
+ "d3d4 = 406 is divisible by 2\nd3d4d5 = 063 is divisible by 3\nd4d5d6 = 635 \
+is divisible by 5\nd5d6d7 = 357 is divisible by 7\nd6d7d8 = 572 is divisible \
+by 11\nd7d8d9 = 728 is divisible by 13\nd8d9d10 = 289 is divisible by 17\n\
+Find the sum of all 0 to 9 pandigital numbers with this property."
+}], "Text",
+ CellChangeTimes->{{3.61878419525712*^9, 3.6187842648341*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.618784290203551*^9, 3.6187843097106667`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{"FromDigits", ",", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Permutations", "[", 
+        RowBox[{"Range", "[", 
+         RowBox[{"0", ",", "9"}], "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[NotEqual]", "0"}], ")"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "4", "]"}], "]"}], ",", "2"}], "]"}], "==", "0"}], 
+          ")"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{"Sum", "[", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "3", ",", "5"}], "}"}]}], "]"}], ",", "3"}],
+             "]"}], "==", "0"}], ")"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "6", "]"}], "]"}], ",", "5"}], "]"}], "\[Equal]", 
+           "0"}], ")"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], " ", "10"}], "+", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "6", "]"}], "]"}], "-", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "7", "]"}], "]"}], " ", "2"}]}], ",", "7"}], 
+            "]"}], "\[Equal]", "0"}], ")"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "6", "]"}], "]"}], "-", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "7", "]"}], "]"}], " ", "+", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "8", "]"}], "]"}]}], ",", "11"}], "]"}], 
+           "\[Equal]", "0"}], ")"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "7", "]"}], "]"}], " ", "10"}], "+", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "8", "]"}], "]"}], "+", 
+              RowBox[{"4", " ", 
+               RowBox[{"#", "[", 
+                RowBox[{"[", "9", "]"}], "]"}]}]}], ",", "13"}], "]"}], 
+           "\[Equal]", "0"}], ")"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "8", "]"}], "]"}], " ", "10"}], "+", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "9", "]"}], "]"}], "-", 
+              RowBox[{"5", " ", 
+               RowBox[{"#", "[", 
+                RowBox[{"[", "10", "]"}], "]"}]}]}], ",", "17"}], "]"}], 
+           "\[Equal]", "0"}], ")"}]}], "&"}]}], "]"}]}], "]"}], "//", "Tr"}], 
+  "//", "AbsoluteTiming"}]], "Input",
+ CellChangeTimes->{
+  3.618746471685439*^9, 3.618748151849357*^9, {3.6587240966040835`*^9, 
+   3.6587241033045063`*^9}, {3.6587242835180273`*^9, 3.658724290748488*^9}, {
+   3.6587243394125767`*^9, 3.6587243442228746`*^9}, {3.658724417517789*^9, 
+   3.6587244211680255`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"29.575269792069374`", ",", "16695334890"}], "}"}]], "Output",
+ CellChangeTimes->{3.6187465576351585`*^9, 3.6587241365066895`*^9, 
+  3.6587243219805584`*^9, 3.6587244114673767`*^9, 3.6587244526401176`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6187843156070037`*^9, 3.6187843266016326`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearSystemCache", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"r", "=", 
+    RowBox[{"0", "~", "Range", "~", "9"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"boil", "[", 
+     RowBox[{
+      RowBox[{"u", ":", 
+       RowBox[{"{", "__List", "}"}]}], ",", "d_"}], "]"}], ":=", 
+    RowBox[{"Level", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"boil", "[", 
+         RowBox[{"#", ",", "d"}], "]"}], "&"}], "/@", "u"}], ",", 
+      RowBox[{"{", "2", "}"}]}], "]"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"boil", "[", 
+     RowBox[{"u_", ",", "d_"}], "]"}], ":=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"u", "===", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"r", "~", "Permutations", "~", 
+         RowBox[{"{", "3", "}"}]}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"u", "~", "Prepend", "~", "#"}], "&"}], "/@", 
+         RowBox[{"r", "~", "Complement", "~", "u"}]}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"FromDigits", "[", 
+         RowBox[{"#", "~", "Take", "~", "3"}], "]"}], "~", "Divisible", "~", 
+        "d"}], "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Fold", "[", 
+      RowBox[{"boil", ",", 
+       RowBox[{"{", "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+        "17", ",", "13", ",", "11", ",", "7", ",", "5", ",", "3", ",", "2", 
+         ",", "1"}], "}"}]}], "]"}], "//", "Total"}], "//", "FromDigits"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.618749448137148*^9, 3.6187494481391487`*^9}, {
+  3.658724390945999*^9, 3.658724402696766*^9}, {3.658724443209486*^9, 
+  3.6587244736874437`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0031212972371330596`", ",", "16695334890"}], "}"}]], "Output",
+ CellChangeTimes->{3.618749454341503*^9, 3.6587244775876493`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.6206517480190673`*^9, 3.620651761723851*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearSystemCache", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"cf1", "=", 
+    RowBox[{"With", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"code", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"And", "@@", 
+           RowBox[{"Thread", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"100", " ", 
+                  RowBox[{"A", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}]}], "+", 
+                 RowBox[{"10", " ", 
+                  RowBox[{"A", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", "+", "1"}], "]"}], "]"}]}], "+", 
+                 RowBox[{"A", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"i", "+", "2"}], "]"}], "]"}]}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "2", ",", "8"}], "}"}]}], "]"}], "~", 
+              "Mod", "~", 
+              RowBox[{"{", 
+               RowBox[{
+               "2", ",", "3", ",", "5", ",", "7", ",", "11", ",", "13", ",", 
+                "17"}], "}"}]}], "\[Equal]", "0"}], "]"}]}], "//", "Boole"}], 
+         "//", "Quiet"}]}], "}"}], ",", 
+      RowBox[{"Compile", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{"A", ",", "_Integer", ",", "1"}], "}"}], "}"}], ",", "code",
+         ",", 
+        RowBox[{"RuntimeAttributes", "\[Rule]", "Listable"}], ",", 
+        RowBox[{"RuntimeOptions", "\[Rule]", "\"\<Speed\>\""}], ",", 
+        RowBox[{"CompilationTarget", "\[Rule]", "\"\<C\>\""}]}], "]"}]}], 
+     "]"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"FromDigits", "/@", 
+       RowBox[{"Pick", "[", 
+        RowBox[{"#", ",", 
+         RowBox[{"cf1", "@", "#"}], ",", "1"}], "]"}]}], "&"}], "@", 
+     RowBox[{"Permutations", "@", 
+      RowBox[{"Range", "[", 
+       RowBox[{"0", ",", "9"}], "]"}]}]}], "//", "Tr"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6206517645520124`*^9, 3.620651764554013*^9}, {
+  3.6587244923386636`*^9, 3.658724504419449*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.0449015770704966`", ",", "16695334890"}], "}"}]], "Output",
+ CellChangeTimes->{3.620651776651705*^9, 3.6587245091697817`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 837, 15, 340, "Text"],
+Cell[CellGroupData[{
+Cell[1419, 39, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1546, 44, 3626, 100, 314, "Input"],
+Cell[5175, 146, 244, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5468, 156, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5597, 161, 1877, 53, 354, "Input"],
+Cell[7477, 216, 170, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7696, 225, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[7823, 230, 2265, 60, 392, "Input"],
+Cell[10091, 292, 167, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

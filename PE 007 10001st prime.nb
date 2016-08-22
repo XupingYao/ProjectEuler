@@ -1,0 +1,85 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2116,         76]
+NotebookOptionsPosition[      1682,         55]
+NotebookOutlinePosition[      2036,         71]
+CellTagsIndexPosition[      1993,         68]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["10001 st prime", "Title"],
+ "\n",
+ StyleBox["Problem 7", "Subtitle"],
+ "\nBy listing the first six prime numbers : 2, 3, 5, 7, 11, and 13, we can \
+see that the 6 th prime is 13.\nWhat is the 10 001 st prime number?"
+}], "Text",
+ CellChangeTimes->{{3.6014390093336725`*^9, 3.6014390189502225`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Sulotion\t1", "Subsubtitle",
+ CellChangeTimes->{{3.601439032811015*^9, 3.6014390430255995`*^9}, {
+  3.6587289489768467`*^9, 3.6587289491669054`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Prime", "[", "10001", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.601439060097576*^9, 3.601439063966797*^9}, {
+  3.658728896266107*^9, 3.6587288976862245`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00011774714641358728`", ",", "104743"}], "}"}]], "Output",
+ CellChangeTimes->{3.601439068454054*^9, 3.658728898456233*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 325, 7, 169, "Text"],
+Cell[CellGroupData[{
+Cell[907, 31, 155, 2, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1087, 37, 400, 9, 124, "Input"],
+Cell[1490, 48, 164, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,639 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     18367,        630]
+NotebookOptionsPosition[     17156,        581]
+NotebookOutlinePosition[     17510,        597]
+CellTagsIndexPosition[     17467,        594]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Odd period square roots", "Title"],
+ "\n",
+ StyleBox["Problem 64\n", "Subtitle"],
+ StyleBox["All square roots are periodic when written as continued fractions \
+and can be written in the form:\n", "Text"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["N"], "=", 
+    RowBox[{
+     SubscriptBox["a", "0"], "+", 
+     FractionBox["1", 
+      RowBox[{
+       SubscriptBox["a", "1"], "+", 
+       FractionBox["1", 
+        RowBox[{
+         SubscriptBox["a", "2"], "+", 
+         FractionBox["1", 
+          SubscriptBox["a", 
+           RowBox[{
+            RowBox[{"3", "+"}], "..."}]]]}]]}]]}]}], TraditionalForm]]],
+ "\nFor example, let us consider ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["23"], TraditionalForm]]],
+ ":\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["23"], "=", 
+    RowBox[{
+     RowBox[{"4", "+", 
+      SqrtBox["23"], "-", "4"}], "=", 
+     RowBox[{
+      RowBox[{"4", "+", 
+       FractionBox["1", 
+        FractionBox["1", 
+         RowBox[{
+          SqrtBox["23"], "-", "4"}]]]}], "=", 
+      RowBox[{"4", "+", 
+       FractionBox["1", 
+        RowBox[{"1", "+", 
+         FractionBox[
+          RowBox[{
+           SqrtBox["23"], "-", "3"}], "7"]}]]}]}]}]}], TraditionalForm]]],
+ "\nIf we continue we would get the following expansion:\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "0"], "=", "4"}], ",", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{
+       SqrtBox["23"], "-", "4"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        SqrtBox["23"], "+", "4"}], "7"], "=", 
+      RowBox[{"1", "+", 
+       FractionBox[
+        RowBox[{
+         SqrtBox["23"], "-", "3"}], "7"]}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "1"], "=", "1"}], ",", 
+    RowBox[{
+     FractionBox["7", 
+      RowBox[{
+       SqrtBox["23"], "-", "3"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"7", 
+        RowBox[{"(", 
+         RowBox[{
+          SqrtBox["23"], "+", "3"}], ")"}], Cell[""]}], "14"], "=", 
+      RowBox[{"3", "+", 
+       FractionBox[
+        RowBox[{
+         SqrtBox["23"], "-", "3"}], "2"]}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "2"], "=", "3"}], ",", 
+    RowBox[{
+     FractionBox["2", 
+      RowBox[{
+       SqrtBox["23"], "-", "3"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{
+          SqrtBox["23"], "+", "3"}], ")"}]}], "14"], "=", 
+      RowBox[{"1", "+", 
+       FractionBox[
+        RowBox[{
+         SqrtBox["23"], "-", "4"}], "7"]}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "3"], "=", "1"}], ",", 
+    RowBox[{
+     FractionBox["7", 
+      RowBox[{
+       SqrtBox["23"], "-", "4"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"7", 
+        RowBox[{"(", 
+         RowBox[{
+          SqrtBox["23"], "+", "4"}], ")"}]}], "7"], "=", 
+      RowBox[{"8", "+", 
+       SqrtBox["23"], "-", "4"}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "4"], "=", "8"}], ",", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{
+       SqrtBox["23"], "-", "4"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        SqrtBox["23"], "+", "4"}], "7"], "=", 
+      RowBox[{"1", "+", 
+       FractionBox[
+        RowBox[{
+         SqrtBox["23"], "-", "3"}], "7"]}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "5"], "=", "1"}], ",", 
+    RowBox[{
+     FractionBox["7", 
+      RowBox[{
+       SqrtBox["23"], "-", "3"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"7", 
+        RowBox[{"(", 
+         RowBox[{
+          SqrtBox["23"], "+", "3"}], ")"}]}], "14"], "=", 
+      RowBox[{"3", "+", 
+       FractionBox[
+        RowBox[{
+         SqrtBox["23"], "-", "3"}], "2"]}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "6"], "=", "3"}], ",", 
+    RowBox[{
+     FractionBox["2", 
+      RowBox[{
+       SqrtBox["23"], "-", "3"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{
+          SqrtBox["23"], "+", "3"}], ")"}]}], "14"], "=", 
+      RowBox[{"1", "+", 
+       FractionBox[
+        RowBox[{
+         SqrtBox["23"], "-", "4"}], "7"]}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "7"], "=", "1"}], ",", 
+    RowBox[{
+     FractionBox["7", 
+      RowBox[{
+       SqrtBox["23"], "-", "4"}]], "=", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"7", 
+        RowBox[{"(", 
+         RowBox[{
+          SqrtBox["23"], "+", "4"}], ")"}]}], "7"], "=", 
+      RowBox[{"8", "+", 
+       SqrtBox["23"], "-", "4"}]}]}]}], TraditionalForm]}]],
+ "\nIt can be seen that the sequence is repeating. For conciseness, we use \
+the notation",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["23"], "=", 
+    RowBox[{"[", 
+     RowBox[{"4", ";", 
+      RowBox[{"(", 
+       RowBox[{"1", ",", "3", ",", "1", ",", "8"}], ")"}]}], "]"}]}], 
+   TraditionalForm]]],
+ " , to indicate that the block (1,3,1,8) repeats indefinitely.\n\nThe first \
+ten continued fraction representations of (irrational) square roots are:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["2"], "=", 
+    RowBox[{"[", 
+     RowBox[{"1", ";", 
+      RowBox[{"(", "2", ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=1\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["3"], "=", 
+    RowBox[{"[", 
+     RowBox[{"1", ";", 
+      RowBox[{"(", 
+       RowBox[{"1", ",", "2"}], ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=2\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["5"], "=", 
+    RowBox[{"[", 
+     RowBox[{"2", ";", 
+      RowBox[{"(", "4", ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=1\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["6"], "=", 
+    RowBox[{"[", 
+     RowBox[{"2", ";", 
+      RowBox[{"(", 
+       RowBox[{"2", ",", "4"}], ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=2\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["7"], "=", 
+    RowBox[{"[", 
+     RowBox[{"2", ";", 
+      RowBox[{"(", 
+       RowBox[{"1", ",", "1", ",", "1", ",", "4"}], ")"}]}], "]"}]}], 
+   TraditionalForm]]],
+ ",period=4\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["8"], "=", 
+    RowBox[{"[", 
+     RowBox[{"2", ";", 
+      RowBox[{"(", 
+       RowBox[{"1", ",", "4"}], ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=2\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["10"], "=", 
+    RowBox[{"[", 
+     RowBox[{"3", ";", 
+      RowBox[{"(", "6", ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=1\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["11"], "=", 
+    RowBox[{"[", 
+     RowBox[{"3", ";", 
+      RowBox[{"(", 
+       RowBox[{"3", ",", "6"}], ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=2\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["12"], "=", 
+    RowBox[{"[", 
+     RowBox[{"3", ";", 
+      RowBox[{"(", 
+       RowBox[{"2", ",", "6"}], ")"}]}], "]"}]}], TraditionalForm]]],
+ ",period=2\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["13"], "=", 
+    RowBox[{"[", 
+     RowBox[{"3", ";", 
+      RowBox[{"(", 
+       RowBox[{"1", ",", "1", ",", "1", ",", "1", ",", "6"}], ")"}]}], 
+     "]"}]}], TraditionalForm]]],
+ ",period=5\n\n",
+ "Exactly four continued fractions, for N \[LessEqual] 13, have an odd \
+period.\n\nHow many continued fractions for N \[LessEqual] 10000 have an odd \
+period?"
+}], "Text",
+ CellChangeTimes->{{3.632472514119622*^9, 3.6324727456635733`*^9}, {
+  3.632472796087421*^9, 3.632473113676586*^9}, {3.632473155920002*^9, 
+  3.6324731983194275`*^9}, {3.6324732332394247`*^9, 3.6324736426888437`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.632473648337167*^9, 3.632473658413743*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sequence", "[", "int_", "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"!", 
+       RowBox[{"IntegerQ", "[", 
+        RowBox[{"Sqrt", "[", "int", "]"}], "]"}]}], ",", 
+      RowBox[{"Return", "[", 
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"NestWhileList", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], "*", 
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}]}], "-", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"int", "-", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "*", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}], "-", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "^", "2"}]}], 
+                 ")"}], "/", 
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+               RowBox[{"Floor", "[", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"Floor", "[", 
+                    RowBox[{"Sqrt", "[", "int", "]"}], "]"}], "+", 
+                   RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "*", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}], "-", 
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "/", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"int", "-", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "*", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}], "-", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "^", "2"}]}], 
+                    ")"}], "/", 
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], "]"}]}], "}"}],
+              ")"}], "&"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1", ",", 
+             RowBox[{"Floor", "[", 
+              RowBox[{"Sqrt", "[", "int", "]"}], "]"}]}], "}"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], "\[NotEqual]", 
+             RowBox[{"2", 
+              RowBox[{"Floor", "[", 
+               RowBox[{"Sqrt", "[", "int", "]"}], "]"}]}]}], "&"}]}], "]"}], 
+         "]"}], "-", "1"}], "]"}], ",", 
+      RowBox[{"Return", "[", "0", "]"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Count", "[", 
+    RowBox[{
+     RowBox[{"OddQ", "[", 
+      RowBox[{"sequence", "/@", 
+       RowBox[{"Range", "[", 
+        RowBox[{"2", ",", "10000"}], "]"}]}], "]"}], ",", "True"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.632469960395194*^9, 3.632470220284581*^9}, {
+   3.6324702624596415`*^9, 3.632470284943674*^9}, {3.632470318696724*^9, 
+   3.6324703541687803`*^9}, {3.6324704509579353`*^9, 3.632470565130118*^9}, {
+   3.632470616948748*^9, 3.6324706964048777`*^9}, {3.6324707562649713`*^9, 
+   3.6324709013061943`*^9}, {3.6324709519832706`*^9, 3.632471039036415*^9}, {
+   3.632471072096466*^9, 3.6324712186816916`*^9}, {3.632471264477189*^9, 
+   3.6324712746522045`*^9}, {3.6324713217562838`*^9, 3.632471335646303*^9}, {
+   3.6324714035966115`*^9, 3.6324714825871296`*^9}, {3.632471534633086*^9, 
+   3.6324715430365667`*^9}, {3.632471645065403*^9, 3.632471713874338*^9}, 
+   3.6324717687164755`*^9, {3.632472418780783*^9, 3.6324724307630076`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"8.235653664872805`", ",", "1322"}], "}"}]], "Output",
+ CellChangeTimes->{3.632472473467478*^9, 3.6587226254928827`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.632474935052873*^9, 3.6324749479308915`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"Length", "[", 
+        RowBox[{
+         RowBox[{"ContinuedFraction", "[", 
+          RowBox[{"Sqrt", "[", "n", "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", "2"}], "]"}], "\[Equal]",
+      "1"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Range", "[", 
+         RowBox[{"2", ",", "10000"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"IntegerQ", "[", 
+           RowBox[{"Sqrt", "[", "#", "]"}], "]"}]}], "&"}]}], "]"}]}], 
+     "}"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.6324748205047054`*^9, {3.6324748948738155`*^9, 3.6324749169718466`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.618092404995444`", ",", 
+   RowBox[{
+    RowBox[{"8578", " ", "False"}], "+", 
+    RowBox[{"1322", " ", "True"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6324748216847067`*^9, {3.632474896863818*^9, 3.632474926932862*^9}, 
+   3.658722650584558*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.632475020020678*^9, 3.6324750281206894`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Count", "[", 
+   RowBox[{
+    RowBox[{"OddQ", "/@", 
+     RowBox[{"Length", "/@", 
+      RowBox[{"Last", "/@", 
+       RowBox[{"ContinuedFraction", "@", 
+        RowBox[{"Sqrt", "@", 
+         RowBox[{"Range", "@", "10000"}]}]}]}]}]}], ",", "True"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.632474987478628*^9, 3.6324750072586565`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.4747137290321697`", ",", "1322"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6324749980306435`*^9, 3.632475016504672*^9}, 
+   3.6587226600351877`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t4", "Subsubtitle",
+ CellChangeTimes->{{3.6324750957184415`*^9, 3.6324751062644587`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Length", "@", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"ContinuedFraction", "[", 
+        RowBox[{"Sqrt", "[", "n", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "10000"}], "}"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "#", "]"}], ">", "1"}], "&&", 
+       RowBox[{"OddQ", "[", 
+        RowBox[{"Length", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], "]"}]}], "&"}]}], "]"}]}], "//",
+   "AbsoluteTiming"}]], "Input",
+ CellChangeTimes->{{3.632475075199412*^9, 3.63247508064042*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.512428453640696`", ",", "1322"}], "}"}]], "Output",
+ CellChangeTimes->{3.6324750905984344`*^9, 3.6587226675256987`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t5", "Subsubtitle",
+ CellChangeTimes->{{3.632475452727975*^9, 3.632475461847988*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Count", "[", 
+   RowBox[{
+    RowBox[{"ParallelArray", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Length", "@", 
+        RowBox[{"Last", "@", 
+         RowBox[{"ContinuedFraction", "[", 
+          RowBox[{"\[Sqrt]", "#"}], "]"}]}]}], "&"}], ",", "10000", ",", 
+      RowBox[{"Method", "\[Rule]", "\"\<CoarsestGrained\>\""}]}], "]"}], ",", 
+    RowBox[{"_", "?", "OddQ"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6324754276019373`*^9, 3.6324754276019373`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.86068830477181`", ",", "1322"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6324754437679615`*^9, {3.6587226744261875`*^9, 3.65872267808643*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 7922, 299, 1064, "Text"],
+Cell[CellGroupData[{
+Cell[8504, 323, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[8629, 328, 4334, 104, 354, "Input"],
+Cell[12966, 434, 159, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13174, 443, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[13301, 448, 834, 25, 86, "Input"],
+Cell[14138, 475, 296, 8, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14483, 489, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[14610, 494, 403, 11, 86, "Input"],
+Cell[15016, 507, 190, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15255, 517, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[15384, 522, 684, 20, 86, "Input"],
+Cell[16071, 544, 161, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16281, 553, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[16406, 558, 533, 13, 129, "Input"],
+Cell[16942, 573, 186, 4, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

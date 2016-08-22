@@ -1,0 +1,182 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5146,        173]
+NotebookOptionsPosition[      4520,        145]
+NotebookOutlinePosition[      4874,        161]
+CellTagsIndexPosition[      4831,        158]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Double - base palindromes", "Title"],
+ "\n",
+ StyleBox["Problem 36", "Subtitle"],
+ "\nThe decimal number, 585 = ",
+ Cell[BoxData[
+  FormBox[
+   TagBox[
+    InterpretationBox[
+     SubscriptBox["\"\<1001001001\>\"", "\"\<2\>\""],
+     585,
+     Editable->False],
+    BaseForm[#, 2]& ], TraditionalForm]],
+  CellChangeTimes->{{3.6044058763359237`*^9, 3.6044058925008483`*^9}}],
+ " (binary), is palindromic in both bases.\nFind the sum of all numbers, less \
+than one million, which are palindromic in base 10 and base 2.\n\n(Please \
+note that the palindromic number, in either base, may not include leading \
+zeros.)"
+}], "Text",
+ CellChangeTimes->{{3.604405842256974*^9, 3.6044058477492886`*^9}, {
+  3.604405882598282*^9, 3.604405912690003*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6044059165012207`*^9, 3.604405926883815*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{"i", ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "1000000"}], "}"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringReverse", "[", 
+         RowBox[{"IntegerString", "[", "#", "]"}], "]"}], "\[Equal]", 
+        RowBox[{"IntegerString", "[", "#", "]"}]}], "&&", 
+       RowBox[{
+        RowBox[{"StringReverse", "[", 
+         RowBox[{"IntegerString", "[", 
+          RowBox[{"#", ",", "2"}], "]"}], "]"}], "\[Equal]", 
+        RowBox[{"IntegerString", "[", 
+         RowBox[{"#", ",", "2"}], "]"}]}]}], "&"}]}], "]"}], "]"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.604405744585388*^9, 3.6044057864947853`*^9}, {
+  3.658724972794794*^9, 3.6587249751249256`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.080508542227605`", ",", "872187"}], "}"}]], "Output",
+ CellChangeTimes->{3.604405795582305*^9, 3.6587249813853145`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6044065689145365`*^9, 3.6044065780680604`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"pQ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Reverse", "@", "#"}], "\[Equal]", "#"}], "&"}], "@", 
+      RowBox[{"IntegerDigits", "[", 
+       RowBox[{"#", ",", "2"}], "]"}]}], "&"}]}], ";", "\n", 
+   RowBox[{"f1", "=", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"#", "<>", "#2"}], ",", 
+       RowBox[{"#", "<>", 
+        RowBox[{"StringDrop", "[", 
+         RowBox[{"#2", ",", "1"}], "]"}]}]}], "}"}], "&"}]}], ";", "\n", 
+   RowBox[{"f2", "=", 
+    RowBox[{
+     RowBox[{"f1", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"StringReverse", "@", "#"}]}], "]"}], "&"}]}], ";", "\n", 
+   RowBox[{"f3", "=", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"f2", "/@", 
+       RowBox[{"ToString", "/@", 
+        RowBox[{"Range", "@", "#"}]}]}], "]"}], "&"}]}], ";", "\n", 
+   RowBox[{"f4", "=", 
+    RowBox[{
+     RowBox[{"Tr", "@", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"FromDigits", "/@", 
+         RowBox[{"f3", "[", "#", "]"}]}], ",", "pQ"}], "]"}]}], "&"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"f4", "[", "999", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6044065558507895`*^9, 3.6044065593299885`*^9}, {
+  3.6587249961363106`*^9, 3.658724997966448*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.006823347348950083`", ",", "872187"}], "}"}]], "Output",
+ CellChangeTimes->{3.6044065650973186`*^9, 3.6587250022967186`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 772, 20, 207, "Text"],
+Cell[CellGroupData[{
+Cell[1354, 44, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1481, 49, 1018, 27, 200, "Input"],
+Cell[2502, 78, 161, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2712, 87, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2841, 92, 1482, 44, 260, "Input"],
+Cell[4326, 138, 166, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

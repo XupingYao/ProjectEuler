@@ -1,0 +1,386 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13004,        377]
+NotebookOptionsPosition[     12446,        352]
+NotebookOutlinePosition[     12803,        368]
+CellTagsIndexPosition[     12760,        365]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Arithmetic expressions", "Title"],
+ "\n",
+ StyleBox["Problem 93", "Subtitle"],
+ "\nBy using each of the digits from the set, {1, 2, 3, 4}, exactly once, and \
+making use of the four arithmetic operations (+, \[Minus], *, /) and \
+brackets/parentheses, it is possible to form different positive integer \
+targets.\n\nFor example, \n8 = (4*(1 + 3))/2\n14 = 4*(3 + 1/2)\n19 = 4*(2 + \
+3) \[Minus] 1\n36 = 3*4*(2 + 1)\n\nNote that concatenations of the digits, \
+like 12 + 34, are not allowed.\n\nUsing the set, {1, 2, 3, 4}, it is possible \
+to obtain thirty - one different target numbers of which 36 is the maximum, \
+and each of the numbers 1 to 28 can be obtained before encountering the first \
+non - expressible number.\n\nFind the set of four distinct digits, a < b < c \
+< d, for which the longest set of consecutive positive integers, 1 to n, can \
+be obtained, giving your answer as a string : abcd."
+}], "Text",
+ CellChangeTimes->{{3.6586323697675714`*^9, 3.6586324161021357`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6586324251822357`*^9, 3.6586324333376613`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"list", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"n1", ",", "n2", ",", "n3", ",", "n4"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n1", ",", "4", ",", "9"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n2", ",", "3", ",", 
+          RowBox[{"n1", "-", "1"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n3", ",", "2", ",", 
+          RowBox[{"n2", "-", "1"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n4", ",", "1", ",", 
+          RowBox[{"n3", "-", "1"}]}], "}"}]}], "]"}], ",", "3"}], "]"}]}], 
+   ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ReverseSubtract", "[", 
+     RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+    RowBox[{"y", "-", "x"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ReverseDivide", "[", 
+     RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+    RowBox[{"y", "/", "x"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"ArithmeticOperations", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "Plus", ",", "Subtract", ",", "Times", ",", "Divide", ",", 
+      "ReverseSubtract", ",", "ReverseDivide"}], "}"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"SubsetsOpetations", "=", 
+    RowBox[{"Tuples", "[", 
+     RowBox[{"ArithmeticOperations", ",", 
+      RowBox[{"{", "3", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f1", "[", "x_", "]"}], ":=", 
+    RowBox[{"MapThread", "[", 
+     RowBox[{"Append", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Complement", "[", 
+           RowBox[{"x", ",", "#"}], "]"}], "&"}], "/@", 
+         RowBox[{"Subsets", "[", 
+          RowBox[{"x", ",", 
+           RowBox[{"{", "2", "}"}]}], "]"}]}], ",", 
+        RowBox[{"Subsets", "[", 
+         RowBox[{"x", ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f2", "[", "x_", "]"}], ":=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"Map", "[", 
+       RowBox[{"f1", ",", 
+        RowBox[{"f1", "[", "x", "]"}]}], "]"}], ",", "1"}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g1", "[", "x_", "]"}], ":=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Apply", "[", 
+        RowBox[{"#1", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Apply", "[", 
+            RowBox[{"#2", ",", 
+             RowBox[{"Part", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "2"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"3", ",", "4"}], "}"}]}], "}"}], ",", "1"}], 
+              "]"}]}], "]"}], ",", 
+           RowBox[{"Apply", "[", 
+            RowBox[{"#3", ",", 
+             RowBox[{"Part", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "2"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"3", ",", "4"}], "}"}]}], "}"}], ",", "2"}], 
+              "]"}]}], "]"}]}], "}"}]}], "]"}], "&"}], ",", 
+      "SubsetsOpetations", ",", 
+      RowBox[{"{", "1", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g2", "[", "x_", "]"}], ":=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Apply", "[", 
+        RowBox[{"#1", ",", 
+         RowBox[{"Apply", "[", 
+          RowBox[{"#2", ",", 
+           RowBox[{"Apply", "[", 
+            RowBox[{"#3", ",", "x", ",", 
+             RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+           RowBox[{"{", "1", "}"}]}], "]"}]}], "]"}], "&"}], ",", 
+      "SubsetsOpetations", ",", 
+      RowBox[{"{", "1", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"index", "=", 
+    RowBox[{"GatherBy", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", "18", "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{"#", ",", "3"}], "]"}], "\[Equal]", "1"}], "&"}]}], "]"}]}], 
+   ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "[", "x_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Union", "[", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Flatten", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Map", "[", 
+            RowBox[{"g1", ",", 
+             RowBox[{"Part", "[", 
+              RowBox[{"x", ",", 
+               RowBox[{"index", "[", 
+                RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+           RowBox[{"Map", "[", 
+            RowBox[{"g2", ",", 
+             RowBox[{"Part", "[", 
+              RowBox[{"x", ",", 
+               RowBox[{"index", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "]"}]}], "}"}], 
+         "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Element", "[", 
+           RowBox[{"#", ",", "Integers"}], "]"}], "&&", 
+          RowBox[{"#", ">", "0"}]}], "&"}]}], "]"}], "]"}], "//", "Quiet"}]}],
+    ";", "\[IndentingNewLine]", 
+   RowBox[{"result", "=", 
+    RowBox[{"ParallelMap", "[", 
+     RowBox[{"h", ",", 
+      RowBox[{"Map", "[", 
+       RowBox[{"f2", ",", "list"}], "]"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Reverse", "[", 
+     RowBox[{"Part", "[", 
+      RowBox[{"list", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Position", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"Max", "[", "#", "]"}]}], "]"}], "&"}], "[", 
+         RowBox[{"Map", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"First", "[", 
+             RowBox[{"NestWhile", "[", 
+              RowBox[{"RotateLeft", ",", "#", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], "-", 
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}]}], "\[Equal]", "1"}], 
+                "&"}]}], "]"}], "]"}], "&"}], ",", "result"}], "]"}], "]"}], 
+        "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "]"}], "]"}], "//", 
+    "FromDigits"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.65863013514347*^9, 3.6586301474088974`*^9}, {
+  3.658630398020559*^9, 3.658630469265381*^9}, {3.6586305012735624`*^9, 
+  3.6586305417060537`*^9}, {3.6586305718820667`*^9, 3.6586305929463406`*^9}, {
+  3.6586306627281227`*^9, 3.6586306652196245`*^9}, {3.6586306962895045`*^9, 
+  3.658630764020887*^9}, {3.6586309513810935`*^9, 3.658630951741166*^9}, {
+  3.658631122241007*^9, 3.6586311231964283`*^9}, {3.6586322336572804`*^9, 
+  3.658632320983479*^9}, {3.658634318085588*^9, 3.658634338924624*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.7654026382203246`", ",", "1258"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6586322628978252`*^9, 3.6586323267956915`*^9, 3.6586332344991627`*^9, {
+   3.658634329249696*^9, 3.658634355493891*^9}, 3.6587218333066797`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"RSubtract", "[", 
+     RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"b", "-", "a"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"RDivide", "[", 
+     RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"b", "/", "a"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"Flist", "[", "list_", "]"}], ":=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", 
+             RowBox[{"2", ";;"}], "]"}], "]"}], "~", "Prepend", "~", 
+           RowBox[{"(", 
+            RowBox[{"f", "@@", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ")"}]}], "&"}], "/@", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Complement", "[", 
+              RowBox[{"list", ",", "#"}], "]"}], "~", "Prepend", "~", "#"}], 
+            "&"}], "/@", 
+           RowBox[{"Subsets", "[", 
+            RowBox[{"list", ",", 
+             RowBox[{"{", "2", "}"}]}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"f", ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "Plus", ",", "Subtract", ",", "RSubtract", ",", "Times", ",", 
+            "Divide", ",", "RDivide"}], "}"}]}], "}"}]}], "]"}], ",", "1"}], 
+     "]"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"Glist", "[", "list_", "]"}], ":=", 
+    RowBox[{"Union", "@", 
+     RowBox[{"Cases", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Flist", "/@", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{
+           RowBox[{"Flist", "/@", 
+            RowBox[{"Flist", "@", "list"}]}], ",", "1"}], "]"}]}], "]"}], ",", 
+       RowBox[{"x_Integer", "/;", 
+        RowBox[{"x", ">", "0"}]}]}], "]"}]}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"Hlist", "[", "list_", "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"list", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+      RowBox[{"Total", "[", 
+       RowBox[{
+        RowBox[{"Position", "[", 
+         RowBox[{
+          RowBox[{"Differences", "[", 
+           RowBox[{"Quiet", "[", 
+            RowBox[{"Glist", "[", "list", "]"}], "]"}], "]"}], ",", 
+          RowBox[{"x_", "/;", 
+           RowBox[{"x", ">", "1"}]}], ",", "1", ",", "1"}], "]"}], ",", "2"}],
+        "]"}], ",", "0"}], "]"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"FromDigits", "[", 
+      RowBox[{"#", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"Ordering", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Hlist", "@", "#"}], "&"}], "/@", "#"}], ",", 
+           RowBox[{"-", "1"}]}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], "]"}], "&"}], "@", 
+    RowBox[{"Subsets", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", "9", "]"}], ",", 
+      RowBox[{"{", "4", "}"}]}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6586341386290345`*^9, 3.6586341636444626`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.6212747140711545`", ",", "1258"}], "}"}]], "Output",
+ CellChangeTimes->{3.6586341738882756`*^9, 3.6587218399171333`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1016, 16, 435, "Text"],
+Cell[CellGroupData[{
+Cell[1599, 40, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1728, 45, 7092, 195, 1024, "Input"],
+Cell[8823, 242, 263, 5, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9123, 252, 3130, 91, 432, "Input"],
+Cell[12256, 345, 162, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

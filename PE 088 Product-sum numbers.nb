@@ -1,0 +1,478 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15348,        469]
+NotebookOptionsPosition[     14518,        434]
+NotebookOutlinePosition[     14876,        450]
+CellTagsIndexPosition[     14833,        447]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Product - sum numbers", "Title"],
+ "\n",
+ StyleBox["Problem 88", "Subtitle"],
+ "\nA natural number, ",
+ Cell[BoxData[
+  FormBox["N", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", that can be written as the sum and product of a given set of at least two \
+natural numbers, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["a", "1"], ",", 
+     SubscriptBox["a", "2"], ",", "\[Ellipsis]", ",", 
+     SubscriptBox["a", "k"]}], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is called a product - sum number : ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"N", "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["a", "1"], "+", 
+      SubscriptBox["a", "2"], "+", "\[Ellipsis]", "+", 
+      SubscriptBox["a", "k"]}], "=", 
+     RowBox[{
+      SubscriptBox["a", "1"], "\[Times]", 
+      SubscriptBox["a", "2"], "\[Times]", 
+      SubscriptBox["\[Ellipsis]a", "k"]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nFor example, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"6", "=", 
+    RowBox[{
+     RowBox[{"1", "+", "2", "+", "3"}], "=", 
+     RowBox[{"1", "\[Times]", "2", "\[Times]", "3"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nFor a given set of size, ",
+ Cell[BoxData[
+  FormBox["k", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", we shall call the smallest N with this property a minimal product - sum \
+number.The minimal product - sum numbers for sets of size, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"k", "=", "1"}], ",", "2", ",", "3", ",", "4", ",", "5"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox["6", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " are as follows.\n\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{"k", "=", 
+    RowBox[{
+     RowBox[{"2", ":", "4"}], "=", 
+     RowBox[{
+      RowBox[{"2", "\[Times]", "2"}], "=", 
+      RowBox[{"2", "+", "2"}]}]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"k", "=", 
+    RowBox[{
+     RowBox[{"3", ":", "6"}], "=", 
+     RowBox[{
+      RowBox[{"1", "\[Times]", "2", "\[Times]", "3"}], "=", 
+      RowBox[{"1", "+", "2", "+", "3"}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"k", "=", 
+    RowBox[{
+     RowBox[{"4", ":", "8"}], "=", 
+     RowBox[{
+      RowBox[{"1", "\[Times]", "1", "\[Times]", "2", "\[Times]", "4"}], "=", 
+      RowBox[{"1", "+", "1", "+", "2", "+", "4"}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"k", "=", 
+    RowBox[{
+     RowBox[{"5", ":", "8"}], "=", 
+     RowBox[{
+      RowBox[{
+      "1", "\[Times]", "1", "\[Times]", "2", "\[Times]", "2", "\[Times]", 
+       "2"}], "=", 
+      RowBox[{"1", "+", "1", "+", "2", "+", "2", "+", "2"}]}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"k", "=", 
+    RowBox[{
+     RowBox[{"6", ":", "12"}], "=", 
+     RowBox[{
+      RowBox[{
+      "1", "\[Times]", "1", "\[Times]", "1", "\[Times]", "1", "\[Times]", "2",
+        "\[Times]", "6"}], "=", 
+      RowBox[{"1", "+", "1", "+", "1", "+", "1", "+", "2", "+", "6"}]}]}]}], 
+   TraditionalForm]}],
+  FormatType->"TraditionalForm"],
+ "\n\nHence for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "\[LessEqual]", "k", "\[LessEqual]", "6"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the sum of all the minimal product - sum numbers is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"4", "+", "6", "+", "8", "+", "12"}], "=", "30"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "; note that ",
+ Cell[BoxData[
+  FormBox["8", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is only counted once in the sum.\n\nIn fact, as the complete set of \
+minimal product - sum numbers for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "\[LessEqual]", "k", "\[LessEqual]", "12"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{"4", ",", "6", ",", "8", ",", "12", "\:ff0c", "15", ",", "16"}], 
+    "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the sum is 61.\n\nWhat is the sum of all the minimal product - sum \
+numbers for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "\[LessEqual]", "k", "\[LessEqual]", "12000"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "?"
+}], "Text",
+ CellChangeTimes->{{3.6633063675242243`*^9, 3.6633064260081177`*^9}, {
+  3.663306459020072*^9, 3.6633068900805283`*^9}, {3.6633069536492977`*^9, 
+  3.6633069648129916`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution 1", "Subsubtitle",
+ CellChangeTimes->{{3.6633064340454025`*^9, 3.6633064428089294`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"kmax", "=", "12000"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"n", "=", 
+    RowBox[{"Array", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"2", "#"}], "&"}], ",", "kmax"}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"p0_", ",", "s0_", ",", "c0_", ",", "Start_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p", "=", "p0"}], ",", 
+        RowBox[{"s", "=", "s0"}], ",", 
+        RowBox[{"c", "=", "c0"}], ",", 
+        RowBox[{"start", "=", "Start"}], ",", "k", ",", "i"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"k", "=", 
+        RowBox[{"p", "-", "s", "+", "c"}]}], ";", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"k", "\[LessEqual]", "kmax"}], ",", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"n", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], ">", "p"}], ",", 
+            RowBox[{
+             RowBox[{"n", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], "=", "p"}]}], "]"}], ";", 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"i", "=", "start"}], ",", 
+            RowBox[{"i", "\[LessEqual]", 
+             RowBox[{"Floor", "[", 
+              RowBox[{"2", 
+               RowBox[{"kmax", "/", "p"}]}], "]"}]}], ",", 
+            RowBox[{"i", "++"}], ",", 
+            RowBox[{"f", "[", 
+             RowBox[{
+              RowBox[{"p", " ", "i"}], ",", 
+              RowBox[{"s", "+", "i"}], ",", 
+              RowBox[{"c", "+", "1"}], ",", "i"}], "]"}]}], "]"}]}]}], 
+        "]"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"f", "[", 
+    RowBox[{"1", ",", "1", ",", "1", ",", "2"}], "]"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Total", "[", 
+    RowBox[{"Union", "[", 
+     RowBox[{"Rest", "[", "n", "]"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6633044205986342`*^9, 3.6633044227788267`*^9}, {
+  3.6633047845385*^9, 3.6633047914505053`*^9}, {3.6633050034775715`*^9, 
+  3.663305005588458*^9}, {3.6633050554633307`*^9, 3.6633050959196777`*^9}, {
+  3.663305158701679*^9, 3.6633051589922876`*^9}, {3.6633053428744154`*^9, 
+  3.6633054524244633`*^9}, {3.663305504257124*^9, 3.66330555868163*^9}, {
+  3.6633055998303075`*^9, 3.6633056179545145`*^9}, {3.6633056662722006`*^9, 
+  3.663305718321929*^9}, {3.6633061254627113`*^9, 3.663306130054267*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"6.80178814505694`", ",", "7587457"}], "}"}]], "Output",
+ CellChangeTimes->{3.663306363191821*^9, 3.6656339508584104`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution 2", "Subsubtitle",
+ CellChangeTimes->{{3.6633076842927837`*^9, 3.663307696355501*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"n", "=", "12000"}], ";", "\n", 
+   RowBox[{"range", "=", 
+    RowBox[{"n", "*", "2"}]}], ";", "\n", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"minAnswer", "[", "i", "]"}], "=", "Infinity"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ";", "\n", 
+   RowBox[{
+    RowBox[{"dfs", "[", 
+     RowBox[{"num_", ",", "prod_", ",", "sum_", ",", "last_"}], "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "i", "}"}], ",", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"2", "\[LessEqual]", 
+          RowBox[{"prod", "-", "sum", "+", "num"}], "\[LessEqual]", "n"}], 
+         ",", 
+         RowBox[{
+          RowBox[{"minAnswer", "[", 
+           RowBox[{"prod", "-", "sum", "+", "num"}], "]"}], "=", 
+          RowBox[{"Min", "[", 
+           RowBox[{
+            RowBox[{"minAnswer", "[", 
+             RowBox[{"prod", "-", "sum", "+", "num"}], "]"}], ",", "prod"}], 
+           "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "last"}], ",", 
+         RowBox[{
+          RowBox[{"prod", "*", "i"}], "\[LessEqual]", "range"}], ",", 
+         RowBox[{"i", "++"}], ",", 
+         RowBox[{"dfs", "[", 
+          RowBox[{
+           RowBox[{"num", "+", "1"}], ",", 
+           RowBox[{"prod", "*", "i"}], ",", 
+           RowBox[{"sum", "+", "i"}], ",", "i"}], "]"}]}], "]"}]}]}], "]"}]}],
+    ";", "\n", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"dfs", "[", 
+      RowBox[{"1", ",", "first", ",", "first", ",", "first"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"first", ",", "2", ",", "range"}], "}"}]}], "]"}], ";", "\n", 
+   RowBox[{"Total", "[", 
+    RowBox[{"Union", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"minAnswer", "[", "i", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "2", ",", "n"}], "}"}]}], "]"}], "]"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.663307512819771*^9, 3.663307536812845*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3.012901754175798`", ",", "7587457"}], "}"}]], "Output",
+ CellChangeTimes->{3.663307567138093*^9, 3.665633959937951*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.6633087062530546`*^9, 3.6633087159097967`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"iMax", "=", "24000"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"mPSList", "=", 
+    RowBox[{"Array", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"2", "#"}], "&"}], ",", "iMax"}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mPSList", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "=", "0"}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"factor", "[", "0", "]"}], "=", "2"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"factor", "[", "i", "]"}], "=", 
+         RowBox[{"Range", "[", 
+          RowBox[{
+           RowBox[{"factor", "[", 
+            RowBox[{"i", "-", "1"}], "]"}], ",", 
+           RowBox[{"Floor", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"iMax", "/", 
+               RowBox[{"Product", "[", 
+                RowBox[{
+                 RowBox[{"factor", "[", "j", "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"j", ",", 
+                   RowBox[{"i", "-", "1"}]}], "}"}]}], "]"}]}], ")"}], "^", 
+             RowBox[{"(", 
+              RowBox[{"1", "/", 
+               RowBox[{"(", 
+                RowBox[{"n", "+", "1", "-", "i"}], ")"}]}], ")"}]}], "]"}]}], 
+          "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "n"}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"p", "=", 
+       RowBox[{"Product", "[", 
+        RowBox[{
+         RowBox[{"factor", "[", "i", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "n"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"k", "=", 
+       RowBox[{"n", "-", 
+        RowBox[{"Sum", "[", 
+         RowBox[{
+          RowBox[{"factor", "[", "i", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "n"}], "}"}]}], "]"}], "+", "p"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"mPSList", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], ">", "#2"}], ",", 
+           RowBox[{
+            RowBox[{"mPSList", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "=", "#2"}]}], "]"}], "&"}], ",", 
+        RowBox[{"Flatten", "/@", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "p"}], "}"}]}]}], "]"}], ";"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "2", ",", 
+       RowBox[{"Floor", "[", 
+        RowBox[{"Log", "[", 
+         RowBox[{"2", ",", "12000"}], "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Total", "[", 
+    RowBox[{"Union", "[", 
+     RowBox[{"mPSList", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", "12000"}], "]"}], "]"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6633084906769323`*^9, 3.6633085036238904`*^9}, {
+  3.6633085955721483`*^9, 3.6633086033422766`*^9}, {3.663309344403467*^9, 
+  3.663309448980626*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.2080715553407633`", ",", "7587457"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.663308508756157*^9, 3.6633086722510495`*^9, {3.6633093607495165`*^9, 
+   3.663309452624488*^9}, 3.6656339655292654`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4563, 142, 495, "Text"],
+Cell[CellGroupData[{
+Cell[5146, 166, 103, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5274, 171, 2709, 67, 374, "Input"],
+Cell[7986, 240, 161, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8196, 249, 101, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[8322, 254, 2318, 63, 412, "Input"],
+Cell[10643, 319, 160, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10852, 328, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[10981, 333, 3264, 90, 564, "Input"],
+Cell[14248, 425, 242, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,167 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5218,        159]
+NotebookOptionsPosition[      4592,        131]
+NotebookOutlinePosition[      4946,        147]
+CellTagsIndexPosition[      4903,        144]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Spiral primes", "Title"],
+ "\n",
+ StyleBox["Problem 58", "Subtitle"],
+ "\nStarting with 1 and spiralling anticlockwise in the following way, a \
+square spiral with side length 7 is formed.\n\n37 36 35 34 33 32 31\n38 17 16 \
+15 14 13 30\n39 18 5 4 3 12 29\n40 19 6 1 2 11 28\n41 20 7 8 9 10 27\n42 21 \
+22 23 24 25 26\n43 44 45 46 47 48 49\n\nIt is interesting to note that the \
+odd squares lie along the bottom right diagonal, but what is more interesting \
+is that 8 out of the 13 numbers lying along both diagonals are prime; that \
+is, a ratio of 8/13 \[TildeTilde] 62 %.If one complete new layer is wrapped \
+around the spiral above, a square spiral with side length 9 will be formed.If \
+this process is continued, what is the side length of the square spiral for \
+which the ratio of primes along both diagonals first falls below 10 %?"
+}], "Text",
+ CellChangeTimes->{{3.6310768330659122`*^9, 3.6310768389559207`*^9}, {
+  3.6808306768853507`*^9, 3.680830679251856*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6310768953370037`*^9, 3.631076908555023*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"n", "=", "1"}], ";", 
+   RowBox[{"ratio", "=", "1"}], ";", 
+   RowBox[{"numerator", "=", "0"}], ";", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{"ratio", "\[GreaterEqual]", "0.1"}], ",", 
+     RowBox[{
+      RowBox[{"n", "=", 
+       RowBox[{"n", "+", "2"}]}], ";", 
+      RowBox[{"numerator", "=", 
+       RowBox[{"numerator", "+", 
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"PrimeQ", "@", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"n", "^", "2"}], "-", "n", "+", "1"}], ",", 
+             RowBox[{
+              RowBox[{"n", "^", "2"}], "-", 
+              RowBox[{"2", "n"}], "+", "2"}], ",", 
+             RowBox[{
+              RowBox[{"n", "^", "2"}], "-", 
+              RowBox[{"3", "n"}], "+", "3"}]}], "}"}]}], ",", "True"}], 
+         "]"}]}]}], ";", 
+      RowBox[{"denominator", "=", 
+       RowBox[{
+        RowBox[{"2", "n"}], "-", "1"}]}], ";", 
+      RowBox[{"ratio", "=", 
+       RowBox[{"numerator", "/", "denominator"}]}]}]}], "]"}], ";", "n"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6310759105813074`*^9, 3.631075992032462*^9}, {
+  3.631076123704661*^9, 3.631076189919016*^9}, {3.631076258329119*^9, 
+  3.631076323341215*^9}, {3.631076357806266*^9, 3.6310764561014686`*^9}, {
+  3.6310765301345787`*^9, 3.631076532500582*^9}, {3.631076573144642*^9, 
+  3.6310765754346457`*^9}, {3.6310766752856245`*^9, 3.6310766775956283`*^9}, {
+  3.6310767612216034`*^9, 3.631076785641638*^9}, {3.631077652823823*^9, 
+  3.631077680712863*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.09684289394545884`", ",", "26241"}], "}"}]], "Output",
+ CellChangeTimes->{3.631077682942866*^9, 3.658722885925107*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.63107824939672*^9, 3.63107826975175*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"p", "=", "3"}], ";", 
+   RowBox[{"n", "=", "2"}], ";", 
+   RowBox[{"m", "=", "9"}], ";", "\n", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"p", "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "n"}], "+", "1"}], ")"}]}], ">", "0.1"}], ",", 
+     RowBox[{
+      RowBox[{"n", "+=", "2"}], ";", 
+      RowBox[{
+       RowBox[{"PrimeQ", "[", 
+        RowBox[{"m", "+=", "n"}], "]"}], "~", "If", "~", 
+       RowBox[{"p", "++"}], "~", "Do", "~", 
+       RowBox[{"{", "4", "}"}]}]}]}], "]"}], ";", "\n", 
+   RowBox[{"n", "+", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6310782734017553`*^9, 3.631078277130761*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.07557998309915051`", ",", "26241"}], "}"}]], "Output",
+ CellChangeTimes->{3.6310782810877666`*^9, 3.658722889135321*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1004, 16, 398, "Text"],
+Cell[CellGroupData[{
+Cell[1586, 40, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1713, 45, 1604, 40, 246, "Input"],
+Cell[3320, 87, 160, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3529, 96, 98, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3652, 101, 747, 21, 166, "Input"],
+Cell[4402, 124, 162, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

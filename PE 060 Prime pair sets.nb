@@ -1,0 +1,126 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3657,        117]
+NotebookOptionsPosition[      3219,         96]
+NotebookOutlinePosition[      3573,        112]
+CellTagsIndexPosition[      3530,        109]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Prime pair sets", "Title"],
+ "\n",
+ StyleBox["Problem 60", "Subtitle"],
+ "\nThe primes 3, 7, 109, and 673, are quite remarkable.By taking any two \
+primes and concatenating them in any order the result will always be \
+prime.For example, taking 7 and 109, both 7109 and 1097 are prime.The sum of \
+these four primes, 792, represents the lowest sum for a set of four primes \
+with this property.Find the lowest sum for a set of five primes for which any \
+two primes concatenate to produce another prime."
+}], "Text",
+ CellChangeTimes->{{3.6323037050587173`*^9, 3.6323037096387234`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6323037231207433`*^9, 3.632303732558758*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pp", "[", 
+     RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"FromDigits", "[", 
+     RowBox[{
+      RowBox[{"IntegerDigits", "@", "a"}], "~", "Join", "~", 
+      RowBox[{"IntegerDigits", "@", "b"}]}], "]"}]}], ";", "\n", 
+   RowBox[{"Total", "[", 
+    RowBox[{
+     RowBox[{"FindClique", "[", 
+      RowBox[{"Graph", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "<->", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "&"}], "/@", 
+        RowBox[{"Select", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Prime", "@", 
+            RowBox[{"Range", "@", 
+             RowBox[{"PrimePi", "@", "10000"}]}]}], "~", "Subsets", "~", 
+           RowBox[{"{", "2", "}"}]}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"PrimeQ", "[", 
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "~", "pp", "~", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&&", 
+            RowBox[{"PrimeQ", "[", 
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "~", "pp", "~", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "&"}]}], "]"}]}], 
+       "]"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.632300674362547*^9, 3.632300674362547*^9}, {
+  3.6323008151025724`*^9, 3.6323008331697545`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3.529157386594958`", ",", "26033"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6323006970012865`*^9, {3.632300829306703*^9, 3.632300856706663*^9}, 
+   3.658722864233227*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 613, 11, 207, "Text"],
+Cell[CellGroupData[{
+Cell[1195, 35, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1322, 40, 1653, 45, 276, "Input"],
+Cell[2978, 87, 213, 5, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

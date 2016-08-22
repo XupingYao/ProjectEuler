@@ -1,0 +1,327 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10421,        318]
+NotebookOptionsPosition[      9566,        282]
+NotebookOutlinePosition[      9920,        298]
+CellTagsIndexPosition[      9877,        295]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Singular integer right triangles", "Title"],
+ "\n",
+ StyleBox["Problem 75", "Subtitle"],
+ "\nIt turns out that 12 cm is the smallest length of wire that can be bent \
+to form an integer sided right angle triangle in exactly one way, but there \
+are many more examples.\n\n12 cm : (3, 4, 5)\n24 cm : (6, 8, 10)\n30 cm : (5, \
+12, 13)\n36 cm : (9, 12, 15)\n40 cm : (8, 15, 17)\n48 cm : (12, 16, 20)\n\nIn \
+contrast, some lengths of wire, like 20 cm, cannot be bent to form an integer \
+sided right angle triangle, and other lengths allow more than one solution to \
+be found; for example, using 120 cm it is possible to form exactly three \
+different integer sided right angle triangles.\n\n120 cm : (30, 40, 50), (20, \
+48, 52), (24, 45, 51)\n\nGiven that L is the length of the wire, for how many \
+values of L <= 1, 500, 000 can exactly one integer sided right angle triangle \
+be formed?"
+}], "Text",
+ CellChangeTimes->{{3.633164988555564*^9, 3.6331650164996114`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6331650208596177`*^9, 3.633165031182632*^9}}],
+
+Cell["Primitive Pythagorean Triple", "Text",
+ CellChangeTimes->{{3.6331651396722374`*^9, 3.633165143942243*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"flag", "=", 
+    RowBox[{"ConstantArray", "[", 
+     RowBox[{"0", ",", "1500000"}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"GCD", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"m", "^", "2"}], "-", 
+           RowBox[{"n", "^", "2"}]}], ",", 
+          RowBox[{"2", "m", " ", "n"}], ",", 
+          RowBox[{
+           RowBox[{"m", "^", "2"}], "+", 
+           RowBox[{"n", "^", "2"}]}]}], "]"}], "\[Equal]", "1"}], ",", 
+       RowBox[{
+        RowBox[{"flag", "[", 
+         RowBox[{"[", 
+          RowBox[{"k", " ", "2", "m", 
+           RowBox[{"(", 
+            RowBox[{"m", "+", "n"}], ")"}]}], "]"}], "]"}], "++"}]}], "]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"m", ",", "1", ",", 
+       RowBox[{"Floor", "[", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"1500000", "/", "2"}], "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"OddQ", "[", "m", "]"}], ",", "2", ",", "1"}], "]"}], ",", 
+       RowBox[{"Min", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1500000", "-", 
+            RowBox[{"2", 
+             RowBox[{"m", "^", "2"}]}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"2", "m"}], ")"}]}], ",", 
+         RowBox[{"m", "-", "1"}]}], "]"}], ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", 
+       RowBox[{"1500000", "/", 
+        RowBox[{"(", 
+         RowBox[{"2", "m", 
+          RowBox[{"(", 
+           RowBox[{"m", "+", "n"}], ")"}]}], ")"}]}]}], "}"}]}], "]"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Count", "[", 
+    RowBox[{"flag", ",", "1"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.633164388315872*^9, 3.633164661570285*^9}, 
+   3.633164750215412*^9, {3.6331648279015646`*^9, 3.633164839943581*^9}, 
+   3.6331648961796627`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"7.044405499504492`", ",", "161667"}], "}"}]], "Output",
+ CellChangeTimes->{3.633164809161497*^9, 3.6331648689506235`*^9, 
+  3.6331649193086996`*^9, 3.6587221603514166`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6331656908125124`*^9, 3.633165699981526*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"genPTunder", "[", 
+     RowBox[{"lim_Integer", "?", "Positive"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "prim", "}"}], ",", 
+      RowBox[{
+       RowBox[{"prim", "=", 
+        RowBox[{"Join", "@@", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"CoprimeQ", "[", 
+              RowBox[{"m", ",", "n"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"2", " ", "m", " ", "n"}], ",", 
+               RowBox[{
+                RowBox[{"m", "^", "2"}], "-", 
+                RowBox[{"n", "^", "2"}]}], ",", 
+               RowBox[{
+                RowBox[{"m", "^", "2"}], "+", 
+                RowBox[{"n", "^", "2"}]}]}], "}"}], ",", 
+             RowBox[{
+              RowBox[{"##", "&"}], "[", "]"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"m", ",", "2", ",", 
+             RowBox[{"Floor", "@", 
+              RowBox[{"Sqrt", "@", "lim"}]}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"n", ",", 
+             RowBox[{"1", "+", 
+              RowBox[{"m", "~", "Mod", "~", "2"}]}], ",", "m", ",", "2"}], 
+            "}"}]}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Union", "@@", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"Range", "[", 
+             RowBox[{"lim", "~", "Quotient", "~", 
+              RowBox[{"Max", "@", "#"}]}], "]"}], "~", "KroneckerProduct", 
+            "~", 
+            RowBox[{"{", 
+             RowBox[{"Sort", "@", "#"}], "}"}]}], "&"}], "/@", "prim"}], 
+         ")"}]}]}]}], "]"}]}], ";", "\n", 
+   RowBox[{"Count", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "&"}], "/@", 
+      RowBox[{"Tally", "@", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"Total", "/@", 
+          RowBox[{"genPTunder", "[", "750000", "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"#", "\[LessEqual]", "1500000"}], "&"}]}], "]"}]}]}], ",", 
+     "1"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6331655557073145`*^9, 3.6331655844453564`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.2033350667537936`", ",", "161667"}], "}"}]], "Output",
+ CellChangeTimes->{3.6331655944403753`*^9, 3.6587221753724155`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.633165996261941*^9, 3.6331660077949576`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], "\n", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"limit", "=", "1500000"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"mlimit", "=", 
+    RowBox[{"Floor", "[", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"1", "+", 
+          RowBox[{"2", " ", "limit"}]}], "]"}]}], ")"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"list", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "limit"}], "}"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"m", "=", "mlimit"}], ",", 
+     RowBox[{"m", "\[GreaterEqual]", "2"}], ",", 
+     RowBox[{"m", "--"}], ",", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"n", "=", 
+         RowBox[{"m", "-", "1"}]}], ",", 
+        RowBox[{"n", "\[GreaterEqual]", "1"}], ",", 
+        RowBox[{"n", "--"}], ",", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"GCD", "[", 
+              RowBox[{"m", ",", "n"}], "]"}], "\[NotEqual]", "1"}], "||", 
+            RowBox[{"EvenQ", "[", 
+             RowBox[{"m", "-", "n"}], "]"}]}], ",", 
+           RowBox[{"Continue", "[", "]"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"p", "=", 
+          RowBox[{"2", " ", "m", " ", 
+           RowBox[{"(", 
+            RowBox[{"m", "+", "n"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"++", 
+          RowBox[{"list", "[", 
+           RowBox[{"[", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"p", "*", "i"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{"Floor", "[", 
+                 RowBox[{"limit", "/", "p"}], "]"}]}], "}"}]}], "]"}], "]"}], 
+           "]"}]}], ";"}]}], "]"}], ";"}]}], "]"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Count", "[", 
+    RowBox[{"list", ",", "1"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6331658302121964`*^9, 3.633165831594198*^9}, 
+   3.6587221877232285`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.079693150366242`", ",", "161667"}], "}"}]], "Output",
+ CellChangeTimes->{3.6331658398932114`*^9, 3.6587221942836747`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 998, 16, 454, "Text"],
+Cell[CellGroupData[{
+Cell[1580, 40, 102, 1, 33, "Subsubtitle"],
+Cell[1685, 43, 112, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1822, 48, 2128, 61, 258, "Input"],
+Cell[3953, 111, 212, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4214, 121, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4341, 126, 2382, 66, 338, "Input"],
+Cell[6726, 194, 164, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6939, 203, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[7066, 208, 2306, 65, 334, "Input"],
+Cell[9375, 275, 163, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,148 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4180,        139]
+NotebookOptionsPosition[      3556,        111]
+NotebookOutlinePosition[      3910,        127]
+CellTagsIndexPosition[      3867,        124]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Pandigital multiples", "Title"],
+ "\n",
+ StyleBox["Problem 38", "Subtitle"],
+ "\nTake the number 192 and multiply it by each of 1, 2, and 3 :\n\n192\
+\[Times]1 = 192\n192\[Times]2 = 384\n192\[Times]3 = 576\n\nBy concatenating \
+each product we get the 1 to 9 pandigital, 192384576. We will call 192384576 \
+the concatenated product of 192 and (1, 2, 3)\n\nThe same can be achieved by \
+starting with 9 and multiplying by 1, 2, 3, 4, and 5, giving the pandigital, \
+918273645, which is the concatenated product of 9 and (1, 2, 3, 4, 5).\n\n\
+What is the largest 1 to 9 pandigital 9 - digit number that can be formed as \
+the concatenated product of an integer with (1, 2, ..., n) where n > 1?"
+}], "Text",
+ CellChangeTimes->{{3.6057529015318117`*^9, 3.605752943251198*^9}, {
+  3.6588080149643145`*^9, 3.65880802573072*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6057532541065707`*^9, 3.605753264120144*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"9183", ",", "9999"}], "]"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"100000", "+", "2"}], ")"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Union", "[", 
+        RowBox[{"IntegerDigits", "[", "#", "]"}], "]"}], "\[Equal]", 
+       RowBox[{"Range", "[", "9", "]"}]}], "&"}]}], "]"}], "//", "Max"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6057528218632545`*^9, 3.6057528738002253`*^9}, {
+  3.6057532965119963`*^9, 3.605753329985911*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0023027692532264997`", ",", "932718654"}], "}"}]], "Output",
+ CellChangeTimes->{3.605752874178247*^9, 3.60575333136799*^9, 
+  3.658724843596105*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.605753266300268*^9, 3.605753274291725*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"f", "=", 
+    RowBox[{
+     RowBox[{"Join", "@@", 
+      RowBox[{"IntegerDigits", "[", 
+       RowBox[{"#", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}]}], "]"}]}], "&"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"n", "=", "1*^4"}], ",", 
+     RowBox[{
+      RowBox[{"Union", "@", 
+       RowBox[{"f", "@", "n"}]}], "=!=", 
+      RowBox[{"Range", "@", "9"}]}], ",", 
+     RowBox[{"n", "--"}]}], "]"}], ";", 
+   RowBox[{"Row", "@", 
+    RowBox[{"f", "@", "n"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6057532756818047`*^9, 3.6057532773378997`*^9}, {
+  3.605753336858304*^9, 3.6057533401734934`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0037738958282727718`", ",", 
+   TemplateBox[{"9","3","2","7","1","8","6","5","4"},
+    "RowDefault"]}], "}"}]], "Output",
+ CellChangeTimes->{3.605753287339472*^9, 3.6057533414365664`*^9, 
+  3.658724849736515*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 849, 14, 360, "Text"],
+Cell[CellGroupData[{
+Cell[1431, 38, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1558, 43, 607, 17, 124, "Input"],
+Cell[2168, 62, 190, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2407, 72, 100, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2532, 77, 739, 22, 124, "Input"],
+Cell[3274, 101, 254, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

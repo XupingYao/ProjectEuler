@@ -1,0 +1,276 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8006,        266]
+NotebookOptionsPosition[      7561,        245]
+NotebookOutlinePosition[      7918,        261]
+CellTagsIndexPosition[      7875,        258]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Primes with runs", "Title"],
+ "\n",
+ StyleBox["Problem 111\n", "Subtitle"],
+ "Considering ",
+ Cell[BoxData[
+  FormBox["4", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "-digit primes containing repeated digits it is clear that they cannot all \
+be the same: ",
+ Cell[BoxData[
+  FormBox["1111", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is divisible by ",
+ Cell[BoxData[
+  FormBox["11", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox["2222", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is divisible by ",
+ Cell[BoxData[
+  FormBox["22", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and so on. But there are nine ",
+ Cell[BoxData[
+  FormBox["4", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "-digit primes containing three ones:\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+   "1117", ",", " ", "1151", ",", " ", "1171", ",", " ", "1181", ",", " ", 
+    "1511", ",", " ", "1811", ",", " ", "2111", ",", " ", "4111", ",", " ", 
+    "8111"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nWe shall say that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"M", 
+    RowBox[{"(", 
+     RowBox[{"n", ",", " ", "d"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " represents the maximum number of repeated digits for an n-digit prime \
+where d is the repeated digit, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"N", 
+    RowBox[{"(", 
+     RowBox[{"n", ",", " ", "d"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " represents the number of such primes, and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", 
+    RowBox[{"(", 
+     RowBox[{"n", ",", " ", "d"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " represents the sum of these primes.\n\nSo ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"M", 
+     RowBox[{"(", 
+      RowBox[{"4", ",", " ", "1"}], ")"}]}], " ", "=", " ", "3"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is the maximum number of repeated digits for a 4-digit prime where one is \
+the repeated digit, there are ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"N", 
+     RowBox[{"(", 
+      RowBox[{"4", ",", " ", "1"}], ")"}]}], " ", "=", " ", "9"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " such primes, and the sum of these primes is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", 
+     RowBox[{"(", 
+      RowBox[{"4", ",", " ", "1"}], ")"}]}], " ", "=", " ", "22275"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". It turns out that for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"d", " ", "=", " ", "0"}], ","}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " it is only possible to have ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"M", 
+     RowBox[{"(", 
+      RowBox[{"4", ",", " ", "0"}], ")"}]}], " ", "=", " ", "2"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " repeated digits, but there are ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"N", 
+     RowBox[{"(", 
+      RowBox[{"4", ",", " ", "0"}], ")"}]}], " ", "=", " ", "13"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " such cases.\n\nIn the same way we obtain the following results for ",
+ Cell[BoxData[
+  FormBox["4", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "-digit primes.\n\n\nFor ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"d", " ", "=", " ", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " to ",
+ Cell[BoxData[
+  FormBox["9", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", the sum of all ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", 
+    RowBox[{"(", 
+     RowBox[{"4", ",", " ", "d"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is ",
+ Cell[BoxData[
+  FormBox["273700", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nFind the sum of all ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", 
+    RowBox[{"(", 
+     RowBox[{"10", ",", " ", "d"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.6786882140936804`*^9, 3.678688375657709*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.678688381456278*^9, 3.678688390520105*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "x_", "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"list", "=", 
+       RowBox[{"{", "}"}]}], ";", 
+      RowBox[{"n", "=", "9"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"list", "\[Equal]", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{
+         RowBox[{"list", "=", 
+          RowBox[{"Select", "[", 
+           RowBox[{
+            RowBox[{"Map", "[", 
+             RowBox[{"FromDigits", ",", 
+              RowBox[{"Flatten", "[", 
+               RowBox[{
+                RowBox[{"Permutations", "/@", 
+                 RowBox[{"Map", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Table", "[", 
+                    RowBox[{"x", ",", 
+                    RowBox[{"{", "n", "}"}]}], "]"}], "~", "Join", "~", "#"}],
+                     "&"}], ",", 
+                   RowBox[{"Union", "[", 
+                    RowBox[{"Sort", "/@", 
+                    RowBox[{"Tuples", "[", 
+                    RowBox[{
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "9"}], "]"}], ",", 
+                    RowBox[{"10", "-", "n"}]}], "]"}]}], "]"}]}], "]"}]}], 
+                ",", "1"}], "]"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"IntegerLength", "[", "#", "]"}], "\[Equal]", "10"}], "&&", 
+              RowBox[{
+               RowBox[{"PrimeQ", "[", "#", "]"}], "\[Equal]", "True"}]}], 
+             "&"}]}], "]"}]}], ";", 
+         RowBox[{"n", "=", 
+          RowBox[{"n", "-", "1"}]}], ";"}]}], "]"}], ";", 
+      RowBox[{"Return", "[", "list", "]"}]}], ")"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Array", "[", 
+     RowBox[{"f", ",", "10", ",", "0"}], "]"}], "~", "Total", "~", "2"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6786874879858313`*^9, 3.678687494449142*^9}, {
+  3.678687548281269*^9, 3.678687610447029*^9}, {3.6786876538784647`*^9, 
+  3.678687832796309*^9}, {3.6786878714339247`*^9, 3.678687901781555*^9}, {
+  3.6786880160991964`*^9, 3.6786880643853626`*^9}, {3.6786881207390327`*^9, 
+  3.678688154742053*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.03727427170226531`", ",", "612407567715"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6786881503965673`*^9, 3.678688155389222*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4160, 144, 490, "Text"],
+Cell[CellGroupData[{
+Cell[4743, 168, 100, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4868, 173, 2491, 63, 450, "Input"],
+Cell[7362, 238, 171, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

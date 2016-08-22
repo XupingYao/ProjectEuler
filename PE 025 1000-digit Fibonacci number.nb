@@ -1,0 +1,216 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5365,        207]
+NotebookOptionsPosition[      4735,        179]
+NotebookOutlinePosition[      5089,        195]
+CellTagsIndexPosition[      5046,        192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["1000 - digit Fibonacci number", "Title"],
+ StyleBox["\nProblem 25", "Subtitle"],
+ "\nThe Fibonacci sequence is defined by the recurrence relation:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "n"], "=", 
+    RowBox[{
+     SubscriptBox["F", 
+      RowBox[{"n", "-", "1"}]], "+", 
+     SubscriptBox["F", 
+      RowBox[{"n", "-", "2"}]]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " , where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "1"], "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "2"], "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\nHence the first 12 terms will be:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "1"], "=", "1"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "2"], "=", "1"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "3"], "=", "2"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "4"], "=", "3"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "5"], "=", "5"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "6"], "=", "8"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "7"], "=", "13"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "8"], "=", "21"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "9"], "=", "34"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "10"], "=", "55"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "11"], "=", "89"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "12"], "=", "144"}], TraditionalForm]]],
+ "\nThe 12th term, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["F", "12"], TraditionalForm]]],
+ ", is the first term to contain three digits.\nWhat is the first term in the \
+Fibonacci sequence to contain 1000 digits?"
+}], "Text",
+ CellChangeTimes->{{3.6028258376614866`*^9, 3.602825896189834*^9}, {
+  3.658726777703768*^9, 3.6587269465841417`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6028259032712393`*^9, 3.6028259159119625`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{
+    RowBox[{"n", "=", "1"}], ";", 
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"IntegerLength", "[", 
+        RowBox[{"Fibonacci", "[", "n", "]"}], "]"}], "\[LessEqual]", "999"}], 
+      ",", 
+      RowBox[{"n", "++"}]}], "]"}], ";", "n"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.602825458941825*^9, 3.6028255386923866`*^9}, {
+  3.602825608549382*^9, 3.6028257772100286`*^9}, {3.6587267572923613`*^9, 
+  3.6587267624227448`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.020436400005017796`", ",", "4782"}], "}"}]], "Output",
+ CellChangeTimes->{3.6587267652328916`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6588049630109463`*^9, 3.658804971456085*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "+", "1"}], "&"}], ",", "1", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"IntegerLength", "[", 
+        RowBox[{"Fibonacci", "[", "#", "]"}], "]"}], "<", "1000"}], "&"}]}], 
+    "]"}], "]"}]}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.07516460031636857`", ",", "4782"}], "}"}]], "Output",
+ CellChangeTimes->{3.6588049741923165`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 2380, 94, 381, "Text"],
+Cell[CellGroupData[{
+Cell[2962, 118, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3091, 123, 670, 17, 184, "Input"],
+Cell[3764, 142, 140, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3953, 151, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4080, 156, 485, 14, 124, "Input"],
+Cell[4568, 172, 139, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

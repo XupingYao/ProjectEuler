@@ -1,0 +1,275 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8052,        266]
+NotebookOptionsPosition[      7047,        224]
+NotebookOutlinePosition[      7401,        240]
+CellTagsIndexPosition[      7358,        237]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Consecutive prime sum", "Title"],
+ "\n",
+ StyleBox["Problem 50", "Subtitle"],
+ "\nThe prime 41, can be written as the sum of six consecutive primes : \n41 \
+= 2 + 3 + 5 + 7 + 11 + 13\nThis is the longest sum of consecutive primes that \
+adds to a prime below one - hundred.\nThe longest sum of consecutive primes \
+below one - thousand that adds to a prime, contains 21 terms, and is equal to \
+953.\n\nWhich prime, below one - million, can be written as the sum of the \
+most consecutive primes?"
+}], "Text",
+ CellChangeTimes->{{3.6212202570303464`*^9, 3.6212202820223475`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6212202898106318`*^9, 3.6212202999469643`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Drop", "[", 
+       RowBox[{"#", ",", "1"}], "]"}], "&"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Prime", "[", "i", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "546"}], "}"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"!", 
+       RowBox[{"PrimeQ", "[", 
+        RowBox[{"Total", "[", "#", "]"}], "]"}]}], "&"}]}], "]"}], "//", 
+   "Tr"}], "]"}]], "Input",
+ CellChangeTimes->{{3.621219326250095*^9, 3.621219332032426*^9}, {
+  3.6212193799081573`*^9, 3.62121944324578*^9}, {3.621219491833559*^9, 
+  3.621219629711444*^9}, {3.6212196792932796`*^9, 3.6212197323553143`*^9}, {
+  3.6212197648621736`*^9, 3.621219782093159*^9}, {3.6212198468294344`*^9, 
+  3.6212198677343507`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00050377532133852`", ",", "997651"}], "}"}]], "Output",
+ CellChangeTimes->{{3.621219766303256*^9, 3.621219782843202*^9}, 
+   3.621219868144351*^9, 3.658723438130061*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.621220301708034*^9, 3.6212203114473686`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Drop", "[", 
+       RowBox[{"#", ",", "1"}], "]"}], "&"}], ",", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"NestWhile", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Append", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"NextPrime", "[", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", 
+               RowBox[{"-", "1"}], "]"}], "]"}], "]"}]}], "]"}], "&"}], ",", 
+         RowBox[{"{", "2", "}"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Total", "[", "#", "]"}], "<", "1000000"}], "&"}]}], "]"}],
+        ",", 
+       RowBox[{"-", "1"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"!", 
+       RowBox[{"PrimeQ", "[", 
+        RowBox[{"Total", "[", "#", "]"}], "]"}]}], "&"}]}], "]"}], "//", 
+   "Tr"}], "]"}]], "Input",
+ CellChangeTimes->{{3.621219950691428*^9, 3.6212199664000998`*^9}, {
+  3.6212200696524982`*^9, 3.621220159718199*^9}, {3.6212201909993877`*^9, 
+  3.6212202379975147`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.016939623368788626`", ",", "997651"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6212201225202603`*^9, 3.62122016509744*^9}, {
+   3.621220198303581*^9, 3.62122023845953*^9}, 3.6587234434203997`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.621220709230608*^9, 3.6212207183101273`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"p", "=", 
+    RowBox[{"Prime", "~", "Array", "~", "1000"}]}], ";", "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"f", "=", 
+    RowBox[{
+     RowBox[{"Min", "@", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Total", "@", 
+         RowBox[{"Thread", "@", 
+          RowBox[{"Partition", "[", 
+           RowBox[{"p", ",", "#", ",", "1"}], "]"}]}]}], ",", "PrimeQ"}], 
+       "]"}]}], "&"}]}], ";", "\n", "\[IndentingNewLine]", 
+   RowBox[{"i", "=", "501"}], ";", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"i", "+=", "2"}], "]"}], "<", "1*^6"}], "]"}], ";", "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Last", "@", 
+    RowBox[{"Cases", "[", 
+     RowBox[{
+      RowBox[{"Array", "[", 
+       RowBox[{"f", ",", "20", ",", 
+        RowBox[{"i", "-", "2"}]}], "]"}], ",", 
+      RowBox[{"a_", "/;", 
+       RowBox[{"a", "<", "1*^6"}]}]}], "]"}]}]}], "\n", "]"}]], "Input",
+ CellChangeTimes->{{3.6212203532396555`*^9, 3.62122039628389*^9}, 
+   3.6212205999123554`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.22184189608828583`", ",", "997651"}], "}"}]], "Output",
+ CellChangeTimes->{3.621220369821604*^9, 3.6212206034095554`*^9, 
+  3.6587234505608892`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t4", "Subsubtitle",
+ CellChangeTimes->{{3.6212211021509933`*^9, 3.6212211104014654`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"primeList", "=", 
+    RowBox[{"Most", "@", 
+     RowBox[{"First", "@", 
+      RowBox[{"Last", "@", 
+       RowBox[{"Reap", "[", 
+        RowBox[{"Module", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"n", "=", "1"}], ",", 
+            RowBox[{"sum", "=", "0"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"While", "[", 
+            RowBox[{
+             RowBox[{"sum", "<", 
+              RowBox[{"10", "^", "6"}]}], ",", 
+             RowBox[{"sum", "+=", 
+              RowBox[{"Sow", "[", 
+               RowBox[{"Prime", "[", 
+                RowBox[{"n", "++"}], "]"}], "]"}]}]}], "]"}], ";"}]}], "]"}], 
+        "]"}]}]}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", "=", "1"}], "}"}], ",", 
+     RowBox[{"NestWhile", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "-", 
+         RowBox[{"Prime", "[", 
+          RowBox[{"n", "++"}], "]"}]}], "&"}], ",", 
+       RowBox[{"Total", "[", "primeList", "]"}], ",", 
+       RowBox[{
+        RowBox[{"!", 
+         RowBox[{"PrimeQ", "[", "#", "]"}]}], "&"}]}], "]"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.62122107690755*^9, 3.6212210769095497`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0008513147195907303`", ",", "997651"}], "}"}]], "Output",
+ CellChangeTimes->{3.6212210797937145`*^9, 3.65872345479116*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 606, 11, 245, "Text"],
+Cell[CellGroupData[{
+Cell[1188, 35, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1317, 40, 858, 22, 124, "Input"],
+Cell[2178, 64, 211, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2438, 74, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2565, 79, 1097, 32, 162, "Input"],
+Cell[3665, 113, 238, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3952, 123, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4079, 128, 1087, 31, 244, "Input"],
+Cell[5169, 161, 190, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5408, 171, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5537, 176, 1315, 39, 296, "Input"],
+Cell[6855, 217, 164, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

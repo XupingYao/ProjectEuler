@@ -1,0 +1,308 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11655,        300]
+NotebookOptionsPosition[     10831,        265]
+NotebookOutlinePosition[     11188,        281]
+CellTagsIndexPosition[     11145,        278]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Red, green, and blue tiles", "Title"],
+ "\n",
+ StyleBox["Problem 117", "Subtitle"],
+ "\nUsing a combination of black square tiles and oblong tiles chosen from : \
+red tiles measuring two units, green tiles measuring three units, and blue \
+tiles measuring four units, it is possible to tile a row measuring five units \
+in length in exactly fifteen different ways.\n\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJztlcGOJUcRRZ9gw5JfYP/2sGXJ1ogPsMVgsRmkMRJi17/FP9Q/QReyWu0q
+qVRZdTPvzXjnKDyasbpDEXEqMn73wz+++9uvHo/HT795/+O77//1x2/fvv/3
+n3/7/o+/fP3p7z9+/fLXP33955cfv3z7ww+/fv+f/3n/7/fvP7/+/b8AAAAA
+AAAAAAAAAAAAAAAA8H/eYDj4mgt8zQW+5uKMlDtOoZXn83nn1/E1GHzNBb7m
+4owvpAyGJZoLfM0Fvuai6Ug9b0Oek3nuOBX6UhE7Z1WeEF94P5mnmK/y3puk
+PG5AnvN5Lu7PztfyeNgjec6qPCpfqnrs0sO9p/lS5bFL7+R9ailV81zcn50v
++xcb/lip8qh8qeqxSw/3nuZLlccuvZP3qaVUzXNxf3a+7F9s+GOlyqPyparH
+Lj3ce5ovVR679E7ep5ZSNc/F/dn5sn+x4Y+VKo/Kl6oeu/Rw72m+VHns0jt5
+n1pK1TwX92fny/7Fhj9WqjwqX6p67NLDvaf5UuWxS+/kfWopVfNc3J+dL/sX
+G/5YqfKofKnqsUsP957mS5XHLr2T96mlVM1zcX92vuxfbPhjpcqj8qWqxy49
+3HuaL1Ueu/RO3qeWUjXPxf3Z+bJ/seGPlSqPypeqHrv0cO9pvlR57NI7eZ9a
+StU8F/dn58v+xYY/Vqo8Kl+qeuzSw72n+VLlsUvv5H1qKVXzXNyfnS/7Fxv+
+WKnyqHyp6rFLD/ee5kuVxy69k/eppVTNc3F/dr7sX2z4Y6XKo/KlqscuPdx7
+mi9VHrv0Tt6nllI1z8X92fmyf7Hhj5Uqj8qXqh679HDvab5UeezSO3mfWkrV
+PBf3Z+fL/sWGP1aqPCpfqnrs0sO9p/lS5bFL7+R9ailV81zcn50v+xcb/lip
+8qh8qeqxSw/3nuZLlccuvZP3qaVUzXNxf3a+7F9s+GOlyqPyparHLj3ce5ov
+VR679E7ep5ZSNc/F/dn5sn+x4Y+VKo/Kl6oeu/Rw72m+VHns0jt5n1pK1TwX
+92fny/7Fhj9WqjwqX6p67NLDvaf5UuWxS+/kfWopVfNc3J+dL/sXG/5YqfKo
+fKnqsUsP957mS5XHLr2T96mlVM1zcX92vuxfbPhjpcqj8qWqxy493HuaL1Ue
+u/RO3qeWUjXPxf3Z+bJ/seGPlSqPypeqHrv0cO9pvlR57NI7eZ9aStU8F/dn
+58v+xYY/Vqo8Kl+qeuzSw72n+VLlsUvv5L1Jyts9yHMyz8X9UftSETtnVZ4Q
+X3g/maeYr/Lez0uBMaiWCMaAr7nA11xwpAJhieYCX3OBr7k4eaSeMJY7TvE1
+HnzNBb7m4o4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAowBsMB19zga+5wNdcnJFy
+xym08nw+7/w6vgaDr7nA11yc8YWUwbBEc4GvucDXXDQdqedtquZRcV7KGF8q
+qtaDrzF5VKT5ip1PCOd9fZbyuEFynuXxsMfnelRLZG9qyZ6z6vup6ov9OvZV
+dT72Ylp9JR8XVR67kVYpJ33Zm1qy56z6fqr6Yr+OfVWdj72YVl/Jx0WVx26k
+VcpJX/amluw5q76fqr7Yr2NfVedjL6bVV/JxUeWxG2mVctKXvakle86q76eq
+L/br2FfV+diLafWVfFxUeexGWqWc9GVvasmes+r7qeqL/Tr2VXU+9mJafSUf
+F1Ueu5FWKSd92Ztasues+n6q+mK/jn1VnY+9mFZfycdFlcdupFXKSV/2ppbs
+Oau+n6q+2K9jX1XnYy+m1VfycVHlsRtplXLSl72pJXvOqu+nqi/269hX1fnY
+i2n1lXxcVHnsRlqlnPRlb2rJnrPq+6nqi/069lV1PvZiWn0lHxdVHruRVikn
+fdmbWrLnrPp+qvpiv459VZ2PvZhWX8nHRZXHbqRVyklf9qaW7Dmrvp+qvtiv
+Y19V52MvptVX8nFR5bEbaZVy0pe9qSV7zqrvp6ov9uvYV9X52Itp9ZV8XFR5
+7EZapZz0ZW9qyZ6z6vup6ov9OvZVdT72Ylp9JR8XVR67kVYpJ33Zm1qy56z6
+fqr6Yr+OfVWdj72YVl/Jx0WVx26kVcpJX/amluw5q76fqr7Yr2NfVedjL6bV
+V/JxUeWxG2mVctKXvakle86q76eqL/br2FfV+diLafWVfFxUeexGWqWc9GVv
+asmes+r7qeqL/Tr2VXU+9mJafSUfF1Ueu5FWKSd92Ztasues+n6q+mK/jn1V
+nY+9mFZfycdFlcdupFXKSV/2ppbsOau+n6q+2K9jX1XnYy+m1VfycVHlsRtp
+lXLSl72pJXvOqu+nqi/269hX1fnYi2n1lXxcVHnsRlqlnPRlb2rJnrPq+6nq
+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
+AAAAAAAAAADgFfgfc8R0nw==
+     "], {{0, 185}, {567, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   DefaultBaseStyle->"ImageGraphics",
+   ImageSizeRaw->{567, 185},
+   PlotRange->{{0, 567}, {0, 185}}]], "Input"],
+ "\n\nHow many ways can a row measuring fifty units in length be tiled?\n\n\
+NOTE: This is related to Problem 116."
+}], "Text",
+ CellChangeTimes->{{3.6807786037252035`*^9, 3.6807786718319488`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6807791457978563`*^9, 3.680779155119503*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"n_", ",", "a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"SeriesCoefficient", "[", 
+     RowBox[{
+      RowBox[{"1", "/", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{
+          RowBox[{"z", "^", "a"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"z", "^", 
+               RowBox[{"(", 
+                RowBox[{"b", "-", "a", "+", "1"}], ")"}]}]}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "z"}], ")"}]}], ")"}]}]}], ")"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"z", ",", "0", ",", "n"}], "}"}]}], "]"}]}], ";", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"generating", " ", "function", " ", "of", " ", "A"}], "-", 
+     RowBox[{"restricted", " ", "composition"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"f", "[", 
+    RowBox[{"50", ",", "1", ",", "4"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.680776715400507*^9, 3.6807767810563774`*^9}, {
+  3.6807768570744877`*^9, 3.6807768625807066`*^9}, {3.6807769364453716`*^9, 
+  3.680776960085922*^9}, {3.6807769973686705`*^9, 3.6807770361040883`*^9}, {
+  3.6807781140374823`*^9, 3.680778116324145*^9}, {3.6807781511083045`*^9, 
+  3.6807781621009417`*^9}, {3.6807785467897854`*^9, 3.6807785742022104`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0013694347737971087`", ",", "100808458960497"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6807785775078897`*^9, {3.6807787180345483`*^9, 3.6807787211721687`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6807791593692884`*^9, 3.680779166659342*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"n_", "/;", 
+      RowBox[{"n", "<", "0"}]}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"f", "[", "n", "]"}], "=", "0"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", "0", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"g", "[", "0", "]"}], "=", "1"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"g", "[", "n", "]"}], "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"g", "[", 
+        RowBox[{"n", "-", "i"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "4"}], "}"}]}], "]"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"g", "[", "50", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6807790211124763`*^9, 3.6807791327221537`*^9}, 
+   3.6807795110800657`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00046276885106145553`", ",", "100808458960497"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.680779134321601*^9, {3.680779248286974*^9, 3.6807792521069975`*^9}, 
+   3.6807795161208496`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.680779549449812*^9, 3.680779563356338*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Part", "[", 
+   RowBox[{
+    RowBox[{"MatrixPower", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1", ",", "0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1", ",", "1", ",", "1"}], "}"}]}], "}"}], ",", 
+      "50"}], "]"}], ",", "4", ",", "4"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6807793607483015`*^9, 3.6807794317843866`*^9}, {
+  3.6807794635335846`*^9, 3.6807795208266225`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0001255383585326289`", ",", "100808458960497"}], "}"}]], "Output",
+ CellChangeTimes->{{3.680779427577463*^9, 3.6807794322381244`*^9}, {
+  3.6807794736557894`*^9, 3.6807795220432787`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 725},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5487, 96, 431, "Text"],
+Cell[CellGroupData[{
+Cell[6070, 120, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6197, 125, 1588, 40, 224, "Input"],
+Cell[7788, 167, 205, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8042, 177, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[8169, 182, 1092, 31, 224, "Input"],
+Cell[9264, 215, 233, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9546, 227, 100, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[9671, 232, 900, 23, 184, "Input"],
+Cell[10574, 257, 229, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

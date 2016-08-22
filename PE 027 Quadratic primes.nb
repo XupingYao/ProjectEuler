@@ -1,0 +1,260 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8009,        251]
+NotebookOptionsPosition[      7379,        223]
+NotebookOutlinePosition[      7733,        239]
+CellTagsIndexPosition[      7690,        236]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Quadratic primes", "Title"],
+ StyleBox["\nProblem 27", "Subtitle"],
+ "\nEuler discovered the remarkable quadratic formula :\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], "+", "n", "+", "41"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\nIt turns out that the formula will produce 40 primes for the consecutive \
+values n = 0 to 39. However, when n = 40, 402 + 40 + 41 = 40(40 + 1) + 41 is \
+divisible by 41, and certainly when n = 41, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["41", "2"], "+", "41", "+", "41"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is clearly divisible by 41.\n\nThe incredible formula  n\.b2 \[Minus] 79n \
++ 1601 was discovered, which produces 80 primes for the consecutive values n \
+= 0 to 79. The product of the coefficients, \[Minus]79 and 1601, is \
+\[Minus]126479.\nConsidering quadratics of the form:\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], "+", "an", "+", "b"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", where |a| < 1000 and |b| < 1000\n\nwhere |n| is the modulus/absolute \
+value of n\ne.g. |11| = 11 and |\[Minus]4| = 4\nFind the product of the \
+coefficients, a and b, for the quadratic expression that produces the maximum \
+number of primes for consecutive values of n, starting with n = 0."
+}], "Text",
+ CellChangeTimes->{{3.6030727924572935`*^9, 3.603072829559415*^9}, {
+  3.6587264387158413`*^9, 3.658726512628545*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6030728396719933`*^9, 3.603072851829689*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "n_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"n", "^", "2"}], "+", 
+      RowBox[{"A", " ", "n"}], "+", "B"}]}], " ", ";", 
+    RowBox[{"g", ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"n", "=", "0"}], ";", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"PrimeQ", "[", 
+          RowBox[{"f", "[", "n", "]"}], "]"}], ",", 
+         RowBox[{"n", "=", 
+          RowBox[{"n", "+", "1"}]}]}], "]"}], ";", "n"}], ")"}]}], ";", 
+    RowBox[{"b", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "0", ",", "1000"}], "}"}]}], "]"}], ",", 
+       "PrimeQ"}], "]"}]}], ";", 
+    RowBox[{"a", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"-", "1000"}], ",", "1000"}], "}"}]}], "]"}], ",", 
+       "OddQ"}], "]"}]}], ";", 
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ";", 
+       RowBox[{"gtemp", "=", "0"}], ";", 
+       RowBox[{"fact", "=", "0"}]}], ",", 
+      RowBox[{"i", "<", "1000"}], ",", 
+      RowBox[{
+       RowBox[{"i", "++"}], "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"j", "=", "1"}], ",", 
+         RowBox[{"j", "\[LessEqual]", "168"}], ",", 
+         RowBox[{"j", "++"}], ",", 
+         RowBox[{
+          RowBox[{"A", "=", 
+           RowBox[{"a", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", 
+          RowBox[{"B", "=", 
+           RowBox[{"b", "[", 
+            RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"g", ">", "gtemp"}], ",", 
+            RowBox[{
+             RowBox[{"gtemp", "=", "g"}], ";", 
+             RowBox[{"fact", "=", 
+              RowBox[{"A", " ", "B"}]}]}]}], "]"}]}]}], "]"}]}]}], "]"}], ";",
+     "fact"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.603073472618196*^9, 3.603073507038165*^9}, {
+  3.6587265289496346`*^9, 3.6587265519219284`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.0853093756379157`", ",", 
+   RowBox[{"-", "59231"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6030735600041943`*^9, 3.6587265585323715`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6030735696037436`*^9, 3.603073581874445*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "0", ",", "1000"}], "}"}]}], "]"}], ",", 
+       "PrimeQ"}], "]"}]}], ";", 
+    RowBox[{"a", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"-", "1000"}], ",", "1000"}], "}"}]}], "]"}], ",", 
+       "OddQ"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"list", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"b", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "a", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", 
+         RowBox[{"Length", "[", "b", "]"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"{", 
+       RowBox[{"a_", ",", "b_"}], "}"}], "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"n", "=", "0"}], ",", 
+         RowBox[{"PrimeQ", "[", 
+          RowBox[{
+           RowBox[{"n", "^", "2"}], "+", 
+           RowBox[{"a", " ", "n"}], "+", "b"}], "]"}], ",", 
+         RowBox[{"n", "++"}]}], "]"}], ";", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", 
+         RowBox[{"a", " ", "b"}]}], "}"}]}], ")"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Last", "@", 
+     RowBox[{"Sort", "[", 
+      RowBox[{"f", "/@", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"list", ",", "1"}], "]"}]}], "]"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.603073597974366*^9, 3.603073648959282*^9}, 
+   3.6587265727333164`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9291367452065793`", ",", 
+   RowBox[{"{", 
+    RowBox[{"71", ",", 
+     RowBox[{"-", "59231"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.603073669539459*^9, 3.658726587294299*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1508, 32, 419, "Text"],
+Cell[CellGroupData[{
+Cell[2090, 56, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2217, 61, 2388, 69, 474, "Input"],
+Cell[4608, 132, 182, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4839, 142, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4966, 147, 2152, 64, 296, "Input"],
+Cell[7121, 213, 230, 6, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

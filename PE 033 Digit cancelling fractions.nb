@@ -1,0 +1,115 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3391,        106]
+NotebookOptionsPosition[      2953,         85]
+NotebookOutlinePosition[      3307,        101]
+CellTagsIndexPosition[      3264,         98]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Digit canceling fractions", "Title"],
+ "\n",
+ StyleBox["Problem 33", "Subtitle"],
+ "\nThe fraction 49/98 is a curious fraction, as an inexperienced \
+mathematician in attempting to simplify it may incorrectly believe that 49/98 \
+= 4/8, which is correct, is obtained by cancelling the 9 s.\nWe shall \
+consider fractions like, 30/50 = 3/5, to be trivial examples.\nThere are \
+exactly four non - trivial examples of this type of fraction, less than one \
+in value, and containing two digits in the numerator and denominator.\nIf the \
+product of these four fractions is given in its lowest common terms, find the \
+value of the denominator."
+}], "Text",
+ CellChangeTimes->{{3.604299838742054*^9, 3.604299875276144*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6042998797634*^9, 3.6042998918780932`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Apply", "[", 
+   RowBox[{"Times", ",", 
+    RowBox[{"Apply", "[", 
+     RowBox[{"Divide", ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}], "/.", 
+       RowBox[{"Solve", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            RowBox[{
+             RowBox[{"10", "x"}], "+", "z"}], 
+            RowBox[{
+             RowBox[{"10", "z"}], "+", "y"}]], "\[Equal]", 
+           FractionBox["x", "y"]}], "&&", 
+          RowBox[{"0", "<", 
+           FractionBox["x", "y"], "<", "1"}], "&&", 
+          RowBox[{"1", "\[LessEqual]", "x", "\[LessEqual]", "9"}], "&&", 
+          RowBox[{"1", "\[LessEqual]", "y", "\[LessEqual]", "9"}], "&&", 
+          RowBox[{"1", "\[LessEqual]", "z", "\[LessEqual]", "9"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "Integers"}], 
+        "]"}]}], ",", 
+      RowBox[{"{", "1", "}"}]}], "]"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.60429972624862*^9, 3.6042998034960384`*^9}, {
+  3.658725235713743*^9, 3.658725237493863*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.004062704204342902`", ",", 
+   FractionBox["1", "100"]}], "}"}]], "Output",
+ CellChangeTimes->{3.6042998048301144`*^9, 3.658725240814089*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 746, 13, 264, "Text"],
+Cell[CellGroupData[{
+Cell[1328, 37, 100, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1453, 42, 1286, 33, 287, "Input"],
+Cell[2742, 77, 183, 4, 79, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

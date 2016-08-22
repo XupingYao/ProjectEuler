@@ -1,0 +1,303 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8649,        294]
+NotebookOptionsPosition[      7830,        259]
+NotebookOutlinePosition[      8184,        275]
+CellTagsIndexPosition[      8141,        272]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Convergents of e", "Title"],
+ "\n",
+ StyleBox["Problem 65", "Subtitle"],
+ "\nThe square root of 2 can be written as an infinite continued fraction.\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["2"], "=", 
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", 
+        RowBox[{"2", "+", 
+         FractionBox["1", 
+          RowBox[{"2", "+", 
+           FractionBox["1", 
+            RowBox[{
+             RowBox[{"2", "+"}], "..."}]]}]]}]]}]]}]}], TraditionalForm]]],
+ "\nThe infinite continued fraction can be ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"written", ",", 
+    RowBox[{
+     SqrtBox["2"], "=", 
+     RowBox[{"[", 
+      RowBox[{"1", ";", 
+       RowBox[{"(", "2", ")"}]}], "]"}]}]}], TraditionalForm]]],
+ ",(2)(2) indicates that 2 repeats ad infinitum. In a similar ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"way", ",", 
+    RowBox[{
+     SqrtBox["23"], "=", 
+     RowBox[{"[", 
+      RowBox[{"4", ";", 
+       RowBox[{"(", 
+        RowBox[{"1", ",", "3", ",", "1", ",", "8"}], ")"}]}], "]"}]}]}], 
+   TraditionalForm]]],
+ ".\nIt turns out that the sequence of partial values of continued fractions \
+for square roots provide the best rational approximations. Let us consider \
+the convergents for ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["2"], TraditionalForm]]],
+ ".\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", "2"]}], "=", 
+    FractionBox["3", "2"]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", "2"]}]]}], "=", 
+    FractionBox["7", "5"]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", 
+        RowBox[{"2", "+", 
+         FractionBox["1", "2"]}]]}]]}], "=", 
+    FractionBox["17", "12"]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", 
+        RowBox[{"2", "+", 
+         FractionBox["1", 
+          RowBox[{"2", "+", 
+           FractionBox["1", "2"]}]]}]]}]]}], "=", 
+    FractionBox["41", "29"]}], TraditionalForm]]],
+ "\nHence the sequence of the first ten convergents for ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["2"], TraditionalForm]]],
+ "are:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", ",", 
+    FractionBox["3", "2"], ",", 
+    FractionBox["7", "5"], ",", 
+    FractionBox["17", "12"], ",", 
+    FractionBox["41", "29"], ",", 
+    FractionBox["99", "70"], ",", 
+    FractionBox["239", "169"], ",", 
+    FractionBox["577", "408"], ",", 
+    FractionBox["1393", "985"], ",", 
+    FractionBox["3363", "2378"], ",", "..."}], TraditionalForm]]],
+ "\nWhat is most surprising is that the important mathematical constant,\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"e", "=", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{"2", ";", "1"}], ",", "2", ",", "1", ",", "1", ",", "4", ",", 
+      "1", ",", "1", ",", "6", ",", "1", ",", "...", ",", "1", ",", 
+      RowBox[{"2", "k"}], ",", "1", ",", "..."}], "]"}]}], TraditionalForm]]],
+ ".\nThe first ten terms in the sequence of convergents for e are:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", ",", "3", ",", 
+    FractionBox["8", "3"], ",", 
+    FractionBox["11", "4"], ",", 
+    FractionBox["19", "7"], ",", 
+    FractionBox["87", "32"], ",", 
+    FractionBox["106", "39"], ",", 
+    FractionBox["193", "71"], ",", 
+    FractionBox["1264", "465"], ",", 
+    FractionBox["1457", "536"], ",", "..."}], TraditionalForm]]],
+ "\nThe sum of digits in the numerator of the 10th convergent is 1+4+5+7=17.\n\
+\nFind the sum of digits in the numerator of the 100th convergent of the \
+continued fraction for e."
+}], "Text",
+ CellChangeTimes->{{3.6324828551840906`*^9, 3.632483493522005*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.632483505012021*^9, 3.6324835143990355`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"IntegerDigits", "[", 
+    RowBox[{"Numerator", "[", 
+     RowBox[{"Last", "[", 
+      RowBox[{"Convergents", "[", 
+       RowBox[{
+        RowBox[{"Exp", "[", "1", "]"}], ",", "100"}], "]"}], "]"}], "]"}], 
+    "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.632481003831803*^9, 3.6324810646558976`*^9}, {
+  3.63248114713402*^9, 3.63248115428603*^9}, {3.6324811977265825`*^9, 
+  3.632481213206604*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0007506736961427974`", ",", "272"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.632481020132826*^9, 3.6324811546660304`*^9, {3.6324812135966043`*^9, 
+   3.632481232694634*^9}, 3.6324836984893327`*^9, {3.658722558367922*^9, 
+   3.6587225616381392`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.63248370361334*^9, 3.632483714670356*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"IntegerDigits", "[", 
+    RowBox[{"Numerator", "[", 
+     RowBox[{"FromContinuedFraction", "[", 
+      RowBox[{"ContinuedFraction", "[", 
+       RowBox[{
+        RowBox[{"Exp", "[", "1", "]"}], ",", "100"}], "]"}], "]"}], "]"}], 
+    "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.6324833077215834`*^9, {3.632483667939285*^9, 3.6324836903853197`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00025060470144683587`", ",", "272"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6324833085805845`*^9, {3.6324836763582993`*^9, 3.63248369080532*^9}, 
+   3.6587225668284984`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.632484551383296*^9, 3.6324845595733075`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"F", "[", "1", "]"}], "=", "2"}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"F", "[", "2", "]"}], "=", "3"}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"F", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"F", "[", "n", "]"}], "=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{"n", ",", "3"}], "]"}], "\[Equal]", "0"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", " ", 
+           RowBox[{"n", "/", "3"}]}], ")"}], " ", 
+         RowBox[{"F", "[", 
+          RowBox[{"n", "-", "1"}], "]"}]}], "+", 
+        RowBox[{"F", "[", 
+         RowBox[{"n", "-", "2"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"F", "[", 
+         RowBox[{"n", "-", "1"}], "]"}], "+", 
+        RowBox[{"F", "[", 
+         RowBox[{"n", "-", "2"}], "]"}]}]}], "]"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Total", "[", 
+    RowBox[{"IntegerDigits", "[", 
+     RowBox[{"F", "[", "100", "]"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6324845326552677`*^9, 3.6324845365452733`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0005810379767333919`", ",", "272"}], "}"}]], "Output",
+ CellChangeTimes->{3.632484539765278*^9, 3.6587225699987283`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 3917, 127, 652, "Text"],
+Cell[CellGroupData[{
+Cell[4499, 151, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4626, 156, 491, 12, 86, "Input"],
+Cell[5120, 170, 293, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5462, 182, 99, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5586, 187, 443, 11, 162, "Input"],
+Cell[6032, 200, 219, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6300, 211, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6427, 216, 1210, 34, 184, "Input"],
+Cell[7640, 252, 162, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

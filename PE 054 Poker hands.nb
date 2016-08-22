@@ -1,0 +1,286 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10121,        277]
+NotebookOptionsPosition[      9676,        256]
+NotebookOutlinePosition[     10032,        272]
+CellTagsIndexPosition[      9989,        269]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Poker hands", "Title"],
+ "\n",
+ StyleBox["Problem 54", "Subtitle"],
+ "\nIn the card game poker, a hand consists of five cards and are ranked, \
+from lowest to highest, in the following way :\n High Card : Highest value \
+card.\n One Pair : Two cards of the same value.\n Two Pairs : Two different \
+pairs.\n Three of a Kind : Three cards of the same value.\n Straight : All \
+cards are consecutive values.\n Flush : All cards of the same suit.\n Full \
+House : Three of a kind and a pair.\n Four of a Kind : Four cards of the same \
+value.\n Straight Flush : All cards are consecutive values of same suit.\n \
+Royal Flush : Ten, Jack, Queen, King, Ace, in same suit.\n The cards are \
+valued in the order : 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace.\n \
+If two players have the same ranked hands then the rank made up of the \
+highest value wins; for example, a pair of eights beats a pair of fives (see \
+example 1 below).But if two ranks tie, for example, both players have a pair \
+of queens, then highest cards in each hand are compared (see example 4 \
+below); if the highest cards tie then the next highest cards are compared, \
+and so on.\n Consider the following five hands dealt to two players :\n ",
+ Cell[BoxData[GridBox[{
+    {"Hand", 
+     RowBox[{"Player", " ", "1"}], 
+     RowBox[{"Player", " ", "2"}], "Winner"},
+    {"1", 
+     RowBox[{
+     "5", "H", " ", "5", "C", " ", "6", "S", " ", "7", "S", " ", "KD"}], 
+     RowBox[{
+     "2", "C", " ", "3", "S", " ", "8", "S", " ", "8", "D", " ", "TD"}], 
+     RowBox[{"Player", " ", "2"}]},
+    {"\[SpanFromAbove]", 
+     RowBox[{"Pair", " ", "of", " ", "Fives"}], 
+     RowBox[{"Pair", " ", "of", " ", "Eights"}], "\[SpanFromAbove]"},
+    {"2", 
+     RowBox[{"5", "D", " ", "8", "C", " ", "9", "S", " ", "JS", " ", "AC"}], 
+     RowBox[{
+     "2", "C", " ", "5", "C", " ", "7", "D", " ", "8", "S", " ", "QH"}], 
+     RowBox[{"Player", " ", "1"}]},
+    {"\[SpanFromAbove]", 
+     RowBox[{"Highest", " ", "card", " ", "Ace"}], 
+     RowBox[{"Highest", " ", "card", " ", "Queen"}], "\[SpanFromAbove]"},
+    {"3", 
+     RowBox[{"2", "D", " ", "9", "C", " ", "AS", " ", "AH", " ", "AC"}], 
+     RowBox[{"3", "D", " ", "6", "D", " ", "7", "D", " ", "TD", " ", "QD"}], 
+     RowBox[{"Player", " ", "2"}]},
+    {"\[SpanFromAbove]", 
+     RowBox[{"Three", " ", "Aces"}], 
+     RowBox[{"Flush", " ", "with", " ", "Diamonds"}], "\[SpanFromAbove]"},
+    {"4", 
+     RowBox[{"4", "D", " ", "6", "S", " ", "9", "H", " ", "QH", " ", "QC"}], 
+     RowBox[{"3", "D", " ", "6", "D", " ", "7", "H", " ", "QD", " ", "QS"}], 
+     RowBox[{"Player", " ", "1"}]},
+    {"\[SpanFromAbove]", 
+     RowBox[{
+      RowBox[{"Pair", " ", "of", " ", "Queens"}], "\[IndentingNewLine]", 
+      RowBox[{"Highest", " ", "card", " ", "Nine"}]}], 
+     RowBox[{
+      RowBox[{"Pair", " ", "of", " ", "Queens"}], "\n", 
+      RowBox[{"Highest", " ", "card", " ", "Seven"}]}], "\[SpanFromAbove]"},
+    {"5", 
+     RowBox[{
+     "2", "H", " ", "2", "D", " ", "4", "C", " ", "4", "D", " ", "4", "S"}], 
+     RowBox[{
+     "3", "C", " ", "3", "D", " ", "3", "S", " ", "9", "S", " ", "9", "D"}], 
+     RowBox[{"Player", " ", "1"}]},
+    {"\[SpanFromAbove]", 
+     RowBox[{
+      RowBox[{"Full", " ", "House"}], "\n", 
+      RowBox[{"With", " ", "Three", " ", "Fours"}]}], 
+     RowBox[{
+      RowBox[{"Full", " ", "House"}], "\n", 
+      RowBox[{"with", " ", "Three", " ", "Threes"}]}], "\[SpanFromAbove]"}
+   }]],
+  TextAlignment->Center],
+ "\nThe file, poker.txt, contains one - thousand random hands dealt to two \
+players.Each line of the file contains ten cards (separated by a single \
+space) : the first five are Player 1' s cards and the last five are Player 2' \
+s cards.You can assume that all hands are valid (no invalid characters or \
+repeated cards), each player' s hand is in no specific order, and in each \
+hand there is a clear winner.\nHow many hands does Player 1 win?"
+}], "Text",
+ CellChangeTimes->{{3.632128073537513*^9, 3.6321280806175227`*^9}, {
+   3.6321281148075924`*^9, 3.632128206142744*^9}, {3.632128239964817*^9, 
+   3.632128265089859*^9}, 3.6321282962429295`*^9, {3.6321283800590677`*^9, 
+   3.632128670136383*^9}, {3.632128752285502*^9, 3.632128754275505*^9}, {
+   3.6321288180495977`*^9, 3.632128915002409*^9}, 3.6321290180885625`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.632129760559286*^9, 3.6321297808163157`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"dat", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<PE 054.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], ";", 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"rls1", "=", 
+    RowBox[{"Thread", "[", 
+     RowBox[{
+      RowBox[{"Characters", "@", "\"\<23456789TJQKA\>\""}], "\[Rule]", 
+      RowBox[{"Range", "[", 
+       RowBox[{"2", ",", "14"}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]",
+    "\n", 
+   RowBox[{"dat", "=", 
+    RowBox[{
+     RowBox[{"Characters", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "~", "Partition", "~", "5"}], "&"}], "/@", "dat"}], 
+      "]"}], "/.", "rls1"}]}], ";", "\[IndentingNewLine]", "\n", 
+   RowBox[{"SetAttributes", "[", 
+    RowBox[{"h", ",", "Orderless"}], "]"}], ";", 
+   RowBox[{"dat", "=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{"h", ",", "dat", ",", 
+      RowBox[{"{", "2", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", "\n", 
+   RowBox[{"f1", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Union", "@", 
+       RowBox[{"Differences", "[", 
+        RowBox[{"List", "@@", 
+         RowBox[{"#1", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}]}], "]"}]}], "\[Equal]", 
+      RowBox[{"{", "1", "}"}]}], "&"}]}], ";", "\n", 
+   RowBox[{"f2", "=", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"#2", ",", 
+       RowBox[{"Max", "@@", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "1"}], "]"}], "]"}]}]}], "}"}], "&"}]}], ";", 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"rls2", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"w", ":", 
+        RowBox[{
+         RowBox[{"h", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"_", ",", "t_"}], "}"}], ".."}], "]"}], "?", "f1"}]}], 
+       "\[RuleDelayed]", 
+       RowBox[{"f2", "[", 
+        RowBox[{"w", ",", "9"}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"h", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a_", ",", "_"}], "}"}], ".."}], ",", "_"}], "]"}], 
+       "\[RuleDelayed]", 
+       RowBox[{"{", 
+        RowBox[{"8", ",", "a"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"w", ":", 
+        RowBox[{"h", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"a_", "|", "b_"}], ",", "_"}], "}"}], ".."}], "]"}]}], 
+       "\[RuleDelayed]", 
+       RowBox[{"f2", "[", 
+        RowBox[{"w", ",", "7"}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"w", ":", 
+        RowBox[{"h", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"_", ",", "t_"}], "}"}], ".."}], "]"}]}], "\[RuleDelayed]", 
+       RowBox[{"f2", "[", 
+        RowBox[{"w", ",", "6"}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"w_h", "?", "f1"}], "\[RuleDelayed]", 
+       RowBox[{"f2", "[", 
+        RowBox[{"w", ",", "5"}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"h", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a_", ",", "_"}], "}"}], ".."}], ",", "_", ",", "_"}], 
+        "]"}], "\[RuleDelayed]", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "a"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"h", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"a_", "|", "b_"}], ",", "_"}], "}"}], ".."}], ",", "_"}], 
+        "]"}], "\[RuleDelayed]", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", 
+         RowBox[{"a", "~", "Max", "~", "b"}]}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"h", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a_", ",", "_"}], "}"}], ".."}], ",", "_", ",", "_", ",", 
+         "_"}], "]"}], "\[RuleDelayed]", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "a"}], "}"}]}], ",", 
+      RowBox[{"w_h", "\[RuleDelayed]", 
+       RowBox[{"f2", "[", 
+        RowBox[{"w", ",", "1"}], "]"}]}]}], "}"}]}], ";", 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"Count", "[", 
+    RowBox[{
+     RowBox[{"OrderedQ", "/@", 
+      RowBox[{"(", 
+       RowBox[{"dat", "/.", "rls2"}], ")"}]}], ",", "False"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.632129038717222*^9, 3.632129038717222*^9}, 
+   3.6321297258922353`*^9, {3.658720940878126*^9, 3.65872097784705*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.13799081743319203`", ",", "376"}], "}"}]], "Output",
+ CellChangeTimes->{3.632129793851334*^9, 3.658720980504659*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{120, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 4325, 84, 838, "Text"],
+Cell[CellGroupData[{
+Cell[4907, 108, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5034, 113, 4453, 134, 590, "Input"],
+Cell[9490, 249, 158, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

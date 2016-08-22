@@ -1,0 +1,182 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5082,        173]
+NotebookOptionsPosition[      4269,        138]
+NotebookOutlinePosition[      4626,        154]
+CellTagsIndexPosition[      4583,        151]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Large non - Mersenne prime", "Title"],
+ "\n",
+ StyleBox["Problem 97", "Subtitle"],
+ "\nThe first known prime found to exceed one million digits was discovered \
+in 1999, and is a Mersenne prime of the form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["2", "6972593"], "\[Minus]", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " ; it contains exactly 2, 098, 960 digits.Subsequently other Mersenne \
+primes, of the form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["2", "p"], "\[Minus]", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " , have been found which contain more digits.\n\nHowever, in 2004 there was \
+found a massive non - Mersenne prime which contains 2, 357, 207 digits : ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"28433", "\[Times]", 
+     SuperscriptBox["2", "7830457"]}], "+", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nFind the last ten digits of this prime number."
+}], "Text",
+ CellChangeTimes->{{3.656063058364018*^9, 3.6560631550940795`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6560634905347476`*^9, 3.656063499861083*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"FromDigits", "[", 
+   RowBox[{"Take", "[", 
+    RowBox[{
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{
+       RowBox[{"28433", "\[Times]", 
+        SuperscriptBox["2", "7830457"]}], "+", "1"}], "]"}], ",", 
+     RowBox[{"-", "10"}]}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6560628530019884`*^9, 3.6560628953741465`*^9}, {
+   3.656062983430572*^9, 3.656063011946203*^9}, {3.6560631681990757`*^9, 
+   3.656063175719083*^9}, 3.656063406784023*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.290099603251988`", ",", "8739992577"}], "}"}]], "Output",
+ CellChangeTimes->{3.656063013396203*^9, 3.6560631773594995`*^9, 
+  3.6587216819814525`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.656063478914782*^9, 3.6560634879285383`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Nest", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Mod", "[", 
+          RowBox[{
+           RowBox[{"2", "#"}], ",", 
+           RowBox[{"10", "^", "10"}]}], "]"}], "&"}], ",", "1", ",", 
+        "7830457"}], "]"}], "\[Times]", "28433"}], "+", "1"}], ",", 
+    RowBox[{"10", "^", "10"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.656063231958694*^9, 3.6560632447787075`*^9}, {
+  3.656063274986905*^9, 3.6560634338426256`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.2572889189956653`", ",", "8739992577"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6560633486851053`*^9, 3.6560633722572556`*^9}, {
+   3.6560634265749874`*^9, 3.6560634428742976`*^9}, 3.658721686351756*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.6560637628462324`*^9, 3.6560637711504297`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"28433", " ", 
+      RowBox[{"PowerMod", "[", 
+       RowBox[{"2", ",", "7830457", ",", 
+        RowBox[{"10", "^", "10"}]}], "]"}]}], "+", "1"}], ",", 
+    RowBox[{"10", "^", "10"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.656063772590431*^9, 3.6560637989097376`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.000021952857805923054`", ",", "8739992577"}], "}"}]], "Output",
+ CellChangeTimes->{3.65606379971974*^9, 3.658721689041926*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 581},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1085, 28, 268, "Text"],
+Cell[CellGroupData[{
+Cell[1668, 52, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1795, 57, 522, 12, 49, "Input"],
+Cell[2320, 71, 192, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2561, 81, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2688, 86, 570, 16, 48, "Input"],
+Cell[3261, 104, 246, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3556, 114, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3685, 119, 385, 10, 48, "Input"],
+Cell[4073, 131, 168, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

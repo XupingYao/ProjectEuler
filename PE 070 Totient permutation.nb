@@ -1,0 +1,155 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4965,        146]
+NotebookOptionsPosition[      4526,        125]
+NotebookOutlinePosition[      4880,        141]
+CellTagsIndexPosition[      4837,        138]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Totient permutation", "Title"],
+ "\n",
+ StyleBox["Problem 70", "Subtitle"],
+ "\nEuler' s Totient function, \[CurlyPhi] (n)[sometimes called the phi \
+function], is used to determine the number of positive numbers less than or \
+equal to n which are relatively prime to n.For example, as 1, 2, 4, 5, 7, and \
+8, are all less than nine and relatively prime to nine, \[CurlyPhi] (9) = 6.\n\
+The number 1 is considered to be relatively prime to every positive number, \
+so \[CurlyPhi] (1) = 1.\n\nInterestingly, \[CurlyPhi] (87109) = 79180, and it \
+can be seen that 87109 is a permutation of 79180.\n\nFind the value of n, 1 < \
+n < 107, for which \[CurlyPhi] (n) is a permutation of n and the ratio n/\
+\[CurlyPhi] (n) produces a minimum."
+}], "Text",
+ CellChangeTimes->{{3.6329051825052156`*^9, 3.6329051864652214`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6329052095302076`*^9, 3.632905220212819*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{"Numerator", "[", 
+   RowBox[{"Min", "[", 
+    RowBox[{"ParallelMap", "[", 
+     RowBox[{
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], " ", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "-", "1"}], ")"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "-", "1"}], ")"}]}]], "&"}], ",", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Flatten", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Prime", "[", "i", "]"}], ",", 
+              RowBox[{"Prime", "[", "j", "]"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"PrimePi", "[", 
+               RowBox[{"Sqrt", "[", 
+                RowBox[{"10", "^", "7"}], "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", 
+              RowBox[{"i", "+", "1"}], ",", 
+              RowBox[{"PrimePi", "[", 
+               RowBox[{
+                RowBox[{"10", "^", "7"}], "/", 
+                RowBox[{"Prime", "[", "i", "]"}]}], "]"}]}], "}"}]}], "]"}], 
+          ",", "1"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Sort", "[", 
+           RowBox[{"IntegerDigits", "[", 
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], " ", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "\[Equal]", 
+          RowBox[{"Sort", "[", 
+           RowBox[{"IntegerDigits", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "-", "1"}], ")"}], 
+             RowBox[{"(", " ", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "-", "1"}], ")"}]}], "]"}], 
+           "]"}]}], "&"}]}], "]"}]}], "]"}], "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.632904389739833*^9, 3.632904524899564*^9}, {
+  3.6329045726822968`*^9, 3.632904578614636*^9}, {3.632904636515771*^9, 
+  3.6329047031518707`*^9}, {3.658722335622595*^9, 3.658722337210524*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"12.219018530492805`", ",", "8319823"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6329043955981684`*^9, {3.6329044962709265`*^9, 3.6329045254555955`*^9}, 
+   3.6329045792256713`*^9, 3.6329047461679325`*^9, {3.6587223317223434`*^9, 
+   3.6587223526715508`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 846, 14, 283, "Text"],
+Cell[CellGroupData[{
+Cell[1428, 38, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1555, 43, 2640, 70, 355, "Input"],
+Cell[4198, 115, 300, 6, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

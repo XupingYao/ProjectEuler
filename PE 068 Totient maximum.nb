@@ -1,0 +1,225 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6787,        216]
+NotebookOptionsPosition[      6120,        187]
+NotebookOutlinePosition[      6474,        203]
+CellTagsIndexPosition[      6431,        200]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Totient maximum", "Title"],
+ "\n",
+ StyleBox["Problem 69", "Subtitle"],
+ "\nEuler' s Totient function, \[CurlyPhi] (n)[sometimes called the phi \
+function], is used to determine the number of numbers less than n which are \
+relatively prime to n.For example, as 1, 2, 4, 5, 7, and 8, are all less than \
+nine and relatively prime to nine, \[CurlyPhi] (9) = 6.\n",
+ Cell[BoxData[GridBox[{
+    {"n", 
+     RowBox[{"Relatively", " ", "Prime"}], 
+     RowBox[{"\[CurlyPhi]", 
+      RowBox[{"(", "n", ")"}]}], 
+     RowBox[{
+      RowBox[{"n", "/", "\[CurlyPhi]"}], 
+      RowBox[{"(", "n", ")"}]}]},
+    {"2", "1", "1", "2"},
+    {"3", 
+     RowBox[{"1", ",", "2"}], "2", "1.5"},
+    {"4", 
+     RowBox[{"1", ",", "3"}], "3", "2"},
+    {"5", 
+     RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "4", "1.25"},
+    {"6", 
+     RowBox[{"1", ",", "5"}], "2", "3"},
+    {"7", 
+     RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6"}], "6", 
+     RowBox[{"1.1666", "..."}]},
+    {"8", 
+     RowBox[{"1", ",", "3", ",", "5", ",", "7"}], "4", "2"},
+    {"9", 
+     RowBox[{"1", ",", "2", ",", "4", ",", "5", ",", "7", ",", "8"}], "6", 
+     "1.5"},
+    {"10", 
+     RowBox[{"1", ",", "3", ",", "7", ",", "9"}], "4", "2.5"}
+   },
+   GridBoxDividers->{
+    "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+     "RowsIndexed" -> {}}]]],
+ "\n",
+ "It can be seen that n=6 produces a maximum n/\[CurlyPhi](n) for n \
+\[LessEqual] 10.\n\nFind the value of n \[LessEqual] 1,000,000 for which n/\
+\[CurlyPhi](n) is a maximum."
+}], "Text",
+ CellChangeTimes->{{3.63288618513778*^9, 3.632886211233822*^9}, {
+  3.6328862443948784`*^9, 3.6328864257546473`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6328864307346544`*^9, 3.632886441524669*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Because]", 
+     RowBox[{"\[Phi]", "(", "n", ")"}]}], "=", 
+    RowBox[{"n", 
+     RowBox[{
+      UnderscriptBox["\[Product]", 
+       RowBox[{"p", "|", "n"}]], 
+      RowBox[{"(", 
+       RowBox[{"1", " ", "-", " ", 
+        RowBox[{"1", "/", "p"}]}], ")"}]}]}]}], ",", 
+   RowBox[{
+    RowBox[{"\[Therefore]", 
+     FractionBox["n", 
+      RowBox[{"\[Phi]", "(", "n", ")"}]]}], "=", 
+    RowBox[{
+     UnderscriptBox["\[Product]", 
+      RowBox[{"p", "|", "n"}]], 
+     RowBox[{"(", 
+      FractionBox["p", 
+       RowBox[{"p", "-", "1"}]], ")"}]}]}]}], TraditionalForm]]]], "Text",
+ CellChangeTimes->{{3.6328865914859667`*^9, 3.632886657514493*^9}, {
+  3.6328867043841743`*^9, 3.632886894922662*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NestWhile", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], " ", 
+        RowBox[{"NextPrime", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+       RowBox[{"NextPrime", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "&"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "2"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "<=", 
+      RowBox[{"10", "^", "6"}]}], "&"}], ",", "1", ",", "\[Infinity]", ",", 
+    RowBox[{"-", "1"}]}], "]"}], "//", "AbsoluteTiming"}]], "Input",
+ CellChangeTimes->{{3.6328855625817947`*^9, 3.6328856112939854`*^9}, {
+  3.632885643009031*^9, 3.6328856448490334`*^9}, {3.632885727343272*^9, 
+  3.6328857442595544`*^9}, {3.632885774474598*^9, 3.6328858120856524`*^9}, {
+  3.632885901149782*^9, 3.6328859098757954`*^9}, {3.6328859553968744`*^9, 
+  3.6328860403829994`*^9}, {3.6328861119652095`*^9, 3.6328861269762306`*^9}, {
+  3.632887055333744*^9, 3.6328870646907587`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00012544490174813173`", ",", 
+   RowBox[{"{", 
+    RowBox[{"510510", ",", "17"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.632885612433987*^9, 3.6328856456190343`*^9, {3.632885728587274*^9, 
+   3.632885744749555*^9}, {3.632885806955645*^9, 3.6328858129256535`*^9}, 
+   3.6328859108057966`*^9, 3.6328860434430037`*^9, {3.6328861134552116`*^9, 
+   3.632886127386231*^9}, 3.63288706573076*^9, {3.6587223750617847`*^9, 
+   3.6587223778119698`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.632887368532615*^9, 3.6328873800106316`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Euler69", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "totients", "}"}], ",", 
+     RowBox[{
+      RowBox[{"totients", "=", 
+       RowBox[{"ParallelTable", "[", 
+        RowBox[{
+         RowBox[{"n", "/", 
+          RowBox[{"EulerPhi", "[", "n", "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", "1", ",", "1000000"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Position", "[", 
+       RowBox[{"totients", ",", 
+        RowBox[{"Max", "[", "totients", "]"}]}], "]"}]}]}], "]"}]}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Euler69", "[", "]"}], "//", "AbsoluteTiming"}]}], "Input",
+ CellChangeTimes->{{3.6328872937540894`*^9, 3.632887293764089*^9}, 
+   3.658722390632868*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5.634496036511309`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "510510", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6328873244276943`*^9, {3.658722398103323*^9, 3.65872240615386*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1691, 45, 421, "Text"],
+Cell[CellGroupData[{
+Cell[2273, 69, 102, 1, 33, "Subsubtitle"],
+Cell[2378, 72, 779, 24, 45, "Text"],
+Cell[CellGroupData[{
+Cell[3182, 100, 1182, 29, 86, "Input"],
+Cell[4367, 131, 496, 10, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4912, 147, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5039, 152, 814, 23, 202, "Input"],
+Cell[5856, 177, 236, 6, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

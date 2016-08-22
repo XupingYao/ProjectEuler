@@ -1,0 +1,91 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2256,         82]
+NotebookOptionsPosition[      1820,         61]
+NotebookOutlinePosition[      2176,         77]
+CellTagsIndexPosition[      2133,         74]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Summation of primes", "Title"],
+ StyleBox["\nProblem 10", "Subtitle"],
+ "\nThe sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.\nFind the sum of \
+all the primes below two million."
+}], "Text",
+ CellChangeTimes->{{3.6014699652846165`*^9, 3.6014699729220533`*^9}, {
+  3.6587286151094923`*^9, 3.6587286156395273`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Sulution", "Subsubtitle",
+ CellChangeTimes->{{3.6014699815245457`*^9, 3.601469990129038*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Prime", "[", "i", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"PrimePi", "[", "2000000", "]"}]}], "}"}]}], "]"}], "]"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.601470003591808*^9, 3.60147000398483*^9}, 
+   3.658728605408792*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.1476090201726806`", ",", "142913828922"}], "}"}]], "Output",
+ CellChangeTimes->{3.601470006323964*^9, 3.65872860852901*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{120, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 344, 7, 150, "Text"],
+Cell[CellGroupData[{
+Cell[926, 31, 99, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1050, 36, 574, 16, 124, "Input"],
+Cell[1627, 54, 165, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

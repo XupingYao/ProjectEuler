@@ -1,0 +1,307 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9767,        298]
+NotebookOptionsPosition[      9134,        270]
+NotebookOutlinePosition[      9491,        286]
+CellTagsIndexPosition[      9448,        283]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Square digit chains", "Title"],
+ "\n",
+ StyleBox["Problem 92", "Subtitle"],
+ "\nA number chain is created by continuously adding the square of the digits \
+in a number to form a new number until it has been seen before.\n\nFor \
+example, \n44 \[RightArrow] 32 \[RightArrow] 13 \[RightArrow] 10 \
+\[RightArrow] ",
+ StyleBox["1",
+  FontWeight->"Bold"],
+ " \[RightArrow] ",
+ StyleBox["1",
+  FontWeight->"Bold"],
+ "\n85 \[RightArrow] ",
+ StyleBox["89",
+  FontWeight->"Bold"],
+ " \[RightArrow] 145 \[RightArrow] 42 \[RightArrow] 20 \[RightArrow] 4 \
+\[RightArrow] 16 \[RightArrow] 37 \[RightArrow] 58 \[RightArrow] ",
+ StyleBox["89",
+  FontWeight->"Bold"],
+ "\n\nTherefore any chain that arrives at 1 or 89 will become stuck in an \
+endless loop.What is most amazing is that EVERY starting number will \
+eventually arrive at 1 or 89.\n\nHow many starting numbers below ten million \
+will arrive at 89?"
+}], "Text",
+ CellChangeTimes->{{3.6564168757601576`*^9, 3.6564169035333586`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6564685791363087`*^9, 3.656468588123475*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"n", "=", "0"}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", "x_", "]"}], ":=", 
+    RowBox[{"NestWhile", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "^", "2"}], "&"}], "/@", 
+         RowBox[{"IntegerDigits", "[", "#", "]"}]}], "]"}], "&"}], ",", "x", 
+      ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "\[NotEqual]", "1"}], "&&", 
+        RowBox[{"#", "\[NotEqual]", "89"}]}], "&"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", "x_", "]"}], ":=", 
+    RowBox[{"Plus", "@@", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "^", "2"}], "&"}], "/@", "x"}], ")"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"cache", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"f", "[", "k", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", 
+        RowBox[{
+         RowBox[{"9", "^", "2"}], "*", "7"}]}], "}"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"list", "=", 
+    RowBox[{"Drop", "[", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "x1", ",", "x2", ",", "x3", ",", "x4", ",", "x5", ",", "x6", ",", 
+            "x7"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x1", ",", "0", ",", "9"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x2", ",", "0", ",", "x1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x3", ",", "0", ",", "x2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x4", ",", "0", ",", "x3"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x5", ",", "0", ",", "x4"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x6", ",", "0", ",", "x5"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x7", ",", "0", ",", "x6"}], "}"}]}], "]"}], ",", "6"}], 
+       "]"}], ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"cache", "[", 
+         RowBox[{"[", 
+          RowBox[{"g", "[", 
+           RowBox[{"list", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], "]"}], "\[Equal]", 
+        "89"}], ",", 
+       RowBox[{"n", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"n", "+", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"Plus", "@@", "#"}], ")"}], "!"}], "/", 
+            RowBox[{"Times", "@@", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"#", "!"}], "&"}], "/@", "#"}], ")"}]}]}]}], "&"}], 
+         "[", 
+         RowBox[{
+          RowBox[{"Tally", "[", 
+           RowBox[{"list", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{";;", ",", "2"}], "]"}], "]"}], "]"}]}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "list", "]"}]}], "}"}]}], "]"}], ";", 
+   "\[IndentingNewLine]", "n"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.656413016048555*^9, 3.6564130808711643`*^9}, {
+   3.6564131109974227`*^9, 3.6564132495327196`*^9}, {3.656413288336171*^9, 
+   3.6564133417529554`*^9}, {3.6564135320162053`*^9, 
+   3.6564135533652544`*^9}, {3.6564138169344587`*^9, 
+   3.6564138297144785`*^9}, {3.6564138829934883`*^9, 
+   3.6564139623354006`*^9}, {3.6564140129568305`*^9, 
+   3.6564140346234407`*^9}, {3.65641413246926*^9, 3.656414138497134*^9}, 
+   3.6564141699668627`*^9, {3.656414270081792*^9, 3.656414271923058*^9}, {
+   3.6564143801119604`*^9, 3.6564144364892635`*^9}, {3.6564144881665335`*^9, 
+   3.656414492421306*^9}, {3.6564145524288416`*^9, 3.6564145862993803`*^9}, {
+   3.656414641086152*^9, 3.6564146484820757`*^9}, 3.6564151282309737`*^9, {
+   3.6564151665040846`*^9, 3.656415186730418*^9}, {3.656415236583147*^9, 
+   3.6564152746028404`*^9}, {3.6564153476226077`*^9, 
+   3.6564154635297017`*^9}, {3.6564157485196753`*^9, 
+   3.6564157487496758`*^9}, {3.6564160957829123`*^9, 3.656416121519785*^9}, 
+   3.6564163618935785`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.17607531939982599`", ",", "8581146"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6564151879004188`*^9, {3.656415251162924*^9, 3.656415277861292*^9}, 
+   3.656415348772605*^9, {3.6564153861028767`*^9, 3.656415423504858*^9}, 
+   3.6564154704361057`*^9, 3.6564160920429077`*^9, 3.6564161248797894`*^9, 
+   3.656416364613578*^9, 3.658721642149787*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.656468592112278*^9, 3.6564686005954056`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{
+      RowBox[{"n_", "/;", 
+       RowBox[{"n", "<", "0"}]}], ",", "k_"}], "]"}], ":=", "0"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{
+      RowBox[{"n_", "/;", 
+       RowBox[{"n", ">", "0"}]}], ",", "0"}], "]"}], ":=", "0"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"0", ",", "0"}], "]"}], ":=", "1"}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"n_", ",", "k_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"n", ",", "k"}], "]"}], "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"f", "[", 
+        RowBox[{
+         RowBox[{"n", "-", 
+          RowBox[{"i", "^", "2"}]}], ",", 
+         RowBox[{"k", "-", "1"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "0", ",", "9"}], "}"}]}], "]"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", "x_", "]"}], ":=", 
+    RowBox[{"NestWhile", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Plus", "@@", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"#", "^", "2"}], "&"}], "/@", 
+          RowBox[{"IntegerDigits", "[", "#", "]"}]}], ")"}]}], "&"}], ",", 
+      "x", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "\[NotEqual]", "1"}], "&&", 
+        RowBox[{"#", "\[NotEqual]", "89"}]}], "&"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"k", "=", "7"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Total", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"#", ",", "k"}], "]"}], "&"}], "/@", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"Position", "[", 
+       RowBox[{
+        RowBox[{"Array", "[", 
+         RowBox[{"g", ",", 
+          RowBox[{
+           RowBox[{"9", "^", "2"}], "*", "k"}]}], "]"}], ",", "89"}], "]"}], 
+      "]"}]}], "]"}]}], "]"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.07156517603911144`", ",", "8581146"}], "}"}]], "Output",
+ CellChangeTimes->{3.656468605141554*^9, 3.658721648170188*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1006, 25, 321, "Text"],
+Cell[CellGroupData[{
+Cell[1589, 49, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1716, 54, 4462, 118, 452, "Input"],
+Cell[6181, 174, 389, 7, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6619, 187, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6746, 192, 2195, 69, 318, "Input"],
+Cell[8944, 263, 162, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

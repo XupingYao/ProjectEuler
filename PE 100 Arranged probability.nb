@@ -1,0 +1,184 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5418,        175]
+NotebookOptionsPosition[      4788,        147]
+NotebookOutlinePosition[      5145,        163]
+CellTagsIndexPosition[      5102,        160]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Arranged probability", "Title"],
+ "\n",
+ StyleBox["Problem 100", "Subtitle"],
+ "\nIf a box contains twenty - one coloured discs, composed of fifteen blue \
+discs and six red discs, and two discs were taken at random, it can be seen \
+that the probability of taking two blue discs, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", "(", "BB", ")"}], "=", 
+    RowBox[{
+     RowBox[{
+      FractionBox["15", "21"], " ", 
+      FractionBox["14", "20"]}], "=", 
+     RowBox[{"1", "/", "2"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nThe next such arrangement, for which there is exactly 50% chance of \
+taking two blue discs at random, is a box containing eighty - five blue discs \
+and thirty - five red discs.\n\nBy finding the first arrangement to contain \
+over ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["10", "12"], "=", "1000000000000"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " discs in total, determine the number of blue discs that the box would \
+contain."
+}], "Text",
+ CellChangeTimes->{{3.6565658051535597`*^9, 3.6565659178239126`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.656565924778287*^9, 3.6565659344133015`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{
+    RowBox[{"NestWhile", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"3", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+          RowBox[{"4", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "-", "3"}], ",", 
+         RowBox[{
+          RowBox[{"2", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+          RowBox[{"3", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "-", "2"}]}], "}"}], "&"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"4", ",", "3"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "<", 
+        RowBox[{"10", "^", "12"}]}], "&"}]}], "]"}], "//", "Last"}], "]"}], 
+  RowBox[{"(*", 
+   RowBox[{"The", " ", "negative", " ", "Pell", " ", "equation"}], 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.656565194934512*^9, 3.656565373050317*^9}, {
+  3.656565635026453*^9, 3.6565657239358034`*^9}, {3.656565969128264*^9, 
+  3.6565659997893305`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0000806838799880029`", ",", "756872327473"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6565653030740757`*^9, 3.656565374171485*^9}, 
+   3.656565725817073*^9, {3.658720193296873*^9, 3.6587201974171414`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6565659370577836`*^9, 3.6565659456198792`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Reduce", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"0", "<", "b", "<", 
+      RowBox[{"10", "^", "12"}], "<", "n"}], "&&", 
+     RowBox[{
+      RowBox[{"2", " ", "b", 
+       RowBox[{"(", 
+        RowBox[{"b", "-", "1"}], ")"}]}], "\[Equal]", 
+      RowBox[{"n", 
+       RowBox[{"(", 
+        RowBox[{"n", "-", "1"}], ")"}]}]}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"b", ",", "n"}], "}"}], ",", "Integers"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6565653926434975`*^9, 3.65656541625023*^9}, {
+   3.656565448275469*^9, 3.656565450158996*^9}, {3.6565657508511705`*^9, 
+   3.6565657858023095`*^9}, 3.6565660873356705`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.07027822538799539`", ",", 
+   RowBox[{
+    RowBox[{"b", "\[Equal]", "756872327473"}], "&&", 
+    RowBox[{"n", "\[Equal]", "1070379110497"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.656565412438154*^9, 3.6565654170506287`*^9}, 
+   3.656565450844241*^9, {3.6565657731842504`*^9, 3.6565657866089325`*^9}, 
+   3.656566092410678*^9, {3.6587202038675585`*^9, 3.6587202077778196`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1136, 29, 297, "Text"],
+Cell[CellGroupData[{
+Cell[1719, 53, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1846, 58, 1370, 40, 222, "Input"],
+Cell[3219, 100, 247, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3515, 110, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3644, 115, 689, 18, 48, "Input"],
+Cell[4336, 135, 424, 8, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

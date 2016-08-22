@@ -1,0 +1,174 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5265,        165]
+NotebookOptionsPosition[      4638,        137]
+NotebookOutlinePosition[      4994,        153]
+CellTagsIndexPosition[      4951,        150]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Counting Sundays", "Title"],
+ StyleBox["\nProblem 19", "Subtitle"],
+ "\nYou are given the following information, but you may prefer to do some \
+research for yourself.\n1 Jan 1900 was a Monday.\n\nThirty days has \
+September, April, June and November.All the rest have thirty - one, Saving \
+February alone, Which has twenty - eight, rain or shine.And on leap years, \
+twenty - nine.\n\nA leap year occurs on any year evenly divisible by 4, but \
+not on a century unless it is divisible by 400.\n\nHow many Sundays fell on \
+the first of the month during the twentieth century (1 Jan 1901 to 31 Dec \
+2000)?"
+}], "Text",
+ CellChangeTimes->{{3.602053933895593*^9, 3.6020539760090017`*^9}, {
+  3.6587278070861363`*^9, 3.658727819226945*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6020539839994593`*^9, 3.602054000670412*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Count", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"DayMatchQ", "[", 
+       RowBox[{"#", ",", "Sunday"}], "]"}], "&"}], "/@", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"i", ",", "j", ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1901", ",", "2000"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", "1"}], 
+      "]"}]}], ",", "True"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6020540402006736`*^9, 3.6020540493961997`*^9}, {
+   3.658727760351081*^9, 3.6587277652914*^9}, 3.658755840051456*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.724547061845592`", ",", "171"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6587277753539753`*^9, 3.65872778035431*^9}, 
+   3.6587558423034587`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6020547801829977`*^9, 3.6020547929227266`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"months", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<January \>\"", ",", "\"\<February \>\"", ",", "\"\<March \>\"", 
+      ",", "\"\<April \>\"", ",", "\"\<May \>\"", ",", "\"\<June \>\"", ",", 
+      "\"\<July \>\"", ",", "\"\<August \>\"", ",", "\"\<September \>\"", 
+      ",", "\"\<October \>\"", ",", "\"\<November \>\"", ",", 
+      "\"\<December \>\""}], "}"}]}], ";", 
+   RowBox[{"years", "=", 
+    RowBox[{"ToString", "/@", 
+     RowBox[{"Range", "[", 
+      RowBox[{"1901", ",", "2000"}], "]"}]}]}], ";", 
+   RowBox[{"Length", "[", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Apply", "[", 
+          RowBox[{"StringJoin", ",", "#"}], "]"}], "&"}], "/@", 
+        RowBox[{"Tuples", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"StringJoin", "[", 
+               RowBox[{"\"\<1 \>\"", ",", "#"}], "]"}], "&"}], "/@", 
+             RowBox[{"(", "months", ")"}]}], ")"}], ",", "years"}], "}"}], 
+         "]"}]}], ")"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"DateString", "[", 
+         RowBox[{"#", ",", "\"\<DayName\>\""}], "]"}], "\[Equal]", 
+        "\"\<Sunday\>\""}], "&"}]}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.602054797852009*^9, 3.602054797855009*^9}, {
+  3.6587277933852224`*^9, 3.6587277971954765`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9919290460827549`", ",", "171"}], "}"}]], "Output",
+ CellChangeTimes->{3.602054802196257*^9, 3.658727799285571*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 766, 13, 303, "Text"],
+Cell[CellGroupData[{
+Cell[1348, 37, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1475, 42, 933, 25, 200, "Input"],
+Cell[2411, 69, 187, 4, 64, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2647, 79, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2776, 84, 1674, 44, 412, "Input"],
+Cell[4453, 130, 157, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

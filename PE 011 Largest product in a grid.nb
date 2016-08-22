@@ -1,0 +1,375 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     12041,        367]
+NotebookOptionsPosition[     11219,        332]
+NotebookOutlinePosition[     11575,        348]
+CellTagsIndexPosition[     11532,        345]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Largest product in a grid", "Title"],
+ StyleBox["\nProblem 11", "Subtitle"],
+ "\nIn the 20*20 grid below, four numbers along a diagonal line have been \
+marked in red.\n\n08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08\
+\n49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00\n81 49 31 73 55 \
+79 14 29 93 71 40 67 53 88 30 03 49 13 36 65\n52 70 95 23 04 60 11 42 69 24 \
+68 56 01 32 56 71 37 02 36 91\n22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 \
+28 66 33 13 80\n24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50\n\
+32 98 81 28 64 23 67 10 26 38 40 67 59 54 70 66 18 38 64 70\n67 26 20 68 02 \
+62 12 20 95 63 94 39 63 08 40 91 66 49 94 21\n24 55 58 05 66 73 99 26 97 17 \
+78 78 96 83 14 88 34 89 63 72\n21 36 23 09 75 00 76 44 20 45 35 14 00 61 33 \
+97 34 31 33 95\n78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92\n\
+16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57\n86 56 00 48 35 \
+71 89 07 05 44 44 37 44 60 21 58 51 54 17 58\n19 80 81 68 05 94 47 69 28 73 \
+92 13 86 52 17 77 04 89 55 40\n04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 \
+79 33 27 98 66\n88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69\n\
+04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36\n20 69 36 41 72 \
+30 23 88 34 62 99 69 82 67 59 85 74 04 36 16\n20 73 35 29 78 31 90 01 74 31 \
+49 71 48 86 81 16 23 57 05 54\n01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 \
+01 89 19 67 48\n\nThe product of these numbers is 26\[Times]63\[Times]78\
+\[Times]14 = 1788696.\nWhat is the greatest product of four adjacent numbers \
+in the same direction (up, down, left, right, or diagonally) in the \
+20\[Times]20 grid?"
+}], "Text",
+ CellChangeTimes->{{3.6015427068003263`*^9, 3.6015427229252486`*^9}, {
+  3.6587524225676727`*^9, 3.6587524601451902`*^9}, {3.6587525215204487`*^9, 
+  3.6587525290009785`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Sulotion\t1", "Subsubtitle",
+ CellChangeTimes->{{3.601542831050433*^9, 3.6015428474443707`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"number", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"ReadList", "[", 
+      RowBox[{"\"\<PE 011.txt\>\"", ",", "Number"}], "]"}], ",", "20"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ";", 
+    RowBox[{"m1", "=", 
+     RowBox[{"{", "}"}]}]}], ",", 
+   RowBox[{"i", "\[LessEqual]", "20"}], ",", 
+   RowBox[{"i", "=", 
+    RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mt1", "=", 
+     RowBox[{"Max", "[", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Apply", "[", 
+          RowBox[{"Times", ",", " ", 
+           RowBox[{"Take", "[", 
+            RowBox[{"#", ",", " ", "4"}], "]"}]}], "]"}], " ", "&"}], ",", 
+        " ", 
+        RowBox[{"NestList", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"RotateLeft", "[", 
+            RowBox[{"#", ",", " ", "1"}], "]"}], " ", "&"}], ",", " ", 
+          RowBox[{"number", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], ",", " ", "19"}], "]"}]}], "]"}], 
+      "]"}]}], ";", 
+    RowBox[{"m1", "=", 
+     RowBox[{"Append", "[", 
+      RowBox[{"m1", ",", "mt1"}], "]"}]}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numbertr", "=", 
+   RowBox[{"Transpose", "[", "number", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ";", 
+    RowBox[{"m2", "=", 
+     RowBox[{"{", "}"}]}]}], ",", 
+   RowBox[{"i", "\[LessEqual]", "20"}], ",", 
+   RowBox[{"i", "=", 
+    RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mt2", "=", 
+     RowBox[{"Max", "[", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Apply", "[", 
+          RowBox[{"Times", ",", " ", 
+           RowBox[{"Take", "[", 
+            RowBox[{"#", ",", " ", "4"}], "]"}]}], "]"}], " ", "&"}], ",", 
+        " ", 
+        RowBox[{"NestList", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"RotateLeft", "[", 
+            RowBox[{"#", ",", " ", "1"}], "]"}], " ", "&"}], ",", " ", 
+          RowBox[{"numbertr", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], ",", " ", "19"}], "]"}]}], "]"}], 
+      "]"}]}], ";", 
+    RowBox[{"m2", "=", 
+     RowBox[{"Append", "[", 
+      RowBox[{"m2", ",", "mt2"}], "]"}]}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"i", "=", 
+     RowBox[{"-", "16"}]}], ";", 
+    RowBox[{"m3", "=", 
+     RowBox[{"{", "}"}]}]}], ",", 
+   RowBox[{"i", "\[LessEqual]", "16"}], ",", 
+   RowBox[{"i", "=", 
+    RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mt3", "=", 
+     RowBox[{"Max", "[", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Apply", "[", 
+          RowBox[{"Times", ",", " ", 
+           RowBox[{"Take", "[", 
+            RowBox[{"#", ",", " ", "4"}], "]"}]}], "]"}], " ", "&"}], ",", 
+        " ", 
+        RowBox[{"NestList", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"RotateLeft", "[", 
+            RowBox[{"#", ",", " ", "1"}], "]"}], " ", "&"}], ",", " ", 
+          RowBox[{"Diagonal", "[", 
+           RowBox[{"number", ",", "i"}], "]"}], ",", " ", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"Diagonal", "[", 
+             RowBox[{"number", ",", "i"}], "]"}], "]"}], "-", "1"}]}], 
+         "]"}]}], "]"}], "]"}]}], ";", 
+    RowBox[{"m3", "=", 
+     RowBox[{"Append", "[", 
+      RowBox[{"m3", ",", "mt3"}], "]"}]}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numberre", "=", 
+   RowBox[{"Reverse", "[", "number", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"i", "=", 
+     RowBox[{"-", "16"}]}], ";", 
+    RowBox[{"m4", "=", 
+     RowBox[{"{", "}"}]}]}], ",", 
+   RowBox[{"i", "\[LessEqual]", "16"}], ",", 
+   RowBox[{"i", "=", 
+    RowBox[{"i", "+", "1"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mt4", "=", 
+     RowBox[{"Max", "[", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Apply", "[", 
+          RowBox[{"Times", ",", " ", 
+           RowBox[{"Take", "[", 
+            RowBox[{"#", ",", " ", "4"}], "]"}]}], "]"}], " ", "&"}], ",", 
+        " ", 
+        RowBox[{"NestList", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"RotateLeft", "[", 
+            RowBox[{"#", ",", " ", "1"}], "]"}], " ", "&"}], ",", " ", 
+          RowBox[{"Diagonal", "[", 
+           RowBox[{"numberre", ",", "i"}], "]"}], ",", " ", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"Diagonal", "[", 
+             RowBox[{"number", ",", "i"}], "]"}], "]"}], "-", "1"}]}], 
+         "]"}]}], "]"}], "]"}]}], ";", 
+    RowBox[{"m4", "=", 
+     RowBox[{"Append", "[", 
+      RowBox[{"m4", ",", "mt4"}], "]"}]}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Max", "[", 
+  RowBox[{"m1", ",", "m2", ",", "m3", ",", "m4"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6015428700086613`*^9, 3.60154299937306*^9}, {
+  3.6807830210877295`*^9, 3.680783028207984*^9}}],
+
+Cell[BoxData["70600674"], "Output",
+ CellChangeTimes->{3.6015430353731194`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sulotion\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6015437720732565`*^9, 3.601543782995881*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tbl", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<PE 011.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f1", "[", "t_", "]"}], "[", "s_", "]"}], ":=", 
+  RowBox[{"Max", "@", 
+   RowBox[{"Apply", "[", 
+    RowBox[{"Times", ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{"t", ",", "s", ",", "1"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "3"}], "}"}]}], "]"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f2", "[", "t_", "]"}], "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"f1", "[", 
+    RowBox[{"MapIndexed", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"PadLeft", "[", 
+        RowBox[{"#", ",", "n", ",", "0", ",", 
+         RowBox[{
+          RowBox[{"#2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "-", "1"}]}], "]"}], "&"}], ",", 
+      "t"}], "]"}], "]"}], "@", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "1"}], "}"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Max", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f1", "[", "tbl", "]"}], "/@", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"4", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "4"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{
+    RowBox[{"f2", "[", "tbl", "]"}], "/@", 
+    RowBox[{"{", 
+     RowBox[{"39", ",", 
+      RowBox[{"-", "39"}]}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6015437884831953`*^9, 3.601543807119261*^9}, 
+   3.6587213916240225`*^9, 3.680783041006789*^9}],
+
+Cell[BoxData["70600674"], "Output",
+ CellChangeTimes->{3.601543795371589*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sulotion\t3", "Subsubtitle",
+ CellChangeTimes->{{3.6015459108485875`*^9, 3.601545924763383*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tbl", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<PE 011.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bloc", "[", 
+    RowBox[{"n_", ",", "f_"}], "]"}], "[", "t_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"f", "@@@", "#"}], ",", 
+      RowBox[{"#", "~", "Tr", "~", "f"}]}], "}"}], "&"}], "/@", 
+   RowBox[{"Join", "@@", 
+    RowBox[{"Partition", "[", 
+     RowBox[{"t", ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "n"}], "}"}], ",", "1"}], 
+     "]"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"maxLine", "[", 
+   RowBox[{"t_", ",", "n_", ",", 
+    RowBox[{"f_:", "Times"}]}], "]"}], ":=", 
+  RowBox[{"Max", "[", 
+   RowBox[{
+    RowBox[{"bloc", "[", 
+     RowBox[{"n", ",", "f"}], "]"}], "/@", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", 
+      RowBox[{"Thread", "@", 
+       RowBox[{"Reverse", "@", "t"}]}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"maxLine", "[", 
+  RowBox[{"tbl", ",", "4"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.601545932947851*^9, 3.60154596439065*^9}, 
+   3.680783050320159*^9}],
+
+Cell[BoxData["70600674"], "Output",
+ CellChangeTimes->{{3.6015459505908604`*^9, 3.60154596684179*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{48, Automatic}, {Automatic, 60}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1864, 27, 588, "Text"],
+Cell[CellGroupData[{
+Cell[2446, 51, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2573, 56, 5306, 155, 884, "Input"],
+Cell[7882, 213, 79, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8010, 220, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[8137, 225, 1526, 48, 162, "Input"],
+Cell[9666, 275, 77, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9792, 282, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[9919, 287, 1167, 38, 146, "Input"],
+Cell[11089, 327, 102, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

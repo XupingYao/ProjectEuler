@@ -1,0 +1,461 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16176,        452]
+NotebookOptionsPosition[     15611,        427]
+NotebookOutlinePosition[     15969,        443]
+CellTagsIndexPosition[     15926,        440]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Monopoly odds", "Title"],
+ "\n",
+ StyleBox["Problem 84", "Subtitle"],
+ "\nIn the game, Monopoly, the standard board is set up in the following way \
+\n\n",
+ Cell[BoxData[GridBox[{
+    {"GO", "A1", "CC1", "A2", "T1", "R1", "B1", "CH1", "B2", "B3", "JAIL"},
+    {"H2", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "C1"},
+    {"T2", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "U1"},
+    {"H1", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "C2"},
+    {"CH3", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "C3"},
+    {"R4", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "R2"},
+    {"G3", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "D1"},
+    {"CC3", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "CC2"},
+    {"G2", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "D2"},
+    {"G1", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "D3"},
+    {"G2J", "F3", "U2", "F2", "F1", "R3", "E3", "E2", "CH2", "E1", "FP"}
+   },
+   GridBoxDividers->{
+    "Columns" -> {True, {False}, True}, "ColumnsIndexed" -> {}, 
+     "Rows" -> {True, {False}, True}, "RowsIndexed" -> {}}]]],
+ "\n\nA player starts on the GO square and adds the scores on two 6 - sided \
+dice to determine the number of squares they advance in a clockwise \
+direction.Without any further rules we would expect to visit each square with \
+equal probability : ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2.5", "%"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". However, landing on G2J (Go To Jail), CC (community chest), and CH \
+(chance) changes this distribution.\n  \nIn addition to G2J, and one card \
+from each of CC and CH, that orders the player to go directly to jail, if a \
+player rolls three consecutive doubles, they do not advance the result of \
+their 3 rd roll.Instead they proceed directly to jail.\n  \nAt the beginning \
+of the game, the CC and CH cards are shuffled.When a player lands on CC or CH \
+they take a card from the top of the respective pile and, after following the \
+instructions, it is returned to the bottom of the pile.There are sixteen \
+cards in each pile, but for the purpose of this problem we are only concerned \
+with cards that order a movement; any instruction not concerned with movement \
+will be ignored and the player will remain on the CC/CH square.\n\nCommunity \
+Chest (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "/", "16"}], TraditionalForm]], "Item"],
+ " cards):\n\t1.  Advance to GO\n\t2.  Go to JAIL\nChance (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"10", "/", "16"}], TraditionalForm]], "Item"],
+ " cards):\n\t1.  Advance to GO\n\t2.  Go to JAIL\n\t3.  Go to C1\n\t4.  Go \
+to E3\n\t5.  Go to H2\n\t6.  Go to R1\n\t7.  Go to next R (railway company)\n\
+\t8.  Go to next R\n\t9.  Go to next U (utility company)\n\t10.Go back 3 \
+squares.\n\nThe heart of this problem concerns the likelihood of visiting a \
+particular square. That is, the probability of finishing at that square after \
+a roll. For this reason it should be clear that, with the exception of G2J \
+for which the probability of finishing on it is zero, the CH squares will \
+have the lowest probabilities, as 5/8 request a movement to another square, \
+and it is the final square that the player finishes at on each roll that we \
+are interested in. We shall make no distinction between \
+\[OpenCurlyDoubleQuote]Just Visiting\[CloseCurlyDoubleQuote] and being sent \
+to JAIL, and we shall also ignore the rule about requiring a double to \
+\[OpenCurlyDoubleQuote]get out of jail\[CloseCurlyDoubleQuote], assuming that \
+they pay to get out on their next turn.\n\nBy starting at GO and numbering \
+the squares sequentially from ",
+ Cell[BoxData[
+  FormBox["00", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " to ",
+ Cell[BoxData[
+  FormBox["39", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " we can concatenate these two-digit numbers to produce strings that \
+correspond with sets of squares.\n\nStatistically it can be shown that the \
+three most popular squares, in order, are JAIL (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"6.24", "%"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") = Square ",
+ Cell[BoxData[
+  FormBox["10", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", E3 (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"3.18", "%"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") = Square ",
+ Cell[BoxData[
+  FormBox["24", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and GO (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"3.09", "%"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") = Square ",
+ Cell[BoxData[
+  FormBox["00", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". So these three most popular squares can be listed with the six-digit \
+modal string: 102400.\n\nIf, instead of using two 6-sided dice, two 4-sided \
+dice are used, find the six-digit modal string."
+}], "Text",
+ CellChangeTimes->{{3.663924991677742*^9, 3.6639251514334717`*^9}, {
+   3.6639252808139296`*^9, 3.663925388917487*^9}, {3.6639254405066996`*^9, 
+   3.663925442376932*^9}, {3.6639254896084986`*^9, 3.6639256315173893`*^9}, {
+   3.6639256952638264`*^9, 3.6639257910431223`*^9}, {3.6639258772433662`*^9, 
+   3.663925882875859*^9}, {3.6639259326416245`*^9, 3.6639259326416245`*^9}, {
+   3.6639260262577105`*^9, 3.6639260283215227`*^9}, {3.6639261102669907`*^9, 
+   3.6639261301010466`*^9}, 3.6639262153213406`*^9, {3.66392629203264*^9, 
+   3.6639264024777718`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6639305342939672`*^9, 3.663930544409807*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"SystemOpen", "[", "\"\<PE 084 Monopoly odds.exe\>\"", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6639266481034584`*^9, 3.66392667451099*^9}, {
+  3.663926789544027*^9, 3.6639268110606422`*^9}, {3.6639269388876266`*^9, 
+  3.6639269420681343`*^9}, {3.663927057987068*^9, 3.6639270700718827`*^9}, {
+  3.6639271473402405`*^9, 3.663927153668019*^9}, {3.6639271843871727`*^9, 
+  3.663927199358699*^9}, {3.663927234306243*^9, 3.663927250641069*^9}, {
+  3.6639273467643256`*^9, 3.6639273528610816`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.663930513361158*^9, 3.6639305287805834`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"n1_", ",", "n2_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"1", "/", "16"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"4", "-", 
+       RowBox[{"Abs", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"n1", ">", "n2"}], ",", 
+           RowBox[{"n2", "+", "40", "-", "n1"}], ",", 
+           RowBox[{"n2", "-", "n1"}]}], "]"}], "-", "5"}], "]"}]}], ")"}]}]}],
+    ";", "\n", 
+   RowBox[{"sided", "=", "4"}], ";", "\n", 
+   RowBox[{"g", "=", 
+    RowBox[{"ConstantArray", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", 
+       RowBox[{"40", ",", "40"}], "}"}]}], "]"}]}], ";", "\n", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"g", "[", 
+       RowBox[{"[", 
+        RowBox[{"i", ",", 
+         RowBox[{
+          RowBox[{"Mod", "[", 
+           RowBox[{
+            RowBox[{"i", "+", "j", "-", "1"}], ",", "40"}], "]"}], "+", 
+          "1"}]}], "]"}], "]"}], "=", 
+      RowBox[{"f", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{
+         RowBox[{"Mod", "[", 
+          RowBox[{
+           RowBox[{"i", "+", "j", "-", "1"}], ",", "40"}], "]"}], "+", 
+         "1"}]}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "40"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "2", ",", "8"}], "}"}]}], "]"}], ";", "\n", 
+   RowBox[{"g", "*=", 
+    RowBox[{"63", "/", "64"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "31"}], "]"}], "]"}], "=", "0"}], ";", "\n", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "1"}], "]"}], "]"}], "+=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "3"}], "]"}], "]"}], "+", 
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "18"}], "]"}], "]"}], "+", 
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "34"}], "]"}], "]"}]}], ")"}], "/", "16"}]}], ";",
+    "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "3"}], "]"}], "]"}], "*=", "#"}], ";", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "18"}], "]"}], "]"}], "*=", "#"}], ";", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "34"}], "]"}], "]"}], "*=", "#"}]}], ")"}], 
+     "&"}], "@", 
+    RowBox[{"(", 
+     RowBox[{"14", "/", "16"}], ")"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "1"}], "]"}], "]"}], "+=", "#"}], ";", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "12"}], "]"}], "]"}], "+=", "#"}], ";", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "25"}], "]"}], "]"}], "+=", "#"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "40"}], "]"}], "]"}], "+=", "#"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "6"}], "]"}], "]"}], "+=", "#"}]}], ")"}], "&"}],
+     "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "8"}], "]"}], "]"}], "+", 
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "23"}], "]"}], "]"}], "+", 
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "37"}], "]"}], "]"}]}], ")"}], "/", "16"}], "]"}],
+    ";", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "16"}], "]"}], "]"}], "+=", 
+    RowBox[{"2", " ", 
+     RowBox[{
+      RowBox[{"g", "[", 
+       RowBox[{"[", 
+        RowBox[{";;", ",", "8"}], "]"}], "]"}], "/", "16"}]}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "26"}], "]"}], "]"}], "+=", 
+    RowBox[{"2", " ", 
+     RowBox[{
+      RowBox[{"g", "[", 
+       RowBox[{"[", 
+        RowBox[{";;", ",", "23"}], "]"}], "]"}], "/", "16"}]}]}], ";", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "6"}], "]"}], "]"}], "+=", 
+    RowBox[{"2", " ", 
+     RowBox[{
+      RowBox[{"g", "[", 
+       RowBox[{"[", 
+        RowBox[{";;", ",", "37"}], "]"}], "]"}], "/", "16"}]}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "13"}], "]"}], "]"}], "+=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "8"}], "]"}], "]"}], "+", 
+       RowBox[{"g", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "37"}], "]"}], "]"}]}], ")"}], "/", "16"}]}], ";",
+    "\n", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "29"}], "]"}], "]"}], "+=", 
+    RowBox[{
+     RowBox[{"g", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", "23"}], "]"}], "]"}], "/", "16"}]}], ";", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "5"}], "]"}], "]"}], "+=", 
+    RowBox[{
+     RowBox[{"g", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", "8"}], "]"}], "]"}], "/", "16"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "20"}], "]"}], "]"}], "+=", 
+    RowBox[{
+     RowBox[{"g", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", "23"}], "]"}], "]"}], "/", "16"}]}], ";", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "34"}], "]"}], "]"}], "+=", 
+    RowBox[{
+     RowBox[{"g", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", "37"}], "]"}], "]"}], "/", "16"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "8"}], "]"}], "]"}], "*=", "#"}], ";", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "23"}], "]"}], "]"}], "*=", "#"}], ";", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "37"}], "]"}], "]"}], "*=", "#"}]}], ")"}], 
+     "&"}], "@", 
+    RowBox[{"(", 
+     RowBox[{"6", "/", "16"}], ")"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{";;", ",", "11"}], "]"}], "]"}], "+=", 
+    RowBox[{"1", "-", 
+     RowBox[{"Total", "/@", "g"}]}]}], ";", "\n", 
+   RowBox[{"FromDigits", "@", 
+    RowBox[{"Flatten", "@", 
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{
+       RowBox[{"Reverse", "@", 
+        RowBox[{"Ordering", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"MatrixPower", "[", 
+            RowBox[{"g", ",", "200"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"-", "3"}]}], "]"}]}], "-", "1"}], "]"}]}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6639303443475246`*^9, 3.6639303443475246`*^9}, {
+  3.6639303912925696`*^9, 3.6639304003925323`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.08893709861505528`", ",", "101524"}], "}"}]], "Output",
+ CellChangeTimes->{3.663930401382727*^9, 3.665633994860454*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6583, 129, 1228, "Text"],
+Cell[CellGroupData[{
+Cell[7166, 153, 102, 1, 28, "Subsubtitle"],
+Cell[7271, 156, 646, 12, 86, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7954, 173, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[8081, 178, 7338, 240, 656, "Input"],
+Cell[15422, 420, 161, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

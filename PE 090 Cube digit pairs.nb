@@ -1,0 +1,327 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12709,        319]
+NotebookOptionsPosition[     12071,        291]
+NotebookOutlinePosition[     12428,        307]
+CellTagsIndexPosition[     12385,        304]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Cube digit pairs", "Title"],
+ "\n",
+ StyleBox["Problem 90", "Subtitle"],
+ "\nEach of the six faces on a cube has a different digit (0 to 9) written on \
+it; the same is done to a second cube.By placing the two cubes side - by - \
+side in different positions we can form a variety of 2 - digit numbers.\n\n\
+For example, the square number 64 could be formed :\n\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1: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
+H02zZvQ=
+     "], {{0, 130}, {201, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   BaseStyle->"ImageGraphics",
+   ImageSizeRaw->{201, 130},
+   PlotRange->{{0, 201}, {0, 130}}]]],
+ "\n\nIn fact, by carefully choosing the digits on both cubes it is possible \
+to display all of the square numbers below one-hundred: 01, 04, 09, 16, 25, \
+36, 49, 64, and 81.\n\nFor example, one way this can be achieved is by \
+placing {0, 5, 6, 7, 8, 9} on one cube and {1, 2, 3, 4, 8, 9} on the other \
+cube.\n\nHowever, for this problem we shall allow the 6 or 9 to be turned \
+upside-down so that an arrangement like {0, 5, 6, 7, 8, 9} and {1, 2, 3, 4, \
+6, 7} allows for all nine square numbers to be displayed; otherwise it would \
+be impossible to obtain 09.\n\nIn determining a distinct arrangement we are \
+interested in the digits on each cube, not the order.\n\n{1, 2, 3, 4, 5, 6} \
+is equivalent to {3, 6, 4, 1, 2, 5}\n{1, 2, 3, 4, 5, 6} is distinct from {1, \
+2, 3, 4, 5, 9}\n\nBut because we are allowing 6 and 9 to be reversed, the two \
+distinct sets in the last example both represent the extended set {1, 2, 3, \
+4, 5, 6, 9} for the purpose of forming 2-digit numbers.\n\nHow many distinct \
+arrangements of the two cubes allow for all of the square numbers to be \
+displayed?"
+}], "Text",
+ CellChangeTimes->{{3.6628957824922323`*^9, 3.662895888460561*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution 1", "Subsubtitle",
+ CellChangeTimes->{
+  3.662895842112238*^9, {3.662895894802739*^9, 3.6628959064528203`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"cubes", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"#", "/.", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x___", ",", "9", ",", "y___"}], "}"}], "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "6", ",", "y"}], "}"}]}]}], ")"}], "&"}], ",", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"#", ",", "#"}], "}"}], "&"}], "/@", "#"}], ")"}], "~",
+            "Join", "~", 
+           RowBox[{"(", 
+            RowBox[{"Subsets", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"{", "2", "}"}]}], "]"}], ")"}]}], "&"}], "[", 
+         RowBox[{"Subsets", "[", 
+          RowBox[{
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "9"}], "]"}], ",", 
+           RowBox[{"{", "6", "}"}]}], "]"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ContainsAll", "[", 
+           RowBox[{
+            RowBox[{"Flatten", "[", "#", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "0", ",", "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", 
+              "8"}], "}"}]}], "]"}], "&&", 
+          RowBox[{"ContainsAny", "[", 
+           RowBox[{
+            RowBox[{"Flatten", "[", "#", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"6", ",", "9"}], "}"}]}], "]"}]}], "&"}]}], "]"}]}], 
+     "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Count", "[", 
+    RowBox[{"cubes", ",", 
+     RowBox[{"u_", "/;", 
+      RowBox[{"ContainsAll", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Tuples", "[", "u", "]"}], "~", "Join", "~", 
+         RowBox[{"Map", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Reverse", "[", "#", "]"}], "&"}], ",", 
+           RowBox[{"Tuples", "[", "u", "]"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "4"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "6"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "6"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "5"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"3", ",", "6"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"4", ",", "6"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"8", ",", "1"}], "}"}]}], "}"}]}], "]"}]}]}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6628942610394354`*^9, 3.6628942941016645`*^9}, 
+   3.662894725202031*^9, {3.6628950106655083`*^9, 3.6628950393654623`*^9}, {
+   3.66289508883642*^9, 3.662895091598245*^9}, {3.662896524960727*^9, 
+   3.662896530012992*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.6262864625940205`", ",", "1217"}], "}"}]], "Output",
+ CellChangeTimes->{{3.662894264891181*^9, 3.662894294531824*^9}, 
+   3.662895042847184*^9, 3.6628950944360456`*^9, {3.662895684302168*^9, 
+   3.662895688720037*^9}, {3.6628965371711407`*^9, 3.662896541661436*^9}, 
+   3.665633867640627*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6808310049234905`*^9, 3.680831012668103*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Count", "[", 
+   RowBox[{
+    RowBox[{"Map", "[", 
+     RowBox[{"Sort", ",", 
+      RowBox[{"Tuples", "/@", 
+       RowBox[{"Subsets", "[", 
+        RowBox[{
+         RowBox[{"Subsets", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Range", "[", 
+             RowBox[{"0", ",", "8"}], "]"}], "~", "Join", "~", 
+            RowBox[{"{", "6", "}"}]}], ",", 
+           RowBox[{"{", "6", "}"}]}], "]"}], ",", 
+         RowBox[{"{", "2", "}"}]}], "]"}]}], ",", 
+      RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+    RowBox[{"x_", "/;", 
+     RowBox[{
+      RowBox[{"Complement", "[", 
+       RowBox[{
+        RowBox[{"Sort", "/@", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"#", ",", "10", ",", "2"}], "]"}], "&"}], "/@", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"Range", "@", "9"}], ")"}], "^", "2"}], ")"}]}], "/.", 
+           RowBox[{"{", 
+            RowBox[{"9", "\[Rule]", "6"}], "}"}]}], ")"}]}], ",", "x"}], 
+       "]"}], "\[Equal]", 
+      RowBox[{"{", "}"}]}]}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6628980377682796`*^9, 3.6628980377682796`*^9}, {
+  3.662898093743026*^9, 3.6628980997908745`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9636951496985844`", ",", "1217"}], "}"}]], "Output",
+ CellChangeTimes->{{3.662898103052923*^9, 3.662898117906067*^9}, 
+   3.6656338776995583`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 601},
+WindowMargins->{{Automatic, 295}, {24, Automatic}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5941, 101, 718, "Text"],
+Cell[CellGroupData[{
+Cell[6524, 125, 126, 2, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[6675, 131, 3128, 88, 374, "Input"],
+Cell[9806, 221, 334, 6, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10189, 233, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[10316, 238, 1536, 43, 242, "Input"],
+Cell[11855, 283, 188, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

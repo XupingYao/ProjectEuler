@@ -1,0 +1,133 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3588,        124]
+NotebookOptionsPosition[      2963,         96]
+NotebookOutlinePosition[      3319,        112]
+CellTagsIndexPosition[      3276,        109]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{"Power", " ", "digit", " ", "sum"}], 
+  "Title"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{"Problem", " ", "16"}], "Subtitle"], "\n", 
+ RowBox[{
+  SuperscriptBox["2", "15"], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "32768", " ", "and", " ", "the", " ", "sum", " ", "of", " ", "its", " ", 
+     "digits", " ", "is", " ", "3"}], "+", "2", "+", "7", "+", "6", "+", 
+    "8"}], "=", "26."}]}], "\n", 
+ RowBox[{"What", " ", "is", " ", "the", " ", "sum", " ", "of", " ", "the", 
+  " ", "digits", " ", "of", " ", "the", " ", "number", " ", 
+  RowBox[{
+   SuperscriptBox["2", "1000"], "?"}]}]}], "Text",
+ CellChangeTimes->{{3.6017192344337687`*^9, 3.601719260141239*^9}, {
+  3.6587279585589*^9, 3.6587279590589514`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6017192718799105`*^9, 3.6017192908919983`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"ToExpression", "[", 
+    RowBox[{"Characters", "[", 
+     RowBox[{"ToString", "[", 
+      RowBox[{"2", "^", "1000"}], "]"}], "]"}], "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6587279288288727`*^9, 3.6587279444860106`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0009280071708867473`", ",", "1366"}], "}"}]], "Output",
+ CellChangeTimes->{3.601719303540722*^9, 3.658727945527464*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.601719472485385*^9, 3.6017194823979516`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Plus", "@@", 
+   RowBox[{"IntegerDigits", "[", 
+    RowBox[{"2", "^", "1000"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6017194841870537`*^9, 3.601719484190054*^9}, {
+  3.658727948868524*^9, 3.6587279506086392`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00004590142995783911`", ",", "1366"}], "}"}]], "Output",
+ CellChangeTimes->{3.6017194857411427`*^9, 3.6587279512786427`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 757, 19, 129, "Text"],
+Cell[CellGroupData[{
+Cell[1339, 43, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1468, 48, 496, 12, 124, "Input"],
+Cell[1967, 62, 161, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2177, 71, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2304, 76, 462, 11, 124, "Input"],
+Cell[2769, 89, 166, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

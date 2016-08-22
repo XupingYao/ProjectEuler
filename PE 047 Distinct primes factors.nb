@@ -1,0 +1,238 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6662,        229]
+NotebookOptionsPosition[      5659,        187]
+NotebookOutlinePosition[      6013,        203]
+CellTagsIndexPosition[      5970,        200]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Distinct primes factors", "Title"],
+ "\n",
+ StyleBox["Problem 47", "Subtitle"],
+ "\nThe first two consecutive numbers to have two distinct prime factors are \
+: \n14 = 2\[Times]7\n15 = 3\[Times]5\n\nThe first three consecutive numbers \
+to have three distinct prime factors are : \n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"644", "=", 
+    RowBox[{
+     SuperscriptBox["2", "2"], "\[Times]", "7", "\[Times]", "23"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n645 = 35\[Times]43\n646 = 2\[Times]17",
+ "\[Times]",
+ "19.\n\nFind the first four consecutive integers to have four distinct prime \
+factors.What is the first of these numbers?"
+}], "Text",
+ CellChangeTimes->{{3.6206508716829433`*^9, 3.6206508964413595`*^9}, {
+  3.6588252277598667`*^9, 3.6588253072554536`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6206509038127813`*^9, 3.6206509133023243`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearSystemCache", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "x_", "]"}], ":=", 
+    RowBox[{"Length", "[", 
+     RowBox[{"FactorInteger", "[", "x", "]"}], "]"}]}], ";", "\n", 
+   RowBox[{"a", "=", "1"}], ";", "\n", 
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"f", "[", "a", "]"}], ">", "3"}], "&&", 
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"a", "+", "1"}], "]"}], ">", "3"}], "&&", 
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"a", "+", "2"}], "]"}], ">", "3"}], "&&", 
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"a", "+", "3"}], "]"}], ">", "3"}]}], ")"}]}], ",", 
+     RowBox[{"a", "++"}]}], "]"}], ";", "\n", "a"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6206500312318726`*^9, 3.620650098641728*^9}, {
+  3.658723695607393*^9, 3.6587237139872*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.4715231519970258`", ",", "134043"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6206500379132547`*^9, {3.6206500796676426`*^9, 3.62065010129988*^9}, 
+   3.658723684546611*^9, {3.658723716957342*^9, 3.6587237194375095`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.620650918725634*^9, 3.620650927898159*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", "=", "1"}], ",", 
+     RowBox[{"Not", "[", 
+      RowBox[{"And", "@@", 
+       RowBox[{"Thread", "[", 
+        RowBox[{"4", "\[Equal]", 
+         RowBox[{"Length", "/@", 
+          RowBox[{"FactorInteger", "[", 
+           RowBox[{"i", "+", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1", ",", "2", ",", "3"}], "}"}]}], "]"}]}]}], 
+        "]"}]}], "]"}], ",", 
+     RowBox[{"i", "++"}]}], "]"}], ";", "i"}], "]"}]], "Input",
+ CellChangeTimes->{{3.62065012420619*^9, 3.620650139951091*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.599745517910681`", ",", "134043"}], "}"}]], "Output",
+ CellChangeTimes->{3.6206501453784013`*^9, 3.6587237337884774`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t3", "Subsubtitle",
+ CellChangeTimes->{{3.620650931836384*^9, 3.6206509419689636`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ";", 
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"4", "\[Equal]", 
+       RowBox[{"Length", "@", 
+        RowBox[{"FactorInteger", "@", 
+         RowBox[{"i", "++"}]}]}]}], "&"}], ",", ",", "Nand", ",", "4"}], 
+    "]"}], ";", 
+   RowBox[{"i", "-", "4"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6206503646549435`*^9, 3.6206503769966493`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.3791309861451808`", ",", "134043"}], "}"}]], "Output",
+ CellChangeTimes->{{3.620650367140085*^9, 3.6206503791657734`*^9}, 
+   3.658723739228846*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t4", "Subsubtitle",
+ CellChangeTimes->{{3.6206509455421677`*^9, 3.620650955154718*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Position", "[", 
+   RowBox[{
+    RowBox[{"Partition", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"FactorInteger", "[", "n", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", "1", ",", "150000"}], "}"}]}], "]"}], ",", "4", 
+      ",", "1"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4", ",", "4", ",", "4", ",", "4"}], "}"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6206506289940624`*^9, 3.6206506365424943`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.34860482461092124`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "134043", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.620650638546609*^9, 3.658723743239108*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 818, 20, 302, "Text"],
+Cell[CellGroupData[{
+Cell[1400, 44, 104, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1529, 49, 1086, 30, 204, "Input"],
+Cell[2618, 81, 264, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2931, 92, 100, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3056, 97, 618, 17, 128, "Input"],
+Cell[3677, 116, 163, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3889, 125, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4016, 130, 458, 13, 108, "Input"],
+Cell[4477, 145, 190, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4716, 155, 102, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[4843, 160, 575, 16, 108, "Input"],
+Cell[5421, 178, 210, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

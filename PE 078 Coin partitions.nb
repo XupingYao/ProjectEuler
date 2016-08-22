@@ -1,0 +1,159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4920,        150]
+NotebookOptionsPosition[      4481,        129]
+NotebookOutlinePosition[      4835,        145]
+CellTagsIndexPosition[      4792,        142]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Coin partitions", "Title"],
+ "\n",
+ StyleBox["Problem 78", "Subtitle"],
+ "\nLet p (n) represent the number of different ways in which n coins can be \
+separated into piles.For example, five coins can separated into piles in \
+exactly seven different ways, so p (5) = 7.\n\nOOOOO\nOOOO O\nOOO OO\nOOO O O\
+\nOO OO O\nOO O O O\nO O O O O\n\nFind the least value of n for which p (n) \
+is divisible by one million."
+}], "Text",
+ CellChangeTimes->{{3.6333243378358793`*^9, 3.633324364148922*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6333243669789257`*^9, 3.633324396002968*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"p", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"p", "[", "n", "]"}], "=", 
+     RowBox[{"Piecewise", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", 
+          RowBox[{"n", "\[Equal]", "0"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"n", "<", "0"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ParallelSum", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"-", "1"}], ")"}], "^", 
+                RowBox[{"(", 
+                 RowBox[{"k", "-", "1"}], ")"}]}], " ", 
+               RowBox[{"p", "[", 
+                RowBox[{"n", "-", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"3", " ", 
+                    RowBox[{"k", "^", "2"}]}], "-", "k"}], ")"}], "/", 
+                  "2"}]}], "]"}]}], "+", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"-", "1"}], ")"}], "^", 
+                RowBox[{"(", 
+                 RowBox[{"k", "-", "1"}], ")"}]}], " ", 
+               RowBox[{"p", "[", 
+                RowBox[{"n", "-", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"3", " ", 
+                    RowBox[{"k", "^", "2"}]}], "+", "k"}], ")"}], "/", 
+                  "2"}]}], "]"}]}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"k", ",", 
+               RowBox[{
+                RowBox[{"1", "/", "6"}], " ", 
+                RowBox[{"(", 
+                 RowBox[{"1", "+", 
+                  RowBox[{"Sqrt", "[", 
+                   RowBox[{"1", "+", 
+                    RowBox[{"24", " ", "n"}]}], "]"}]}], ")"}]}]}], "}"}]}], 
+            "]"}], "~", "Mod", "~", 
+           RowBox[{"(", 
+            RowBox[{"10", "^", "6"}], ")"}]}], ",", 
+          RowBox[{"n", "\[GreaterEqual]", "1"}]}], "}"}]}], "}"}], "]"}]}]}], 
+   ";", 
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "+", "1"}], "&"}], ",", "1", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"p", "[", "#", "]"}], "\[NotEqual]", "0"}], "&"}]}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6333236093606853`*^9, 3.633323638236816*^9}, {
+  3.6333237394410048`*^9, 3.633323748711017*^9}, {3.6333238239831457`*^9, 
+  3.6333239017862606`*^9}, {3.6333239358303146`*^9, 3.6333239569793453`*^9}, {
+  3.63332399904333*^9, 3.633324009160345*^9}, {3.6333240496795053`*^9, 
+  3.6333241438250694`*^9}, {3.6587214927558694`*^9, 3.658721498886279*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0707996770363984`", ",", "55374"}], "}"}]], "Output",
+ CellChangeTimes->{{3.633323625657797*^9, 3.6333236393268175`*^9}, {
+   3.633323741371007*^9, 3.633323749341018*^9}, {3.6333238270631523`*^9, 
+   3.6333239028002625`*^9}, 3.6333242932246943`*^9, {3.6587214839452524`*^9, 
+   3.6587215353467417`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7411\:67084\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 519, 10, 359, "Text"],
+Cell[CellGroupData[{
+Cell[1101, 34, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1228, 39, 2877, 78, 316, "Input"],
+Cell[4108, 119, 345, 6, 64, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

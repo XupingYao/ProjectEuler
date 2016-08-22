@@ -1,0 +1,360 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11135,        352]
+NotebookOptionsPosition[     10464,        323]
+NotebookOutlinePosition[     10818,        339]
+CellTagsIndexPosition[     10775,        336]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Prime digit replacements", "Title"],
+ "\n",
+ StyleBox["Problem 51", "Subtitle"],
+ "\nBy replacing the 1 st digit of the 2 - digit number*3, it turns out that \
+six of the nine possible values : 13, 23, 43, 53, 73, and 83, are all \
+prime.By replacing the 3 rd and 4 th digits of 56 ** 3 with the same digit, \
+this 5 - digit number is the first example having seven primes among the ten \
+generated numbers, yielding the family : 56003, 56113, 56333, 56443, 56663, \
+56773, and 56993. Consequently 56003, being the first member of this family, \
+is the smallest prime with this property.Find the smallest prime which, by \
+replacing part of the number (not necessarily adjacent digits) with the same \
+digit, is part of an eight prime value family."
+}], "Text",
+ CellChangeTimes->{{3.630937906213706*^9, 3.6309379119467154`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.630937935371749*^9, 3.630937944861762*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"replace", "[", 
+     RowBox[{"num_", ",", "n_"}], "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"numstr", "=", 
+       RowBox[{"IntegerDigits", "@", "num"}]}], ";", 
+      RowBox[{"mask", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"numstr", "~", "Position", "~", "n"}], ")"}], "~", "Subsets",
+         "~", 
+        RowBox[{"{", "3", "}"}]}]}], ";", 
+      RowBox[{"represult", "=", 
+       RowBox[{"{", "}"}]}], ";", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"replist", "=", 
+          RowBox[{"{", "}"}]}], ";", 
+         RowBox[{"Do", "[", 
+          RowBox[{
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"replist", ",", 
+             RowBox[{"FromDigits", "@", 
+              RowBox[{"ReplacePart", "[", 
+               RowBox[{"numstr", ",", 
+                RowBox[{
+                 RowBox[{"mask", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "\[Rule]", "j"}]}], 
+               "]"}]}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", 
+             RowBox[{"Length", "[", "mask", "]"}]}], "}"}]}], "]"}], ";", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"represult", ",", "replist"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", 
+          RowBox[{"Range", "[", 
+           RowBox[{"n", ",", "9"}], "]"}]}], "}"}]}], "]"}], ";", 
+      RowBox[{"Return", "[", 
+       RowBox[{"Transpose", "@", "represult"}], "]"}]}], ")"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"num", "=", "100000"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Catch", "[", 
+    RowBox[{"While", "[", 
+     RowBox[{"True", ",", 
+      RowBox[{
+       RowBox[{"num", "=", 
+        RowBox[{"NextPrime", "[", "num", "]"}]}], ";", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"Or", "@@", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "\[GreaterEqual]", "3"}], "&"}], ",", 
+            RowBox[{"DigitCount", "[", 
+             RowBox[{"num", ",", "10", ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "2"}], "}"}]}], "]"}]}], "]"}]}], 
+         ",", 
+         RowBox[{"Do", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"s", "=", 
+             RowBox[{"replace", "[", 
+              RowBox[{"num", ",", "x"}], "]"}]}], ";", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"Total", "[", 
+               RowBox[{"Table", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Count", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"PrimeQ", "[", "s", "]"}], "[", 
+                    RowBox[{"[", "list", "]"}], "]"}], ",", "True"}], "]"}], 
+                  "\[Equal]", "8"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"list", ",", "1", ",", 
+                   RowBox[{"Length", "[", "s", "]"}]}], "}"}]}], "]"}], "]"}],
+               ",", 
+              RowBox[{"Throw", "[", "num", "]"}]}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1", ",", "2"}], "}"}]}], "}"}]}], "]"}]}], 
+        "]"}]}]}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.6309364264746203`*^9, {3.630937833923669*^9, 3.630937841687113*^9}, {
+   3.680830565956358*^9, 3.680830620034167*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.22575776348080945`", ",", "121313"}], "}"}]], "Output",
+ CellChangeTimes->{3.6309378446732836`*^9, 3.6808306211837845`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.630938184796535*^9, 3.6309381950965495`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"base", "[", "k_", "]"}], ":=", 
+  RowBox[{"Array", "[", 
+   RowBox[{"a", ",", "k"}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"space", "[", 
+   RowBox[{"k_", ",", "i_"}], "]"}], ":=", 
+  RowBox[{"Subsets", "[", 
+   RowBox[{
+    RowBox[{"Range", "[", 
+     RowBox[{"k", "-", "1"}], "]"}], ",", 
+    RowBox[{"{", "i", "}"}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"remain", "[", 
+   RowBox[{"k_", ",", "i_"}], "]"}], ":=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"IntegerDigits", "/@", 
+     RowBox[{"Range", "[", 
+      RowBox[{
+       RowBox[{"10", "^", 
+        RowBox[{"(", 
+         RowBox[{"k", "-", "2", "-", "i"}], ")"}]}], ",", 
+       RowBox[{
+        RowBox[{"10", "^", 
+         RowBox[{"(", 
+          RowBox[{"k", "-", "1", "-", "i"}], ")"}]}], "-", "1"}]}], "]"}]}], 
+    ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Mod", "[", 
+       RowBox[{
+        RowBox[{"Total", "[", "#", "]"}], ",", "3"}], "]"}], "\[NotEqual]", 
+      "0"}], "&"}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"remplace", "[", 
+   RowBox[{"k_", ",", "i_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Complement", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"k", "-", "1"}], "]"}], ",", "#"}], "]"}], "&"}], "/@", 
+   RowBox[{"space", "[", 
+    RowBox[{"k", ",", "i"}], "]"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"last", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3", ",", "7", ",", "9"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"tab", "[", 
+   RowBox[{"k_", ",", "i_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"base", "[", "k", "]"}], "/.", 
+      RowBox[{"(", 
+       RowBox[{"Thread", "[", 
+        RowBox[{"Rule", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"base", "[", "k", "]"}], "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "&"}], "/@", "o"}], ",", "m"}], 
+         "]"}], "]"}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"o", ",", 
+       RowBox[{"remplace", "[", 
+        RowBox[{"k", ",", "i"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"m", ",", 
+       RowBox[{"remain", "[", 
+        RowBox[{"k", ",", "i"}], "]"}]}], "}"}]}], "]"}], "//", 
+   RowBox[{
+    RowBox[{"Flatten", "[", 
+     RowBox[{"#", ",", "1"}], "]"}], "&"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"lastnum", "[", 
+   RowBox[{"n_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"tab", "[", 
+       RowBox[{"n", ",", "k"}], "]"}], "/.", 
+      RowBox[{
+       RowBox[{"a", "[", "n", "]"}], "\[RuleDelayed]", "z"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", "last"}], "}"}]}], "]"}], "//", 
+   RowBox[{
+    RowBox[{"Flatten", "[", 
+     RowBox[{"#", ",", "1"}], "]"}], "&"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"d", "=", 
+   RowBox[{"Dispatch", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"a", "[", "_", "]"}], "\[Rule]", "i"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "9"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{
+    RowBox[{"DeleteCases", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"a_", "/;", 
+       RowBox[{
+        RowBox[{"First", "[", "a", "]"}], "\[Equal]", "0"}]}]}], "]"}], 
+    "&"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"end", "[", 
+   RowBox[{"n_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Map", "[", 
+     RowBox[{"FromDigits", ",", "#", ",", 
+      RowBox[{"{", "2", "}"}]}], "]"}], "&"}], "@", 
+   RowBox[{"(", 
+    RowBox[{"f", "/@", 
+     RowBox[{"Outer", "[", 
+      RowBox[{"ReplaceAll", ",", 
+       RowBox[{"lastnum", "[", 
+        RowBox[{"n", ",", "k"}], "]"}], ",", "d", ",", "1"}], "]"}]}], 
+    ")"}]}]}]}], "Input",
+ CellChangeTimes->{{3.6309381641964507`*^9, 3.6309381642064505`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Sort", "[", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"end", "[", 
+       RowBox[{"6", ",", "3"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Total", "@", 
+         RowBox[{"Boole", "@", 
+          RowBox[{"PrimeQ", "@", "#"}]}]}], "\[Equal]", "8"}], "&"}]}], "]"}],
+     "]"}], "//", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", "PrimeQ"}], "]"}], "&"}]}], "//", 
+  "Timing"}]], "Input",
+ CellChangeTimes->{{3.63093817415652*^9, 3.63093817415652*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.39000249999999997418953512351436074823`5.611667304236187", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "121313", ",", "222323", ",", "323333", ",", "424343", ",", "525353", ",",
+      "626363", ",", "828383", ",", "929393"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.630938175666522*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 505},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (2016\:5e744\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 856, 14, 227, "Text"],
+Cell[CellGroupData[{
+Cell[1438, 38, 100, 1, 28, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1563, 43, 3711, 100, 620, "Input"],
+Cell[5277, 145, 165, 3, 64, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5491, 154, 102, 1, 28, "Subsubtitle"],
+Cell[5596, 157, 3869, 129, 526, "Input"],
+Cell[CellGroupData[{
+Cell[9490, 290, 611, 20, 86, "Input"],
+Cell[10104, 312, 332, 7, 52, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
