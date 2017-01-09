@@ -1,0 +1,212 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7158,        204]
+NotebookOptionsPosition[      6716,        183]
+NotebookOutlinePosition[      7073,        199]
+CellTagsIndexPosition[      7030,        196]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Pandigital prime sets", "Title"],
+ "\n",
+ StyleBox["Problem 118", "Subtitle"],
+ "\nUsing all of the digits 1 through 9 and concatenating them freely to form \
+decimal integers, different sets can be formed.Interestingly with the set ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", " ", "5", ",", " ", "47", ",", " ", "89", ",", " ", "631"}], 
+    "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", all of the elements belonging to it are prime.How many distinct sets \
+containing each of the digits one through nine exactly once contain only \
+prime elements?"
+}], "Text",
+ CellChangeTimes->{{3.6929711899886074`*^9, 3.692971245833418*^9}, 
+   3.692971324717147*^9, 3.6929714527421703`*^9, 3.692971504472742*^9, 
+   3.6929715481815586`*^9, {3.692971595737144*^9, 3.692971611381922*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.692971561706052*^9, 3.6929715775814795`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"cases", "=", 
+    RowBox[{"ParallelMap", "[", 
+     RowBox[{"Tally", ",", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"IntegerPartitions", "[", "9", "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{"#", ",", "1"}], "]"}], "\[LessEqual]", "4"}], "&&", 
+          RowBox[{
+           RowBox[{"Length", "[", "#", "]"}], ">", "1"}]}], "&"}]}], "]"}]}], 
+     "]"}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"maps", "=", 
+    RowBox[{"ParallelTable", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"#", ",", 
+             RowBox[{"Map", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Count", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"_", "?", "PrimeQ"}]}], "]"}], "&"}], ",", 
+               RowBox[{"Map", "[", 
+                RowBox[{"FromDigits", ",", 
+                 RowBox[{"Map", "[", 
+                  RowBox[{"Permutations", ",", "#"}], "]"}], ",", 
+                 RowBox[{"{", "2", "}"}]}], "]"}]}], "]"}]}], "}"}], "]"}], 
+          ",", 
+          RowBox[{"{", 
+           RowBox[{"_", ",", "0"}], "}"}]}], "]"}], "&"}], "[", 
+       RowBox[{"Subsets", "[", 
+        RowBox[{
+         RowBox[{"Range", "[", "9", "]"}], ",", 
+         RowBox[{"{", "i", "}"}]}], "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "8"}], "}"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "&"}], "/@", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"ParallelMap", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Select", "[", 
+           RowBox[{
+            RowBox[{"Map", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Union", "@", 
+                  RowBox[{"Flatten", "[", 
+                   RowBox[{"Join", "[", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}], "]"}]}], 
+                 ",", 
+                 RowBox[{"Apply", "[", 
+                  RowBox[{"Times", ",", 
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], "]"}]}], "}"}],
+                "&"}], ",", 
+              RowBox[{"Map", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Flatten", "[", 
+                  RowBox[{"#", ",", "1"}], "]"}], "&"}], ",", 
+                RowBox[{"Flatten", "[", 
+                 RowBox[{
+                  RowBox[{"Outer", "[", 
+                   RowBox[{"List", ",", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{"Sequence", ",", 
+                    RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Subsets", "[", 
+                    RowBox[{
+                    RowBox[{"maps", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "}"}]}], "]"}], "&"}], 
+                    ",", "#"}], "]"}]}], "]"}], ",", "1"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"Length", "[", "#", "]"}], "-", "1"}]}], "]"}]}], 
+               "]"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", 
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[Equal]", "9"}], 
+             "&"}]}], "]"}], "&"}], ",", "cases"}], "]"}], ",", "1"}], 
+      "]"}]}], "//", "Total"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.692952608337161*^9, 3.692952617181261*^9}, {
+   3.6929528437923965`*^9, 3.6929528987921143`*^9}, 3.692953437820129*^9, {
+   3.6929594102194815`*^9, 3.6929594175485177`*^9}, {3.6929594674377065`*^9, 
+   3.6929594775638523`*^9}, {3.692959607024311*^9, 3.6929596093058014`*^9}, {
+   3.6929711674841294`*^9, 3.692971368823789*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.48308347329926`", ",", "44680"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6929526175249968`*^9, 3.692952848370963*^9, 3.6929528996047688`*^9, 
+   3.6929534385388823`*^9, 3.6929594181892247`*^9, 3.6929594780951195`*^9, 
+   3.6929596293609543`*^9, 3.692966585931621*^9, {3.6929712522480516`*^9, 
+   3.6929712769566154`*^9}, {3.692971319724019*^9, 3.69297136446113*^9}, {
+   3.692971641422433*^9, 3.6929716469034395`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1368, 829},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (2016\:5e7410\:67088\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 851, 19, 150, "Text"],
+Cell[CellGroupData[{
+Cell[1434, 43, 102, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1561, 48, 4661, 121, 399, "Input"],
+Cell[6225, 171, 463, 8, 62, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
