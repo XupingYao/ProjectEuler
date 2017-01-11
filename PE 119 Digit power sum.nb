@@ -1,0 +1,150 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4019,        140]
+NotebookOptionsPosition[      3578,        119]
+NotebookOutlinePosition[      3935,        135]
+CellTagsIndexPosition[      3892,        132]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Digit power sum", "Title"],
+ "\n",
+ StyleBox["Problem 119", "Subtitle"],
+ "\nThe number ",
+ Cell[BoxData[
+  FormBox["512", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is interesting because it is equal to the sum of its digits raised to some \
+power :",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"5", " ", "+", " ", "1", " ", "+", " ", "2"}], " ", "=", " ", 
+     "8"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["8", "3"], " ", "=", " ", "512"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Another example of a number with this property is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"614656", " ", "=", " ", 
+    SuperscriptBox["28", "4"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nWe shall define an to be the nth term of this sequence and insist that \
+a number must contain at least two digits to have a sum.You are given that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["a", "2"], " ", "=", " ", "512"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["a", "10"], "=", " ", "614656"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nFind ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["a", "30"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.693036734606599*^9, 3.6930367520977793`*^9}, {
+  3.6930367836605186`*^9, 3.693036862865733*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.693036865498148*^9, 3.69303687726581*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{"RankedMin", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Apply", "[", 
+       RowBox[{"Power", ",", "#"}], "]"}], "&"}], "/@", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Tuples", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Range", "[", 
+           RowBox[{"2", ",", "100"}], "]"}], ",", 
+          RowBox[{"Range", "[", 
+           RowBox[{"2", ",", "10"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Total", "@", 
+          RowBox[{"IntegerDigits", "@", 
+           RowBox[{"Apply", "[", 
+            RowBox[{"Power", ",", "#"}], "]"}]}]}], "\[Equal]", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "&"}]}], "]"}]}], ",", "30"}], 
+   "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.693036880934478*^9, 3.693036988202836*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.003967182742303788`", ",", "248155780267521"}], "}"}]], "Output",
+ CellChangeTimes->{{3.693036990352115*^9, 3.693037000217573*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (2016\:5e7410\:67088\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1564, 50, 247, "Text"],
+Cell[CellGroupData[{
+Cell[2147, 74, 99, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2271, 79, 1103, 31, 195, "Input"],
+Cell[3377, 112, 173, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
