@@ -1,0 +1,440 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13929,        432]
+NotebookOptionsPosition[     13366,        407]
+NotebookOutlinePosition[     13723,        423]
+CellTagsIndexPosition[     13680,        420]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Su Doku", "Title"],
+ "\n",
+ StyleBox["Problem 96", "Subtitle"],
+ "\nSu Doku (Japanese meaning number place) is the name given to a popular \
+puzzle concept.Its origin is unclear, but credit must be attributed to \
+Leonhard Euler who invented a similar, and much more difficult, puzzle idea \
+called Latin Squares.The objective of Su Doku puzzles, however, is to replace \
+the blanks (or zeros) in a 9 by 9 grid in such that each row, column, and 3 \
+by 3 box contains each of the digits 1 to 9. Below is an example of a typical \
+starting puzzle grid and its solution grid.\n\n",
+ Cell[BoxData[GridBox[{
+    {GridBox[{
+       {GridBox[{
+          {"0", "0", "3"},
+          {"9", "0", "0"},
+          {"0", "0", "1"}
+         }], GridBox[{
+          {"0", "2", "0"},
+          {"3", "0", "5"},
+          {"8", "0", "6"}
+         }], GridBox[{
+          {"6", "0", "0"},
+          {"0", "0", "1"},
+          {"4", "0", "0"}
+         }]},
+       {GridBox[{
+          {"0", "0", "8"},
+          {"7", "0", "0"},
+          {"0", "0", "6"}
+         }], GridBox[{
+          {"1", "0", "2"},
+          {"0", "0", "0"},
+          {"7", "0", "8"}
+         }], GridBox[{
+          {"9", "0", "0"},
+          {"0", "0", "8"},
+          {"2", "0", "0"}
+         }]},
+       {GridBox[{
+          {"0", "0", "2"},
+          {"8", "0", "0"},
+          {"0", "0", "5"}
+         }], GridBox[{
+          {"6", "0", "9"},
+          {"2", "0", "3"},
+          {"0", "1", "0"}
+         }], GridBox[{
+          {"5", "0", "0"},
+          {"0", "0", "9"},
+          {"3", "0", "0"}
+         }]}
+      },
+      GridBoxDividers->{
+       "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+        "RowsIndexed" -> {}}], GridBox[{
+       {GridBox[{
+          {"4", "8", "3"},
+          {"9", "6", "7"},
+          {"2", "5", "1"}
+         }], GridBox[{
+          {"9", "2", "1"},
+          {"3", "4", "5"},
+          {"8", "7", "6"}
+         }], GridBox[{
+          {"6", "5", "7"},
+          {"8", "2", "1"},
+          {"4", "9", "3"}
+         }]},
+       {GridBox[{
+          {"5", "4", "8"},
+          {"7", "2", "9"},
+          {"1", "3", "6"}
+         }], GridBox[{
+          {"1", "3", "2"},
+          {"5", "6", "4"},
+          {"7", "9", "8"}
+         }], GridBox[{
+          {"9", "7", "6"},
+          {"1", "3", "8"},
+          {"2", "4", "5"}
+         }]},
+       {GridBox[{
+          {"3", "7", "2"},
+          {"8", "1", "4"},
+          {"6", "9", "5"}
+         }], GridBox[{
+          {"6", "8", "9"},
+          {"2", "5", "3"},
+          {"4", "1", "7"}
+         }], GridBox[{
+          {"5", "1", "4"},
+          {"7", "6", "9"},
+          {"3", "8", "2"}
+         }]}
+      },
+      GridBoxDividers->{
+       "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+        "RowsIndexed" -> {}}]}
+   }]]],
+ "\n\nA well constructed Su Doku puzzle has a unique solution and can be \
+solved by logic, although it may be necessary to employ \"guess and test\" \
+methods in order to eliminate options (there is much contested opinion over \
+this).The complexity of the search determines the difficulty of the puzzle; \
+the example above is considered easy because it can be solved by straight \
+forward direct deduction.\n\nThe 6 K text file, sudoku.txt (right click and' \
+Save Link/Target As ...'), contains fifty different Su Doku puzzles ranging \
+in difficulty, but all with unique solutions (the first puzzle in the file is \
+the example above).\n\nBy solving all fifty puzzles find the sum of the 3 - \
+digit numbers found in the top left corner of each solution grid; for \
+example, 483 is the 3 - digit number found in the top left corner of the \
+solution grid above."
+}], "Text",
+ CellChangeTimes->{{3.694758839236184*^9, 3.694758880098056*^9}, {
+  3.694758931325755*^9, 3.6947589734779854`*^9}, {3.6947590906654634`*^9, 
+  3.6947595103203526`*^9}, {3.694759561252184*^9, 3.694759563040823*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6947595656844053`*^9, 3.694759581846011*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SystemOpen", "[", "\"\<PE 096 Su Doku.exe\>\"", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6947597627489004`*^9, 3.694759796001044*^9}, {
+  3.694759846039221*^9, 3.6947598470726175`*^9}, {3.694759924327472*^9, 
+  3.6947599798380585`*^9}, {3.6947600356717243`*^9, 3.6947600533565173`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6947595444344893`*^9, 3.6947595593401337`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"SetAttributes", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"fx3", ",", "exc"}], "}"}], ",", "HoldAll"}], "]"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"linked", "[", "m_", "]"}], "[", 
+     RowBox[{"u_", ",", "v_", ",", "r_", ",", "c_"}], "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"m", "[", 
+        RowBox[{"[", 
+         RowBox[{"u", ",", "All", ",", "r"}], "]"}], "]"}], "~", "Delete", 
+       "~", 
+       RowBox[{"{", 
+        RowBox[{"v", ",", "c"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"m", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "v", ",", "All", ",", "c"}], "]"}], "]"}], "~", 
+       "Delete", "~", 
+       RowBox[{"{", 
+        RowBox[{"u", ",", "r"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"m", "[", 
+        RowBox[{"[", 
+         RowBox[{"u", ",", "v"}], "]"}], "]"}], "~", "Delete", "~", 
+       RowBox[{"{", 
+        RowBox[{"r", ",", "c"}], "}"}]}]}], "}"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"pof2", "=", 
+    RowBox[{"Alternatives", "@@", 
+     RowBox[{"(", 
+      RowBox[{"2", "^", 
+       RowBox[{"Range", "[", 
+        RowBox[{"0", ",", "8"}], "]"}]}], ")"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"fx1", "=", 
+    RowBox[{
+     RowBox[{"BitOr", "@@", 
+      RowBox[{"Cases", "[", 
+       RowBox[{"#", ",", "pof2", ",", 
+        RowBox[{"-", "1"}]}], "]"}]}], "&"}]}], ";", "\n", 
+   RowBox[{"fx2", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"BitOr", "[", 
+       RowBox[{"#", ",", "#2"}], "]"}], "-", "#"}], "&"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"fx3", "[", "m_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"m", "[", 
+        RowBox[{"[", "##", "]"}], "]"}], "=", 
+       RowBox[{"fx2", "[", 
+        RowBox[{
+         RowBox[{"fx1", "@", 
+          RowBox[{
+           RowBox[{"linked", "[", "m", "]"}], "[", "##", "]"}]}], ",", 
+         RowBox[{"m", "[", 
+          RowBox[{"[", "##", "]"}], "]"}]}], "]"}]}], ")"}], "&"}]}], ";", 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"exc", "[", "m_", "]"}], "[", "c__", "]"}], ":=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"#", "\[NotEqual]", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"m", "[", 
+           RowBox[{"[", "c", "]"}], "]"}], "}"}], "=", "#"}], ",", 
+        "\"\<\>\""}], "]"}], "&"}], "@", 
+     RowBox[{"Cases", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"fx2", "[", 
+          RowBox[{
+           RowBox[{"BitOr", "@@", "#"}], ",", 
+           RowBox[{"m", "[", 
+            RowBox[{"[", "c", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+        RowBox[{"Flatten", "/@", 
+         RowBox[{
+          RowBox[{"linked", "[", "m", "]"}], "@", "c"}]}]}], ",", 
+       RowBox[{"Except", "[", "0", "]"}], ",", "1", ",", "1"}], "]"}]}]}], 
+   ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"loop", "[", "board_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"m", "=", "board"}], "}"}], ",", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"FixedPoint", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Block", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"good", "=", 
+               RowBox[{"Position", "[", 
+                RowBox[{"m", ",", 
+                 RowBox[{"Except", "[", 
+                  RowBox[{"pof2", ",", "_Integer"}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"-", "1"}], "}"}]}], "]"}]}], "}"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"fx3", "[", "m", "]"}], "@@@", "good"}], ";", 
+              RowBox[{
+               RowBox[{"exc", "[", "m", "]"}], "@@@", "good"}]}]}], "]"}], 
+           "&"}], ",", 
+          RowBox[{"{", "}"}]}], "]"}], ";", "m"}], ")"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"near", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Position", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"Min", "@", "#"}], ",", 
+          RowBox[{"-", "1"}], ",", "1"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "&"}], "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "~", "Count", "~", "1"}], "&"}], ",", 
+         RowBox[{"IntegerDigits", "[", 
+          RowBox[{"#", ",", "2", ",", "9"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"-", "2"}], "}"}]}], "]"}], "/.", 
+       RowBox[{"1", "\[Rule]", "10"}]}], "]"}], "&"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"split", "[", "board_", "]"}], "/;", 
+     RowBox[{"MemberQ", "[", 
+      RowBox[{"board", ",", "0", ",", 
+       RowBox[{"{", 
+        RowBox[{"-", "1"}], "}"}]}], "]"}]}], ":=", 
+    RowBox[{"Sequence", "[", "]"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"split", "[", "board_", "]"}], "/;", 
+     RowBox[{"MatchQ", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "@", "board"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"pof2", ".."}], "}"}]}], "]"}]}], ":=", 
+    RowBox[{"Throw", "[", "board", "]"}]}], ";", "\n", 
+   RowBox[{
+    RowBox[{"split", "[", "board_", "]"}], ":=", 
+    RowBox[{"With", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"c", "=", 
+        RowBox[{"near", "@", "board"}]}], "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"split", "@", 
+         RowBox[{"loop", "@", 
+          RowBox[{"ReplacePart", "[", 
+           RowBox[{"board", ",", 
+            RowBox[{"c", "\[Rule]", "#"}]}], "]"}]}]}], "&"}], "/@", 
+       RowBox[{"First", "/@", 
+        RowBox[{"(", 
+         RowBox[{"2", "^", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Reverse", "@", 
+              RowBox[{"IntegerDigits", "[", 
+               RowBox[{
+                RowBox[{"board", "~", "Extract", "~", "c"}], ",", "2"}], 
+               "]"}]}], "~", "Position", "~", "1"}], "-", "1"}], ")"}]}], 
+         ")"}]}]}]}], "]"}]}], ";", "\n", 
+   RowBox[{"prep", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", "^", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"#", "~", "Partition", "~", 
+          RowBox[{"{", 
+           RowBox[{"3", ",", "3"}], "}"}]}], "-", "1"}], ")"}]}], "/.", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], "\[Rule]", "511"}]}], "&"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"sudo", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", "~", "Log", "~", 
+       RowBox[{
+        RowBox[{"Catch", "[", 
+         RowBox[{"split", "@", 
+          RowBox[{"loop", "@", 
+           RowBox[{"prep", "@", "#"}]}]}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}], "+", "1"}], 
+     "&"}]}], ";", "\n", 
+   RowBox[{"dat", "=", 
+    RowBox[{
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"ReadList", "[", 
+        RowBox[{"\"\<PE 096.txt\>\"", ",", "Byte", ",", 
+         RowBox[{"RecordLists", "\[Rule]", "True"}]}], "]"}], ",", "9", ",", 
+       "10", ",", 
+       RowBox[{"-", "10"}]}], "]"}], "-", "48"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Total", "[", 
+    RowBox[{"FromDigits", "/@", 
+     RowBox[{"sudo", "/@", "dat"}]}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6947585643677287`*^9, 3.694758776442478*^9}, {
+  3.694759515986086*^9, 3.694759536434119*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.6448980780741603`", ",", "24702"}], "}"}]], "Output",
+ CellChangeTimes->{3.6947585841723356`*^9, 3.694758664460552*^9, 
+  3.694758784360367*^9, 3.694758815722418*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1368, 829},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (2016\:5e7410\:67088\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3946, 115, 538, "Text"],
+Cell[CellGroupData[{
+Cell[4529, 139, 102, 1, 33, "Subsubtitle"],
+Cell[4634, 142, 458, 10, 84, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5129, 157, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[5258, 162, 7869, 235, 770, "Input"],
+Cell[13130, 399, 208, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

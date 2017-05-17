@@ -1,0 +1,164 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5203,        156]
+NotebookOptionsPosition[      4574,        128]
+NotebookOutlinePosition[      4931,        144]
+CellTagsIndexPosition[      4888,        141]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Disc game prize fund", "Title"],
+ "\n",
+ StyleBox["Problem 121", "Subtitle"],
+ "\n\nA bag contains one red disc and one blue disc.In a game of chance a \
+player takes a disc at random and its colour is noted.After each turn the \
+disc is returned to the bag, an extra red disc is added, and another disc is \
+taken at random.The player pays \[Sterling]1 to play and wins if they have \
+taken more blue discs than red discs at the end of the game.\n\nIf the game \
+is played for four turns, the probability of a player winning is exactly ",
+ StyleBox["11/120", "Input"],
+ ", and so the maximum prize fund the banker should allocate for winning in \
+this game would be \[Sterling]10 before they would expect to incur a loss. \
+Note that any payout will be a whole number of pounds and also includes the \
+original \[Sterling]1 paid to play the game, so in the example given the \
+player actually wins \[Sterling]9.\n\nFind the maximum prize fund that should \
+be allocated to a single game in which fifteen turns are played."
+}], "Text",
+ CellChangeTimes->{{3.6941514837159133`*^9, 3.6941514837159133`*^9}, {
+  3.6941515338809967`*^9, 3.6941515572064853`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6941515918021755`*^9, 3.6941516017945576`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"IntegerPart", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"15", "+", "1"}], ")"}], "!"}], "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Total", "[", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Apply", "[", 
+           RowBox[{"Times", ",", "#"}], "]"}], "&"}], ",", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Subsets", "[", 
+              RowBox[{
+               RowBox[{"Range", "[", "15", "]"}], ",", 
+               RowBox[{"{", "i", "}"}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", "7"}], "}"}]}], "]"}], ",", "1"}], 
+          "]"}]}], "]"}], "]"}], "+", "1"}], ")"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6941497715122547`*^9, 3.6941498900728707`*^9}, {
+  3.694150159338678*^9, 3.6941501921936107`*^9}, {3.6941516079204535`*^9, 
+  3.6941516540958805`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.028565708431948597`", ",", "2269"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6941497618675847`*^9, 3.694149771932448*^9}, {
+   3.6941498039147234`*^9, 3.694149845996925*^9}, 3.694149893219083*^9, {
+   3.6941501702983475`*^9, 3.6941501935015807`*^9}, 3.6941516555479565`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t2", "Subsubtitle",
+ CellChangeTimes->{{3.6941514915270867`*^9, 3.694151492227485*^9}, {
+  3.6941518949221325`*^9, 3.694151905300943*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Floor", "[", 
+   RowBox[{
+    RowBox[{"16", "!"}], "/", 
+    RowBox[{"Tr", "@", 
+     RowBox[{"Abs", "@", 
+      RowBox[{"Array", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"16", "~", "StirlingS1", "~", "#"}], "&"}], ",", "8", ",", 
+        "9"}], "]"}]}]}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.694151907450498*^9, 3.6941519400605288`*^9}, 
+   3.694152010178301*^9, {3.6941521010867243`*^9, 3.694152104104143*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00008328194878119124`", ",", "2269"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6941519160145187`*^9, 3.694151940545029*^9}, 
+   3.6941520113628507`*^9, 3.694152104835827*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (2016\:5e7410\:67088\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1185, 19, 340, "Text"],
+Cell[CellGroupData[{
+Cell[1768, 43, 104, 1, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[1897, 48, 1207, 33, 235, "Input"],
+Cell[3107, 83, 316, 5, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3472, 94, 153, 2, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[3650, 100, 677, 18, 121, "Input"],
+Cell[4330, 120, 216, 4, 62, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

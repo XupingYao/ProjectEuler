@@ -1,0 +1,168 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4428,        158]
+NotebookOptionsPosition[      3985,        137]
+NotebookOutlinePosition[      4342,        153]
+CellTagsIndexPosition[      4299,        150]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Square remainders", "Title"],
+ "\n",
+ StyleBox["Problem 120", "Subtitle"],
+ "\n\nLet ",
+ Cell[BoxData[
+  FormBox["r", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " be the remainder when ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"a", "-", "1"}], ")"}], "n"], "+", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"a", "+", "1"}], ")"}], "n"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is divided by ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["a", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\nFor example, if ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", "=", "7"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "3"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", then ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"r", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"42", ":", " ", 
+      RowBox[{"63", " ", "+", " ", "83"}]}], " ", "=", " ", 
+     RowBox[{"728", " ", "\[Congruent]", " ", 
+      RowBox[{"42", " ", "mod", " ", "49"}]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " . And as ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " varies, so too will ",
+ Cell[BoxData[
+  FormBox["r", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", but for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", " ", "=", " ", "7"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " it turns out that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["r", "max"], "=", "42"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nFor ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"3", "\[LessEqual]", " ", "a", "\[LessEqual]", " ", "1000"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", find ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Sum]", 
+    SubscriptBox["r", "max"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.6933697976838045`*^9, 3.6933700805873837`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.6933690187790117`*^9, 3.693369037428246*^9}, {
+  3.6933695271784678`*^9, 3.693369528679769*^9}, {3.6933696498838243`*^9, 
+  3.693369666830847*^9}, {3.6933700985246844`*^9, 3.6933701153558936`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{"a", 
+     RowBox[{"(", 
+      RowBox[{"a", "-", 
+       RowBox[{"(", 
+        RowBox[{"2", "-", 
+         RowBox[{"Mod", "[", 
+          RowBox[{"a", ",", "2"}], "]"}]}], ")"}]}], ")"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "3", ",", "1000"}], "}"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.693369046976368*^9, 3.6933690636271095`*^9}, {
+  3.693369105626088*^9, 3.693369117535322*^9}, {3.6933693603843307`*^9, 
+  3.6933693679148674`*^9}, {3.6933696398866315`*^9, 3.693369645579116*^9}, {
+  3.693370100428489*^9, 3.6933701014095674`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0002523074852861659`", ",", "333082500"}], "}"}]], "Output",
+ CellChangeTimes->{3.693369370970606*^9, 3.693369670096061*^9, 
+  3.693370121022267*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (2016\:5e7410\:67088\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2090, 77, 228, "Text"],
+Cell[CellGroupData[{
+Cell[2673, 101, 254, 3, 33, "Subsubtitle"],
+Cell[CellGroupData[{
+Cell[2952, 108, 811, 19, 121, "Input"],
+Cell[3766, 129, 191, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
