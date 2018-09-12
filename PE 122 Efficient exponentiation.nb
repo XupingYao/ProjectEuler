@@ -1,0 +1,323 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9404,        315]
+NotebookOptionsPosition[      8712,        290]
+NotebookOutlinePosition[      9068,        306]
+CellTagsIndexPosition[      9025,        303]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Efficient exponentiation", "Title"],
+ "\n",
+ StyleBox["Problem 122", "Subtitle"],
+ "\n\nThe most naive way of computing n15 requires fourteen multiplications:\n\
+\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"n", "\[Times]", "n", "\[Times]"}], "..."}], "\[Times]", "n"}], 
+    "=", 
+    SuperscriptBox["n", "15"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "57f3a557-083b-4c52-9b79-bd7fb92bbcb1"],
+ "\n\nBut using a \[OpenCurlyDoubleQuote]binary\[CloseCurlyDoubleQuote] \
+method you can compute it in six multiplications:\n\n",
+ Cell[BoxData[GridBox[{
+    {
+     RowBox[{
+      RowBox[{
+       StyleBox["n",
+        FontSlant->"Italic"], "\[Times]", 
+       StyleBox["n",
+        FontSlant->"Italic"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "2"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "2"], "\[Times]", 
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "2"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "4"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "4"], "\[Times]", 
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "4"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "8"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "8"], "\[Times]", 
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "4"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "12"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "12"], "\[Times]", 
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "2"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "14"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "14"], "\[Times]", 
+       StyleBox["n",
+        FontSlant->"Italic"]}], 
+      StyleBox["=",
+       FontSlant->"Italic"], 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "15"]}]}
+   }]],ExpressionUUID->"8de20877-4568-4df5-8c67-a61ecd25d136"],
+ "\n\nHowever it is yet possible to compute it in only five multiplications:\n\
+\n",
+ Cell[BoxData[GridBox[{
+    {
+     RowBox[{
+      RowBox[{
+       StyleBox["n",
+        FontSlant->"Italic"], "\[Times]", 
+       StyleBox["n",
+        FontSlant->"Italic"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "2"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "2"], "\[Times]", 
+       StyleBox["n",
+        FontSlant->"Italic"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "3"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "3"], "\[Times]", 
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "3"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "6"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "6"], "\[Times]", 
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "6"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "12"]}]},
+    {
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "12"], "\[Times]", 
+       SuperscriptBox[
+        StyleBox["n",
+         FontSlant->"Italic"], "3"]}], "=", 
+      SuperscriptBox[
+       StyleBox["n",
+        FontSlant->"Italic"], "15"]}]}
+   }]],ExpressionUUID->"52273e70-3cab-4edb-9241-66887a7c1fde"],
+ "\n\nWe shall define ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"m", 
+    RowBox[{"(", "k", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "a42590d8-8cf6-42d5-a2f2-6226ae90206f"],
+ " to be the minimum number of multiplications to compute ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["n", "k"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "d9166ac9-7569-492d-b47b-c487c2985fcd"],
+ "; for example ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"m", "(", "15", ")"}], "=", "5"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "15508223-58ec-4942-b1dd-f1e76053fdc0"],
+ ".\nFor ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "\[LessEqual]", "k", "\[LessEqual]", "200"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "8e24d3ef-a5e9-484d-9ca2-93f1828a8b8b"],
+ ", find ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Sum]", 
+    RowBox[{"m", "(", "k", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "08abdd62-63a9-4928-a1c3-6d4163de959b"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.6941514837159133`*^9, 3.6941514837159133`*^9}, {
+  3.6941515338809967`*^9, 3.6941515572064853`*^9}, {3.715522523781747*^9, 
+  3.7155226291072135`*^9}, {3.7155226648597*^9, 
+  3.7155229715170827`*^9}},ExpressionUUID->"2ab91302-5386-47b8-b30b-\
+c431cbacd2d6"],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.7155229781466675`*^9, 3.715522981876587*^9}, {
+  3.7155230211941385`*^9, 
+  3.7155230234351025`*^9}},ExpressionUUID->"6d93a095-b3e4-4c89-8004-\
+458a0a87bad5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"limit", "=", "200"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"cost", "=", 
+    RowBox[{"path", "=", 
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{"Infinity", ",", "limit"}], "]"}]}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"backtrack", "[", 
+     RowBox[{"power_", ",", "depth_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"power", ">", "limit"}], "||", 
+       RowBox[{"depth", ">", 
+        RowBox[{"cost", "[", 
+         RowBox[{"[", "power", "]"}], "]"}]}]}], ",", 
+      RowBox[{"Return", "[", "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"cost", "[", 
+         RowBox[{"[", "power", "]"}], "]"}], "=", "depth"}], ";", 
+       RowBox[{
+        RowBox[{"path", "[", 
+         RowBox[{"[", "depth", "]"}], "]"}], "=", "power"}], ";", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"backtrack", "[", 
+          RowBox[{
+           RowBox[{"power", "+", 
+            RowBox[{"path", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+           RowBox[{"depth", "+", "1"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "depth", ",", "0", ",", 
+           RowBox[{"-", "1"}]}], "}"}]}], "]"}]}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"backtrack", "[", 
+    RowBox[{"1", ",", "0"}], "]"}], ";", "\[IndentingNewLine]", 
+   RowBox[{"Total", "[", "cost", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.715469154752804*^9, 3.715469191327062*^9}, {
+  3.715469289095914*^9, 3.7154693006466317`*^9}, {3.7154694745541086`*^9, 
+  3.7154694845767365`*^9}, {3.715469786524276*^9, 3.7154697877023697`*^9}, {
+  3.715469866371522*^9, 3.715469871973421*^9}, {3.7155211334422197`*^9, 
+  3.7155211364191685`*^9}, {3.71552137897925*^9, 3.7155213860099745`*^9}, {
+  3.715522117732667*^9, 
+  3.7155221579024324`*^9}},ExpressionUUID->"014f779f-1877-4f30-a40c-\
+3949e4c54434"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.403697877934272`", ",", "1582"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7155221824674234`*^9, {3.716470509693864*^9, 
+   3.7164705151944714`*^9}},ExpressionUUID->"9c699535-ce88-4d12-af41-\
+187f800880b2"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 40}, {22, Automatic}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (2017\:5e745\:670816\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5440, 192, 598, "Text", "ExpressionUUID" -> \
+"2ab91302-5386-47b8-b30b-c431cbacd2d6"],
+Cell[CellGroupData[{
+Cell[6023, 216, 215, 4, 33, "Subsubtitle", "ExpressionUUID" -> \
+"6d93a095-b3e4-4c89-8004-458a0a87bad5"],
+Cell[CellGroupData[{
+Cell[6263, 224, 2169, 54, 345, "Input", "ExpressionUUID" -> \
+"014f779f-1877-4f30-a40c-3949e4c54434"],
+Cell[8435, 280, 249, 6, 62, "Output", "ExpressionUUID" -> \
+"9c699535-ce88-4d12-af41-187f800880b2"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

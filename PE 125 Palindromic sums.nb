@@ -1,0 +1,204 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6639,        196]
+NotebookOptionsPosition[      5949,        171]
+NotebookOutlinePosition[      6306,        187]
+CellTagsIndexPosition[      6263,        184]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Palindromic sums", "Title"],
+ "\n",
+ StyleBox["Problem 125", "Subtitle"],
+ "\nThe palindromic number ",
+ Cell[BoxData[
+  FormBox["595", TraditionalForm]],ExpressionUUID->
+  "98d6f6de-3b3b-482b-ab84-9232472de43b"],
+ " is interesting because it can be written as the sum of consecutive \
+squares: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["6", "2"], "+", 
+    SuperscriptBox["7", "2"], "+", 
+    SuperscriptBox["8", "2"], "+", 
+    SuperscriptBox["9", "2"], "+", 
+    SuperscriptBox["10", "2"], "+", 
+    SuperscriptBox["11", "2"], "+", 
+    SuperscriptBox["12", "2"]}], TraditionalForm]],ExpressionUUID->
+  "b317edf2-353d-4c03-b218-fa454f6013eb"],
+ ".\n\nThere are exactly eleven palindromes below one-thousand that can be \
+written as consecutive square sums, and the sum of these palindromes is ",
+ Cell[BoxData[
+  FormBox["4164", TraditionalForm]],ExpressionUUID->
+  "f361f137-50f8-49e7-8fc2-1e67f3ec0c14"],
+ ". Note that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "=", 
+    RowBox[{
+     SuperscriptBox["0", "2"], "+", 
+     SuperscriptBox["1", "2"]}]}], TraditionalForm]],ExpressionUUID->
+  "08f8f1bc-98a6-4499-aba1-35ba8bc6d2d9"],
+ " has not been included as this problem is concerned with the squares of \
+positive integers.\n\nFind the sum of all the numbers less than ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", "2"], TraditionalForm]],ExpressionUUID->
+  "c2e9a7ea-8249-4361-8e97-4626fd4e2876"],
+ " that are both palindromic and can be written as the sum of consecutive \
+squares."
+}], "Text",
+ CellChangeTimes->{{3.7157596980813694`*^9, 
+  3.7157598474203415`*^9}},ExpressionUUID->"7aef592b-2c34-420b-835c-\
+71c7202c3ee8"],
+
+Cell[CellGroupData[{
+
+Cell["Solution\t1", "Subsubtitle",
+ CellChangeTimes->{{3.7157598525770197`*^9, 
+  3.715759861039643*^9}},ExpressionUUID->"7e46e4de-2d04-436a-b65c-\
+e12ee089079d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearSystemCache", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"m_", ",", "n_"}], "]"}], ":=", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"n", "+", "x"}], ")"}], "^", "2"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", "m"}], "}"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"list", "=", 
+    RowBox[{"{", "}"}]}], ";", "\n", 
+   RowBox[{"nupbound", "=", 
+    RowBox[{
+     RowBox[{"Floor", "[", "n", "]"}], "/.", 
+     RowBox[{
+      RowBox[{"Solve", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"m", ",", "n"}], "]"}], "\[Equal]", 
+         RowBox[{"10", "^", "8"}]}], ",", "n"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nmax", "[", "M_", "]"}], ":=", 
+    RowBox[{"nupbound", "/.", 
+     RowBox[{"m", "\[Rule]", "M"}]}]}], ";", "\[IndentingNewLine]", 
+   RowBox[{"mmax", "=", 
+    RowBox[{"With", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", "=", "1"}], "}"}], ",", 
+      RowBox[{"Floor", "[", 
+       RowBox[{"m", "/.", 
+        RowBox[{
+         RowBox[{"Solve", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"f", "[", 
+              RowBox[{"m", ",", "n"}], "]"}], "\[Equal]", 
+             RowBox[{"10", "^", "8"}]}], "&&", 
+            RowBox[{"m", ">", "0"}]}], ",", "m"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"list", ",", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"Thread", "[", 
+          RowBox[{"f", "[", 
+           RowBox[{"m", ",", 
+            RowBox[{"Range", "[", 
+             RowBox[{"1", ",", 
+              RowBox[{"nmax", "[", "m", "]"}]}], "]"}]}], "]"}], "]"}], ",", 
+         "PalindromeQ"}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"m", ",", "1", ",", "mmax"}], "}"}]}], "]"}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DeleteDuplicates", "[", 
+     RowBox[{"Flatten", "[", "list", "]"}], "]"}], "//", "Total"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.7157499949533596`*^9, 3.7157499998882704`*^9}, {
+  3.715750178468527*^9, 3.715750178753066*^9}, {3.7157503290734186`*^9, 
+  3.715750332221382*^9}, {3.715752965663933*^9, 3.71575297107635*^9}, {
+  3.7157586781240177`*^9, 3.715758687254661*^9}, {3.7157588266562824`*^9, 
+  3.7157588268309298`*^9}, {3.7157589085737104`*^9, 3.7157589119066105`*^9}, {
+  3.715758965543191*^9, 3.7157590026233845`*^9}, {3.7157594769730816`*^9, 
+  3.7157594864793596`*^9}, {3.715759572042843*^9, 3.715759592437346*^9}, {
+  3.7157596398771486`*^9, 3.7157596649923134`*^9}, {3.715770894832757*^9, 
+  3.7157708955769978`*^9}},ExpressionUUID->"07ebeabb-243a-4e0a-9d34-\
+5d43c0ce96e7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.8252872112676057`", ",", "2906969179"}], "}"}]], "Output",
+ CellChangeTimes->{{3.715759575812484*^9, 3.71575959639091*^9}, 
+   3.715759668533497*^9, 3.7157708999267936`*^9, {3.716470611939164*^9, 
+   3.716470631253725*^9}},ExpressionUUID->"f8988d94-d605-4999-b677-\
+f13fa6140af7"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 745},
+WindowMargins->{{Automatic, 296}, {24, Automatic}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (2017\:5e745\:670816\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1687, 45, 289, "Text", "ExpressionUUID" -> \
+"7aef592b-2c34-420b-835c-71c7202c3ee8"],
+Cell[CellGroupData[{
+Cell[2270, 69, 162, 3, 33, "Subsubtitle", "ExpressionUUID" -> \
+"7e46e4de-2d04-436a-b65c-e12ee089079d"],
+Cell[CellGroupData[{
+Cell[2457, 76, 3139, 83, 344, "Input", "ExpressionUUID" -> \
+"07ebeabb-243a-4e0a-9d34-5d43c0ce96e7"],
+Cell[5599, 161, 322, 6, 62, "Output", "ExpressionUUID" -> \
+"f8988d94-d605-4999-b677-f13fa6140af7"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
