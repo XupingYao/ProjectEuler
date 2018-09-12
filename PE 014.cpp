@@ -13,7 +13,7 @@ int main()
 	QueryPerformanceCounter(&start);
 
 	constexpr int N = 1000000 + 1;
-	int i, t;
+	unsigned int i, t;
 	unsigned long int j;
 	array<int, N> *A = new array<int, N>;
 	(*A).fill(0);

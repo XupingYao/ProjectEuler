@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7158,        204]
-NotebookOptionsPosition[      6716,        183]
-NotebookOutlinePosition[      7073,        199]
-CellTagsIndexPosition[      7030,        196]
+NotebookDataLength[      7581,        212]
+NotebookOptionsPosition[      6890,        187]
+NotebookOutlinePosition[      7247,        203]
+CellTagsIndexPosition[      7204,        200]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -167,23 +167,27 @@ Cell[BoxData[{
    3.6929528437923965`*^9, 3.6929528987921143`*^9}, 3.692953437820129*^9, {
    3.6929594102194815`*^9, 3.6929594175485177`*^9}, {3.6929594674377065`*^9, 
    3.6929594775638523`*^9}, {3.692959607024311*^9, 3.6929596093058014`*^9}, {
-   3.6929711674841294`*^9, 3.692971368823789*^9}}],
+   3.6929711674841294`*^9, 
+   3.692971368823789*^9}},ExpressionUUID->"848848b4-3112-44dc-832c-\
+b0400604c863"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"2.48308347329926`", ",", "44680"}], "}"}]], "Output",
+  RowBox[{"1.2923069295774647`", ",", "44680"}], "}"}]], "Output",
  CellChangeTimes->{
   3.6929526175249968`*^9, 3.692952848370963*^9, 3.6929528996047688`*^9, 
    3.6929534385388823`*^9, 3.6929594181892247`*^9, 3.6929594780951195`*^9, 
    3.6929596293609543`*^9, 3.692966585931621*^9, {3.6929712522480516`*^9, 
    3.6929712769566154`*^9}, {3.692971319724019*^9, 3.69297136446113*^9}, {
-   3.692971641422433*^9, 3.6929716469034395`*^9}}]
+   3.692971641422433*^9, 3.6929716469034395`*^9}, {3.7164707533918285`*^9, 
+   3.7164707580642023`*^9}},ExpressionUUID->"fb6bc2bd-bba8-4a66-a4c7-\
+65a1d449bc68"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1368, 829},
 WindowMargins->{{-8, Automatic}, {Automatic, -8}},
-FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (2016\:5e7410\:67088\
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (2017\:5e745\:670816\
 \:65e5)",
 StyleDefinitions->"Default.nb"
 ]
@@ -198,12 +202,16 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 851, 19, 150, "Text"],
+Cell[558, 20, 851, 19, 152, "Text", "ExpressionUUID" -> \
+"b7823e53-df4c-4d64-8200-a1bba74e0830"],
 Cell[CellGroupData[{
-Cell[1434, 43, 102, 1, 33, "Subsubtitle"],
+Cell[1434, 43, 102, 1, 33, "Subsubtitle", "ExpressionUUID" -> \
+"a658b91c-38d8-4b8d-94a1-068710ccb62c"],
 Cell[CellGroupData[{
-Cell[1561, 48, 4661, 121, 399, "Input"],
-Cell[6225, 171, 463, 8, 62, "Output"]
+Cell[1561, 48, 4722, 123, 399, "Input", "ExpressionUUID" -> \
+"848848b4-3112-44dc-832c-b0400604c863"],
+Cell[6286, 173, 576, 10, 30, "Output", "ExpressionUUID" -> \
+"fb6bc2bd-bba8-4a66-a4c7-65a1d449bc68"]
 }, Open  ]]
 }, Open  ]]
 }
